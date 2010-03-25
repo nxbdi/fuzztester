@@ -57,6 +57,8 @@ import java.util.*;
  * The FuzzTester: The fuzz tester (also supports regular JUnit @Test annotations)
  *
  * @author Tim Desjardins
+ * @version $Rev$
+ * $Id: $
  */
 public class FuzzTester extends Suite
 {
@@ -78,8 +80,8 @@ public class FuzzTester extends Suite
 	/**
 	 * Only called reflectively. Do not use programmatically.
      *
-	 * @param klass -
-	 * @throws Throwable -
+	 * @param klass the class of this test
+	 * @throws Throwable if any errors or otherwise
 	 */
 	public FuzzTester( Class<?> klass ) throws Throwable
 	{
@@ -176,22 +178,40 @@ public class FuzzTester extends Suite
 
     /**
      * The fuzz test runner, do all the work
+     * @see org.junit.runners.ParentRunner<T>
      */
 	private class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 	{
 		private Map<String,List<FuzzTestCase>> testCases;
-				
+
+		/**
+		 *
+		 * @param aClass - The generic class of this test
+		 * @param testCases the Map of test cases
+		 * @throws InitializationError - via super class
+		 */
 		public FuzzTestRunner( Class<?> aClass, Map<String,List<FuzzTestCase>> testCases ) throws InitializationError
 		{
 			super( aClass );
 			this.testCases = testCases;
 		}
 
+		/**
+		 * Create the test
+		 * @return the test class
+		 * @throws Exception per getTestClass
+		 */
 		public Object createTest() throws Exception
 		{
 			return getTestClass().getOnlyConstructor().newInstance();
 		}
 
+		/**
+		 * @see org.junit.runners.ParentRunner<T>
+		 *  
+		 * @param notifier -
+		 * @return Statement
+		 */
 		@Override
 		protected Statement classBlock( RunNotifier notifier )
 		{

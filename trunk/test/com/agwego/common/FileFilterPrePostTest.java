@@ -33,6 +33,11 @@ import java.io.File;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
+/**
+ * @author Tim Desjardins
+ * @version $Rev$
+ * $Id: $
+ */
 @RunWith( FuzzTester.class )
 @FuzzTester.Parameters( TestDirectory = "test/com/agwego/common", Prefix = "FileFilterPrePost" )
 public class FileFilterPrePostTest

@@ -58,6 +58,8 @@ import com.agwego.common.StringHelper;
  * </pre>
  *
  * @author Tim Desjardins
+ * @version $Rev$
+ * $Id: $
  */
 public class FuzzTestCase
 {

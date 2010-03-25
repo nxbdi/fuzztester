@@ -34,6 +34,8 @@ import java.io.FilenameFilter;
  * @see FilenameFilter
  *
  * @author Tim Desjardins
+ * @version $Rev$
+ * $Id: $
  */
 public class FileFilterPrePost implements FilenameFilter
 {

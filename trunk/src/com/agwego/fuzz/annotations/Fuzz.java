@@ -33,6 +33,8 @@ import java.lang.annotation.Target;
  * Annotated tests with @Fuzz will be be run by the fuzz test runner
  *
  * @author Tim Desjardins
+ * @version $Rev$
+ * $Id: $
  */
 @Retention( RetentionPolicy.RUNTIME)
 @Target( ElementType.METHOD)

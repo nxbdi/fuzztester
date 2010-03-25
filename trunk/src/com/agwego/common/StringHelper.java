@@ -34,6 +34,8 @@ import java.util.regex.Matcher;
  * **************************************************************************
  *
  * @author Tim Desjardins
+ * @version $Rev$
+ * $Id: $
  */
 
 public class StringHelper
