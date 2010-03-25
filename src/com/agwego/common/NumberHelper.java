@@ -26,6 +26,8 @@ package com.agwego.common;
 
 /**
  * @author Tim Desjardins
+ * @version $Rev$
+ * $Id: $
  */
 public class NumberHelper
 {
