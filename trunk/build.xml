@@ -157,7 +157,7 @@
             </fileset>
 	    </delete>
         <delete dir="${build.dir}"/>
-        <delete dir="${doc.dir}"/>
+        <delete dir="${doc.dir}/api"/>
 	</target>
 
 	<target name="get_revision" description="Sets property 'revision.number' to the head svn revision number">
