@@ -176,6 +176,7 @@
             packagenames="com.agwego.*"
             sourcepath="${src.dir}"
             destdir="${doc.dir}/api"
+            access="private"
             author="true"
             version="true"
             use="true"

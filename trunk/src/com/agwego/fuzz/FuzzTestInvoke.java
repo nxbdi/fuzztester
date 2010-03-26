@@ -33,7 +33,7 @@ import org.junit.internal.runners.statements.InvokeMethod;
  *
  * @author Tim Desjardins
  * @version $Rev$
- * $Id: $
+ * $Id$
  */
 public class FuzzTestInvoke extends InvokeMethod
 {

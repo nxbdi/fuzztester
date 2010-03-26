@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * @author Tim Desjardins
  * @version $Rev$
- * $Id: $
+ * $Id$
  */
 public final class FileHelper
 {

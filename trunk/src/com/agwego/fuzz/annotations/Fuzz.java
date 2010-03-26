@@ -34,7 +34,7 @@ import java.lang.annotation.Target;
  *
  * @author Tim Desjardins
  * @version $Rev$
- * $Id: $
+ * $Id$
  */
 @Retention( RetentionPolicy.RUNTIME)
 @Target( ElementType.METHOD)

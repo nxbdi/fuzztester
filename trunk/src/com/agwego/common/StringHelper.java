@@ -35,7 +35,7 @@ import java.util.regex.Matcher;
  *
  * @author Tim Desjardins
  * @version $Rev$
- * $Id: $
+ * $Id$
  */
 
 public class StringHelper
