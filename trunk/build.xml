@@ -22,6 +22,10 @@
   ~ THE SOFTWARE.
   ~
   ~ If you modify this software a credit would be nice
+  -
+  - $Id$
+  -
+  - Author: Tim Desjardins
   -->
 
 <project name="fuzztester" basedir="." default="usage">
@@ -51,7 +55,7 @@
         <pathelement path="${test.dir}"/>        
     </path>
 
-    <target name="usage">
+    <target name="usage" depends="get_revision">
         <echo message=""/>
         <echo message="${name} build file"/>
         <echo message="-----------------------------------"/>
@@ -72,6 +76,7 @@
 	    <echo message="HOSTNAME: ${env.HOSTNAME}"/>
 	    <echo message="USER: ${env.USER}"/>
 	    <echo message="basedir: ${basedir}"/>
+        <echo message="revision: ${revision.number}"/>
     </target>
     
 	<target name="release_properties" depends="get_revision" description="build the WAR file for release embeds build information">
@@ -79,7 +84,6 @@
 	    <touch file="${build.dir}/build_tag.properties"/>
 	    <propertyfile comment="Build Information" file="${build.dir}/build_tag.properties">
 		    <entry key="build.date" type="date" pattern="EEEE MMM dd, yyyy" value="now"/>
-		    <entry key="build.time" type="date" pattern="kk:mm:ss" value="now"/>
 		    <entry key="build.timestamp" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss" value="now"/>
 		    <entry key="build.user.name" value="${user.name}"/>
 		    <entry key="build.computer" value="${env.COMPUTERNAME}"/>
