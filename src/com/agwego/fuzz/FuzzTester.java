@@ -26,6 +26,7 @@ package com.agwego.fuzz;
 
 import com.agwego.common.FileHelper;
 import com.agwego.common.StringHelper;
+import com.agwego.fuzz.exception.ParametersError;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.logging.Log;
@@ -33,6 +34,7 @@ import org.apache.commons.logging.LogFactory;
 import org.junit.runner.Runner;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.Suite;
+import org.junit.runners.model.InitializationError;
 
 import java.io.File;
 import java.lang.annotation.ElementType;
@@ -70,14 +72,15 @@ public class FuzzTester extends Suite
 	 * Only called reflectively. Do not use programmatically.
      *
 	 * @param klass the class of this test
-	 * @throws Throwable if any errors or otherwise
+	 * @throws com.agwego.fuzz.exception.ParametersError if any errors or otherwise
+	 * @throws InitializationError -
 	 */
-	public FuzzTester( Class<?> klass ) throws Throwable
+	public FuzzTester( Class<?> klass ) throws ParametersError, InitializationError
 	{
 		super( klass, Collections.<Runner>emptyList() );
 
 		if( ! klass.isAnnotationPresent( Parameters.class ) )
-			throw new RuntimeException( "@Parameters( TestDirectory, Prefix, Suffix = '.json', TestDirectoryRootPropertyName = '' " );
+			throw new ParametersError( "@Parameters( TestDirectory, Prefix, Suffix = '.json', TestDirectoryRootPropertyName = '' " );
 
 		Parameters params = klass.getAnnotation( Parameters.class );
 
@@ -90,7 +93,8 @@ public class FuzzTester extends Suite
 		log.debug( "Suffix " + params.Suffix() );
 		log.debug( "TestDirectoryRootPropertyName " + params.TestDirectoryRootPropertyName() );
 
-		Map<String,List<FuzzTestCase>> testMethods = getTestMethods( getTestJsonObjects( params.TestDirectory(), prefix, params.Suffix() ) ); 		
+		Map<String,List<FuzzTestCase>> testMethods = null;
+		testMethods = getTestMethods( getTestJsonObjects( params.TestDirectory(), prefix, params.Suffix() ) );
 
 		// add the Fuzz tests
 		for( Map.Entry< String, List<FuzzTestCase>> ltc : testMethods.entrySet() )
@@ -111,15 +115,19 @@ public class FuzzTester extends Suite
 	 * @param prefix Look for files that start like
 	 * @param postfix Look for files that end in
 	 * @return The list of JSONObject
+	 * @throws InitializationError if there are errors reading the file
 	 */
-	protected List<JSONObject> getTestJsonObjects( final String dirName, final String prefix, final String postfix )
+	protected List<JSONObject> getTestJsonObjects( final String dirName, final String prefix, final String postfix ) throws InitializationError
 	{
 		List<JSONObject> js = new ArrayList<JSONObject>();
 		try {
 			for( File f: FileHelper.getFileList( dirName, prefix, postfix ) )
 				js.add( JSONObject.fromObject( FileHelper.readFile( f )) );
 		} catch( Exception ex ) {
-			log.error( "There was an error processing JSON files", ex );
+			//log.error( "There was an error processing JSON files", ex );
+			throw new InitializationError( ex );
+			//throw new InitializationError( ex.getMessage() );
+
 		}
 
 		return js;

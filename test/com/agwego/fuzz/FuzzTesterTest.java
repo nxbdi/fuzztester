@@ -24,7 +24,18 @@
 
 package com.agwego.fuzz;
 
+import com.agwego.fuzz.exception.ParametersError;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.model.InitializationError;
+
+import java.util.List;
+
+import static org.junit.Assert.fail;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Tim Desjardins
@@ -32,29 +43,32 @@ import org.junit.runner.RunWith;
  *
  * $Id: FileFilterPrePostTest.java 8 2010-03-26 03:45:50Z agwego $
  */
-@RunWith( FuzzTester.class )
-@FuzzTester.Parameters( TestDirectory = "test/com/agwego/fuzz", Prefix = "FuzzTesterTest" )
 public class FuzzTesterTest
 {
-    /**
-     * Test the accept
-     *
-     * @param dir the directory for FileFilter accept (doesn't have to exist)
-     * @param name the file name to test for (prefix/postfix)
-     * @param prefix the file filter prefix
-     * @param postfix the file filter postfix
-     */    
-	public void accept( final String dir, final String name, final String prefix, final String postfix )
-	{
-	}
+	protected final Log log = LogFactory.getLog( getClass() );
 
-    /**
-     * Test constructor
-     *
-     * @param prefix the file filter prefix
-     * @param postfix the file filter postfix
-     */
-	public void construtctor( final String prefix, final String postfix )
+    @Test
+    public void parametersTest()
+    {
+	    boolean exceptionCaught = false;
+	    try {
+	        FuzzTester ft = new FuzzTester( FuzzTesterTest.ParametersTest.class );
+	    } catch( ParametersError ex ) {
+		    log.info( "x Exception: " + ex.getMessage() );
+		    fail();
+	    } catch( InitializationError ex ) {
+		    List<Throwable> errs = ex.getCauses();
+		    assertEquals( errs.size(), 1 );
+			assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", errs.get( 0 ).getMessage() );
+		    exceptionCaught = true;
+	    }
+
+	    assertTrue( exceptionCaught );
+    }
+
+	@RunWith( FuzzTester.class )
+	@FuzzTester.Parameters( TestDirectory = "test/com/agwego/no_directory", Prefix = "NoFile" )
+	public class ParametersTest
 	{
 	}
 }
