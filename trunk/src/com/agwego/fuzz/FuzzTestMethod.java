@@ -28,8 +28,10 @@ import org.junit.runners.model.FrameworkMethod;
 
 /**
  * Merge the test cases with the test method
+ * 
  * @author Tim Desjardins
  * @version $Rev$
+ * 
  * $Id$
  */
 public class FuzzTestMethod extends FrameworkMethod

@@ -26,6 +26,7 @@ package com.agwego.common;
 
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.File;

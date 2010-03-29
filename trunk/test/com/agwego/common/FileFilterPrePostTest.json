@@ -1,6 +1,7 @@
 /**
  * @author Tim Desjardins
  * @version $Rev$
+ *
  * $Id$
  */
 {
@@ -62,6 +63,6 @@
                 }
 
             ]
-        }        
+        }
     ]
 }

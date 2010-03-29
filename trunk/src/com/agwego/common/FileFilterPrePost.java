@@ -31,10 +31,11 @@ import java.io.FilenameFilter;
  * Used to filter file names, specify a prefix and a postfix
  * to filter files.
  *
- * @see FilenameFilter
+ * @see java.io.FilenameFilter
  *
  * @author Tim Desjardins
  * @version $Rev$
+ * 
  * $Id$
  */
 public class FileFilterPrePost implements FilenameFilter
