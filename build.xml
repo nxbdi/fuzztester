@@ -64,7 +64,8 @@
         <echo message=""/>
 
         <echo message="build                 --> Build the application"/>
-        <echo message="deploy                --> Deploy application as directory"/>
+        <echo message="package               --> Package the application"/>
+
         <echo message="tests                 --> run tests"/>
         <echo message="doc                   --> create javadoc"/>
 
@@ -120,9 +121,10 @@
     <target name="tests" depends="build, buildtests" description="Run tests">
         <echo message="${test.classes.prop}"/>        
 
-        <junit printsummary="on" fork="false" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
+
+        <junit printsummary="on" fork="true" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
             <classpath refid="classpath-test"/>
-            <formatter type="plain" usefile="false"/>
+            <formatter type="plain" usefile="false" if="junit.formatter.use"/>
 
             <batchtest>
                 <fileset refid="test.classes"/>

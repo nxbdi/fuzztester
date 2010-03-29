@@ -31,12 +31,11 @@ import java.util.List;
 /**
  * @author Tim Desjardins
  * @version $Rev$
+ * 
  * $Id$
  */
 public final class FileHelper
 {
-	public static final String FILE_SEP = System.getProperty( "file.separator", "/" );
-
 	/**
 	 * readFile read a file given a fq file name and return the contents as a String
 	 *

@@ -27,12 +27,13 @@ package com.agwego.fuzz;
 import org.junit.internal.runners.statements.InvokeMethod;
 
 /**
- * A delegate for InvokeMethod, to properly match test case args with
+ * A delegate for InvokeMethod, to "properly" match test case args with
  * that of the method. Note that the number and type (String) of test
  * args must match that of your test method.
  *
  * @author Tim Desjardins
  * @version $Rev$
+ *
  * $Id$
  */
 public class FuzzTestInvoke extends InvokeMethod
@@ -40,6 +41,13 @@ public class FuzzTestInvoke extends InvokeMethod
 	protected Object target;
 	protected final FuzzTestMethod testMethod;
 
+	/**
+	 * Create a custom invoker that allows us to call the test method
+	 * with our test case args
+	 *
+	 * @param testMethod the test method
+	 * @param target the test class
+	 */
 	public FuzzTestInvoke( FuzzTestMethod testMethod, Object target )
 	{
 		super( testMethod, target );
@@ -47,8 +55,12 @@ public class FuzzTestInvoke extends InvokeMethod
 		this.testMethod = testMethod;
 	}
 
+	/**
+	 * Do the work, run the test method with the appropriate test case arguments
+	 *
+	 * @throws Throwable pass any exceptions to the test runner
+	 */
 	@Override
-	@SuppressWarnings( "all" )
 	public void evaluate() throws Throwable
 	{
 		testMethod.invokeExplosively( target, testMethod.getTestCase().getArgs() );
