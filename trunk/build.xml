@@ -121,7 +121,6 @@
     <target name="tests" depends="build, buildtests" description="Run tests">
         <echo message="${test.classes.prop}"/>        
 
-
         <junit printsummary="on" fork="true" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
             <classpath refid="classpath-test"/>
             <formatter type="plain" usefile="false" if="junit.formatter.use"/>
@@ -149,7 +148,7 @@
     </target>
 
 	<target name="spotless" depends="clean" description="Clean and revert to pristine">
-	    <delete quiet="true">
+	    <delete quiet="false">
 	        <fileset dir="${basedir}">
 	            <include name="**/svn-commit.tmp*"/>
                 <include name="fuzz-tester-*.jar"/>
