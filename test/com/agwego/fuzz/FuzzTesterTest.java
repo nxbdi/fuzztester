@@ -31,8 +31,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.model.InitializationError;
 
-import java.util.List;
-
 import static org.junit.Assert.fail;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -52,23 +50,43 @@ public class FuzzTesterTest
     {
 	    boolean exceptionCaught = false;
 	    try {
-	        FuzzTester ft = new FuzzTester( FuzzTesterTest.ParametersTest.class );
+	        new FuzzTester( FuzzTesterTest.TestParameters.class );
 	    } catch( ParametersError ex ) {
 		    log.info( "x Exception: " + ex.getMessage() );
 		    fail();
 	    } catch( InitializationError ex ) {
-		    List<Throwable> errs = ex.getCauses();
-		    assertEquals( errs.size(), 1 );
-			assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", errs.get( 0 ).getMessage() );
+		    assertEquals( ex.getCauses().size(), 1 );
+			assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", ex.getCauses().get( 0 ).getMessage() );
 		    exceptionCaught = true;
 	    }
 
 	    assertTrue( exceptionCaught );
     }
 
+	@Test
+	public void noParametersTest()
+	{
+		boolean exceptionCaught = false;
+		try {
+		    new FuzzTester( FuzzTesterTest.TestNoParameters.class );
+		} catch( ParametersError ex ) {
+			assertEquals( "@Parameters( TestDirectory, Prefix, Suffix = '.json', TestDirectoryRootPropertyName = ''", ex.getMessage() );
+			exceptionCaught = true;
+		} catch( InitializationError ex ) {
+			fail();
+		}
+
+		assertTrue( exceptionCaught );
+	}
+
 	@RunWith( FuzzTester.class )
 	@FuzzTester.Parameters( TestDirectory = "test/com/agwego/no_directory", Prefix = "NoFile" )
-	public class ParametersTest
+	private class TestParameters
+	{
+	}
+
+	@RunWith( FuzzTester.class )
+	private class TestNoParameters
 	{
 	}
 }

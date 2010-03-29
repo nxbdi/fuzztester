@@ -80,7 +80,7 @@ public class FuzzTester extends Suite
 		super( klass, Collections.<Runner>emptyList() );
 
 		if( ! klass.isAnnotationPresent( Parameters.class ) )
-			throw new ParametersError( "@Parameters( TestDirectory, Prefix, Suffix = '.json', TestDirectoryRootPropertyName = '' " );
+			throw new ParametersError( "@Parameters( TestDirectory, Prefix, Suffix = '.json', TestDirectoryRootPropertyName = ''" );
 
 		Parameters params = klass.getAnnotation( Parameters.class );
 
