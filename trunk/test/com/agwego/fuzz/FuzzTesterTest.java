@@ -46,7 +46,7 @@ public class FuzzTesterTest
 	protected final Log log = LogFactory.getLog( getClass() );
 
     @Test
-    public void parametersTest()
+    public void parameters()
     {
 	    boolean exceptionCaught = false;
 	    try {
@@ -63,8 +63,14 @@ public class FuzzTesterTest
 	    assertTrue( exceptionCaught );
     }
 
+	@RunWith( FuzzTester.class )
+	@FuzzTester.Parameters( TestDirectory = "test/com/agwego/no_directory", Prefix = "NoFile" )
+	private class TestParameters
+	{
+	}
+
 	@Test
-	public void noParametersTest()
+	public void noParameters()
 	{
 		boolean exceptionCaught = false;
 		try {
@@ -80,13 +86,29 @@ public class FuzzTesterTest
 	}
 
 	@RunWith( FuzzTester.class )
-	@FuzzTester.Parameters( TestDirectory = "test/com/agwego/no_directory", Prefix = "NoFile" )
-	private class TestParameters
+	private class TestNoParameters
 	{
 	}
 
+	@Test
+	public void missingTestDirectory()
+	{
+		boolean exceptionCaught = false;
+		try {
+		    new FuzzTester( FuzzTesterTest.TestNoParameters.class );
+		} catch( ParametersError ex ) {
+			assertEquals( "@Parameters( TestDirectory, Prefix, Suffix = '.json', TestDirectoryRootPropertyName = ''", ex.getMessage() );
+			exceptionCaught = true;
+		} catch( InitializationError ex ) {
+			fail();
+		}
+
+		assertTrue( exceptionCaught );
+	}
+
 	@RunWith( FuzzTester.class )
-	private class TestNoParameters
+	@FuzzTester.Parameters( TestDirectory = "test/com/agwego/no_directory" )
+	private class TestMissingTestDirectory
 	{
 	}
 }
