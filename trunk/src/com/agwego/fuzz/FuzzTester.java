@@ -26,6 +26,7 @@ package com.agwego.fuzz;
 
 import com.agwego.common.FileHelper;
 import com.agwego.common.StringHelper;
+import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -37,10 +38,6 @@ import org.junit.runners.Suite;
 import org.junit.runners.model.InitializationError;
 
 import java.io.File;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.util.*;
 
 /**
@@ -58,15 +55,6 @@ public class FuzzTester extends Suite
 	public static final String METHOD_NAME = "MethodName";
 	public static final String TESTS = "Tests";
 	public static final String TEST_CASES = "TestCases";
-
-	@Retention( RetentionPolicy.RUNTIME )
-	@Target( ElementType.TYPE )
-	public @interface Parameters {
-		String TestDirectory();
-		String Prefix() default "";
-		String Suffix() default ".json";
-		String TestDirectoryRootPropertyName() default "";
-	}
 
 	/**
 	 * Only called reflectively. Do not use programmatically.
@@ -124,10 +112,7 @@ public class FuzzTester extends Suite
 			for( File f: FileHelper.getFileList( dirName, prefix, postfix ) )
 				js.add( JSONObject.fromObject( FileHelper.readFile( f )) );
 		} catch( Exception ex ) {
-			//log.error( "There was an error processing JSON files", ex );
 			throw new InitializationError( ex );
-			//throw new InitializationError( ex.getMessage() );
-
 		}
 
 		return js;
@@ -159,7 +144,10 @@ public class FuzzTester extends Suite
 					fuzzTestCases.add( fuzzTestCase );
 					idx++;
 				}
-				testMethods.put( tcd.getString( METHOD_NAME ), fuzzTestCases );
+				if( testMethods.containsKey( tcd.getString( METHOD_NAME ) ))
+					testMethods.get( tcd.getString( METHOD_NAME )).addAll( fuzzTestCases );
+				else
+					testMethods.put( tcd.getString( METHOD_NAME ), fuzzTestCases );
 			}
 		}
 
