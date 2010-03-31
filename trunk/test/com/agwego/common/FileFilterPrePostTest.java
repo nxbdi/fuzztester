@@ -26,6 +26,7 @@ package com.agwego.common;
 
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
+import com.agwego.fuzz.annotations.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -40,7 +41,7 @@ import static org.junit.Assert.assertNotNull;
  * $Id$
  */
 @RunWith( FuzzTester.class )
-@FuzzTester.Parameters( TestDirectory = "test/com/agwego/common", Prefix = "FileFilterPrePost" )
+@Parameters( TestDirectory = "test/com/agwego/common", Prefix = "FileFilterPrePost" )
 public class FileFilterPrePostTest
 {
     /**
