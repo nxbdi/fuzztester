@@ -27,21 +27,17 @@ package com.agwego.fuzz;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
-import junit.framework.TestResult;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
+import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -56,7 +52,7 @@ public class FuzzTesterTest
 {
 	protected final Log log = LogFactory.getLog( getClass() );
 
-    @org.junit.Test
+    @Test
     public void parameters()
     {
 	    boolean exceptionCaught = false;
@@ -218,22 +214,33 @@ public class FuzzTesterTest
 	@Test
 	public void testMethod() throws Exception
 	{
-		FuzzTester ft = new FuzzTester( com.agwego.fuzz.FuzzTesterTest.TestMethod.class );
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.TestMethod.class );
 		List<Runner> children = ft.getChildren();
 		assertEquals( 1, children.size() );
 		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
-		RunNotifier rn = new RunNotifier();
+		TestNotifier rn = new TestNotifier();
 		ftRunner.run( rn );
+		assertEquals( 1, rn.getFailureCount() );
+		assertEquals( "This assert should fail, as expected expected:<arghhh[x]> but was:<arghhh[]>", rn.getFailures().get( 0 ).getMessage() );
 	}
 
-			@RunWith( FuzzTester.class )
-			@Parameters( TestDirectory = "test/com/agwego/fuzz/fuzz_tester_test", Prefix = "FuzzTesterTest_02" )
-			public class TestMethod
-			{
-				@Fuzz
-				public void mockTest( final String input, final String expected )
-				{
-					assertEquals( input, expected + "x" );
-				}
-			}
+	public class TestNotifier extends RunNotifier
+	{
+		private List<Failure> failures = new ArrayList<Failure>();
+
+		public void fireTestFailure( final Failure failure )
+		{
+			failures.add( failure );
+		}
+
+		public int getFailureCount()
+		{
+			return failures.size();
+		}
+
+		public List<Failure> getFailures()
+		{
+			return failures;
+		}
+	}
 }

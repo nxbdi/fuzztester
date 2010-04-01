@@ -25,7 +25,6 @@
 package com.agwego.fuzz;
 
 import com.agwego.fuzz.annotations.Fuzz;
-import com.agwego.fuzz.exception.NoMethodExists;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Ignore;
@@ -38,10 +37,7 @@ import org.junit.rules.MethodRule;
 import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
-import org.junit.runners.model.FrameworkField;
-import org.junit.runners.model.FrameworkMethod;
-import org.junit.runners.model.InitializationError;
-import org.junit.runners.model.Statement;
+import org.junit.runners.model.*;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -95,7 +91,11 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 	 */
 	public Object createTest() throws Exception
 	{
-		return getTestClass().getOnlyConstructor().newInstance();
+		TestClass tc = getTestClass();
+		tc.getOnlyConstructor();
+
+		return tc.getOnlyConstructor().newInstance(  );
+		//return getTestClass().getOnlyConstructor().newInstance();
 	}
 
 	/**
@@ -184,22 +184,27 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 					new Exception( "Test marked as fail, PASSED! " + tTestMethod.getTestCase() )
 				);
 			}
-		} catch( AssumptionViolatedException e ) {
-			eachNotifier.addFailedAssumption( e );
+		} catch( AssumptionViolatedException ex ) {
+			eachNotifier.addFailedAssumption( ex );
 		} catch( Throwable ex ) {
-			if( !( tTestMethod.getTestCase().isTestException() && tTestMethod.getTestCase().matchTestException( ex.getClass() ) ) ) {
-				if( tTestMethod.getTestCase().isPass() ) // only add tests where pass is true and the test fails
-					if( tTestMethod.getTestCase().isTestException() )
-						eachNotifier.addFailure( new RuntimeException( "Exception did not match: \"" + ex.getClass().getName() + "\" and \"" + tTestMethod.getTestCase().getExceptionThrown() + "\"", ex ));
-					else
-						eachNotifier.addFailure( ex );
-			}
-			if( !( tTestMethod.getTestCase().isTestExceptionMessage() && tTestMethod.getTestCase().matchTestExceptionMessage( ex.getMessage() ) ) ) {
-				if( tTestMethod.getTestCase().isPass() ) // only add tests where pass is true and the test fails
-					if( tTestMethod.getTestCase().isTestExceptionMessage() )
-						eachNotifier.addFailure( new RuntimeException( "Exception message did not match: \"" + ex.getMessage() + "\" and \"" + tTestMethod.getTestCase().getExceptionMessage() + "\"", ex ));
-					else
-						eachNotifier.addFailure( ex );
+			if( tTestMethod.getTestCase().isPass() ) { // only add tests where pass is true and the test fails
+				boolean addNotification = true;
+				if( tTestMethod.getTestCase().isTestException() && ! tTestMethod.getTestCase().matchTestException( ex ) ) {
+					eachNotifier.addFailure(
+						new RuntimeException( "Exception did not match: \"" + ex.getClass().getName() + "\" and \"" + tTestMethod.getTestCase().getExceptionThrown() + "\"", ex )
+					);
+					addNotification = false;
+				}
+
+				if( tTestMethod.getTestCase().isTestExceptionMessage() && ! tTestMethod.getTestCase().matchTestExceptionMessage( ex ) ) {
+					eachNotifier.addFailure(
+						new RuntimeException( "Exception message did not match: \"" + ex.getMessage() + "\" and \"" + tTestMethod.getTestCase().getExceptionMessage() + "\"", ex )
+					);
+					addNotification = false;
+				}
+
+				if( addNotification && ! ( tTestMethod.getTestCase().isTestException() || tTestMethod.getTestCase().isTestExceptionMessage() ) )
+					eachNotifier.addFailure( ex );
 			}
 		} finally {
 			eachNotifier.fireTestFinished();

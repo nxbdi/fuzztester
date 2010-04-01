@@ -27,13 +27,12 @@ package com.agwego.common;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.File;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Tim Desjardins
