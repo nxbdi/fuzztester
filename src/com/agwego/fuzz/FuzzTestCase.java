@@ -248,12 +248,12 @@ public class FuzzTestCase
 	/**
 	 *  Test if the exception thrown matches that of the test case
 	 *
-	 * @param testException class
+	 * @param testException throwable
 	 * @return do the exceptions match
 	 */
-	public boolean matchTestException( Class testException )
+	public boolean matchTestException( Throwable testException )
 	{
-		return StringHelper.unnulled( exceptionThrown ).equals( testException.getName() );
+		return StringHelper.unnulled( exceptionThrown ).equals( testException.getClass().getName() );
 	}
 
 	/**
@@ -269,12 +269,12 @@ public class FuzzTestCase
 	/**
 	 * Match the exception message thrown for the test with the expected exception message in the test case
 	 *
-	 * @param testExceptionMessage the exception message
+	 * @param exception the throwable
 	 * @return does the exected exception message match the thrown message
 	 */
-	public boolean matchTestExceptionMessage( String testExceptionMessage )
+	public boolean matchTestExceptionMessage( Throwable exception )
 	{
-		return StringHelper.unnulled( exceptionMessage ).compareToIgnoreCase( testExceptionMessage ) == 0;
+		return StringHelper.unnulled( exceptionMessage ).compareToIgnoreCase( exception.getMessage() ) == 0;
 	}
 
 	/**

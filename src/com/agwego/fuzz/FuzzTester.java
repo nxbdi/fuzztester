@@ -81,8 +81,7 @@ public class FuzzTester extends Suite
 		log.debug( "Suffix " + params.Suffix() );
 		log.debug( "TestDirectoryRootPropertyName " + params.TestDirectoryRootPropertyName() );
 
-		Map<String,List<FuzzTestCase>> testMethods = null;
-		testMethods = getTestMethods( getTestJsonObjects( params.TestDirectory(), prefix, params.Suffix() ) );
+		Map<String,List<FuzzTestCase>> testMethods = getTestMethods( getTestJsonObjects( params.TestDirectory(), prefix, params.Suffix() ) );
 
 		// add the Fuzz tests
 		for( Map.Entry< String, List<FuzzTestCase>> ltc : testMethods.entrySet() )
