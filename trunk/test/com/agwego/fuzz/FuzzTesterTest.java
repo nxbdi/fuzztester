@@ -152,6 +152,22 @@ public class FuzzTesterTest
 		List<Runner> children = ft.getChildren();
 		assertEquals( 2, children.size() );
 
+		int count = 0;
+		for( Runner runner : children ) {
+			List<FrameworkMethod> fms = (( FuzzTestRunner ) runner).getChildren();
+			assertTrue( ! fms.isEmpty() );
+			if( fms.get( 0 ).getMethod().getName().equals( "noMethodExists" )) {
+				assertEquals( 1, fms.size());
+				count++;
+			} if( fms.get( 0 ).getMethod().getName().equals( "mockTest" )) {
+				assertEquals( 2, fms.size());
+				count++;
+			}
+		}
+
+		assertEquals( 2, count );
+
+		/*
 		FuzzTestRunner runner = (FuzzTestRunner) children.get( 0 );
 		List<FrameworkMethod> fms = runner.getChildren();
 		assertEquals( 1, fms.size() );
@@ -162,7 +178,8 @@ public class FuzzTesterTest
 		fms = runner.getChildren();
 		assertEquals( 2, fms.size() );
 		ftm = (FuzzTestMethod) fms.get( 0 );
-		assertEquals( "mockTest", ftm.getMethod().getName() );		
+		assertEquals( "mockTest", ftm.getMethod().getName() );
+			*/
 	}
 
 			@RunWith( FuzzTester.class )
