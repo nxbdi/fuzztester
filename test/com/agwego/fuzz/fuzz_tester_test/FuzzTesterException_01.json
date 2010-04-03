@@ -1,0 +1,21 @@
+/**
+ * @author Tim Desjardins
+ * @version $Rev: 8 $
+ *
+ * $Id:$
+ */
+{
+    "TestCases" : [
+        {
+            "Comment" : "Test mock",
+            "MethodName" : "mockException",
+            "Tests" : [
+                {
+                    "exceptionThrown" : "java.lang.ClassNotFoundException",
+                    "name" : "Another Test",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

@@ -30,6 +30,7 @@ import com.agwego.fuzz.exception.ParametersError;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.Failure;
@@ -164,22 +165,7 @@ public class FuzzTesterTest
 				count++;
 			}
 		}
-
 		assertEquals( 2, count );
-
-		/*
-		FuzzTestRunner runner = (FuzzTestRunner) children.get( 0 );
-		List<FrameworkMethod> fms = runner.getChildren();
-		assertEquals( 1, fms.size() );
-		FuzzTestMethod ftm = (FuzzTestMethod) fms.get( 0 );
-		assertEquals( "noMethodExists", ftm.getMethod().getName() );
-
-		runner = (FuzzTestRunner) children.get( 1 );
-		fms = runner.getChildren();
-		assertEquals( 2, fms.size() );
-		ftm = (FuzzTestMethod) fms.get( 0 );
-		assertEquals( "mockTest", ftm.getMethod().getName() );
-			*/
 	}
 
 			@RunWith( FuzzTester.class )
@@ -231,7 +217,7 @@ public class FuzzTesterTest
 	@Test
 	public void testMethod() throws Exception
 	{
-		FuzzTester ft = new FuzzTester( com.agwego.fuzz.TestMethod.class );
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestMethod.class );
 		List<Runner> children = ft.getChildren();
 		assertEquals( 1, children.size() );
 		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
@@ -241,10 +227,62 @@ public class FuzzTesterTest
 		assertEquals( "This assert should fail, as expected expected:<arghhh[x]> but was:<arghhh[]>", rn.getFailures().get( 0 ).getMessage() );
 	}
 
+	@Test
+	public void testCaughtException() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestCaughtException.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+	}
+
+	@Test
+	public void testCaughtExceptionMessage() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestCaughtExceptionMessage.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+	}
+
+	@Test
+	public void testCaughtWrongException() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestCaughtWrongException.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 1, rn.getFailureCount() );
+		assertEquals( "Exception did not match: \"java.lang.ClassNotFoundException\" expected \"java.lang.Exception\"", rn.getFailures().get( 0 ).getMessage() );		
+	}
+
+	@Test
+	public void testCaughtWrongExceptionMessage() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestCaughtWrongExceptionMessage.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 1, rn.getFailureCount() );
+		assertEquals( "Exception message did not match: \"mockException test\" expected \"There is no spoon\"", rn.getFailures().get( 0 ).getMessage() );		
+	}
+
+
 	public class TestNotifier extends RunNotifier
 	{
 		private List<Failure> failures = new ArrayList<Failure>();
 
+		@Override
 		public void fireTestFailure( final Failure failure )
 		{
 			failures.add( failure );

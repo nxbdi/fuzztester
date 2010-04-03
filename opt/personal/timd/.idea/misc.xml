@@ -6,6 +6,10 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="" />
+  </component>
   <component name="IdProvider" IDEtalkID="DC797CF90DC94AEF6E56B67B29EE1BC8" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />

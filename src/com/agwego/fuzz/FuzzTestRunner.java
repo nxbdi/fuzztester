@@ -95,7 +95,6 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 		tc.getOnlyConstructor();
 
 		return tc.getOnlyConstructor().newInstance(  );
-		//return getTestClass().getOnlyConstructor().newInstance();
 	}
 
 	/**
@@ -191,14 +190,14 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 				boolean addNotification = true;
 				if( tTestMethod.getTestCase().isTestException() && ! tTestMethod.getTestCase().matchTestException( ex ) ) {
 					eachNotifier.addFailure(
-						new RuntimeException( "Exception did not match: \"" + ex.getClass().getName() + "\" and \"" + tTestMethod.getTestCase().getExceptionThrown() + "\"", ex )
+						new RuntimeException( "Exception did not match: \"" + ex.getClass().getName() + "\" expected \"" + tTestMethod.getTestCase().getExceptionThrown() + "\"", ex )
 					);
 					addNotification = false;
 				}
 
 				if( tTestMethod.getTestCase().isTestExceptionMessage() && ! tTestMethod.getTestCase().matchTestExceptionMessage( ex ) ) {
 					eachNotifier.addFailure(
-						new RuntimeException( "Exception message did not match: \"" + ex.getMessage() + "\" and \"" + tTestMethod.getTestCase().getExceptionMessage() + "\"", ex )
+						new RuntimeException( "Exception message did not match: \"" + ex.getMessage() + "\" expected \"" + tTestMethod.getTestCase().getExceptionMessage() + "\"", ex )
 					);
 					addNotification = false;
 				}
