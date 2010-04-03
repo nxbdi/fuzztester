@@ -1,0 +1,21 @@
+/**
+ * @author Tim Desjardins
+ * @version $Rev: 8 $
+ *
+ * $Id:$
+ */
+{
+    "TestCases" : [
+        {
+            "Comment" : "Catch the Wrong Exception",
+            "MethodName" : "mockException",
+            "Tests" : [
+                {
+                    "exceptionMessage" : "There is no spoon",
+                    "name" : "Another Test",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

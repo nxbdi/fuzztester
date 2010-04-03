@@ -1,0 +1,21 @@
+/**
+ * @author Tim Desjardins
+ * @version $Rev: 8 $
+ *
+ * $Id:$
+ */
+{
+    "TestCases" : [
+        {
+            "Comment" : "Test mock",
+            "MethodName" : "mockException",
+            "Tests" : [
+                {
+                    "exceptionMessage" : "mockException test",
+                    "name" : "Another Test",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}
