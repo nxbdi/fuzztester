@@ -29,23 +29,17 @@ import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
-
 import static org.junit.Assert.*;
 
 @RunWith( FuzzTester.class )
-@Parameters( TestDirectory = "test/com/agwego/fuzz/fuzz_tester_test", Prefix = "FuzzTesterException_04" )
-public class TestCaughtWrongExceptionMessage
+@Parameters( TestDirectory = "test/com/agwego/fuzz/fuzz_tester_test", Prefix = "FuzzTesterIgnore_01" )
+public class TestIgnore
 {
-	//@Ignore
+	@Ignore
 	@Fuzz
 	public void mockTest( final String input, final String expected )
 	{
 		assertEquals( "This assert should fail, as expected", expected + "x", input  );
 	}
-
-	@Fuzz
-	public void mockException( final String input, final String expected ) throws Exception
-	{
-		throw new ClassNotFoundException( "mockException test" );
-	}
 }
+

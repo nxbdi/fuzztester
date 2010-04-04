@@ -29,6 +29,7 @@ import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.Description;
 import org.junit.runner.RunWith;
@@ -53,6 +54,7 @@ public class FuzzTesterTest
 {
 	protected final Log log = LogFactory.getLog( getClass() );
 
+	//@Ignore
     @Test
     public void parameters()
     {
@@ -77,6 +79,7 @@ public class FuzzTesterTest
 			{
 			}
 
+	//@Ignore
 	@Test
 	public void missingPrefix()
 	{
@@ -101,6 +104,7 @@ public class FuzzTesterTest
 			{
 			}
 
+	//@Ignore
 	@Test
 	public void noParameters()
 	{
@@ -122,6 +126,7 @@ public class FuzzTesterTest
 			{
 			}
 
+	//@Ignore
 	@Test
 	public void singleJsonFile() throws Exception
 	{
@@ -146,6 +151,7 @@ public class FuzzTesterTest
 				}
 			}
 
+	//@Ignore
 	@Test
 	public void multipleJsonFiles() throws Exception
 	{
@@ -185,6 +191,7 @@ public class FuzzTesterTest
 				}
 			}
 
+	//@Ignore
 	@Test
 	public void noMethodExists() throws Exception
 	{
@@ -200,7 +207,7 @@ public class FuzzTesterTest
 			exceptionCaught = true;
 		}
 
-		assertTrue( exceptionCaught );
+		assertFalse( exceptionCaught );
 	}
 
 			@RunWith( FuzzTester.class )
@@ -214,6 +221,7 @@ public class FuzzTesterTest
 				}
 			}
 
+	//@Ignore
 	@Test
 	public void testMethod() throws Exception
 	{
@@ -227,6 +235,7 @@ public class FuzzTesterTest
 		assertEquals( "This assert should fail, as expected expected:<arghhh[x]> but was:<arghhh[]>", rn.getFailures().get( 0 ).getMessage() );
 	}
 
+	//@Ignore
 	@Test
 	public void testCaughtException() throws Exception
 	{
@@ -239,6 +248,7 @@ public class FuzzTesterTest
 		assertEquals( 0, rn.getFailureCount() );
 	}
 
+	//@Ignore
 	@Test
 	public void testCaughtExceptionMessage() throws Exception
 	{
@@ -251,6 +261,7 @@ public class FuzzTesterTest
 		assertEquals( 0, rn.getFailureCount() );
 	}
 
+	//@Ignore
 	@Test
 	public void testCaughtWrongException() throws Exception
 	{
@@ -264,6 +275,7 @@ public class FuzzTesterTest
 		assertEquals( "Exception did not match: \"java.lang.ClassNotFoundException\" expected \"java.lang.Exception\"", rn.getFailures().get( 0 ).getMessage() );		
 	}
 
+	//@Ignore
 	@Test
 	public void testCaughtWrongExceptionMessage() throws Exception
 	{
@@ -274,18 +286,74 @@ public class FuzzTesterTest
 		TestNotifier rn = new TestNotifier();
 		ftRunner.run( rn );
 		assertEquals( 1, rn.getFailureCount() );
-		assertEquals( "Exception message did not match: \"mockException test\" expected \"There is no spoon\"", rn.getFailures().get( 0 ).getMessage() );		
+		assertEquals( "Exception message did not match: \"mockException test\" expected \"There is no spoon\"", rn.getFailures().get( 0 ).getMessage() );
 	}
 
+	//@Ignore
+	@Test
+	public void testIgnore() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestIgnore.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 1, rn.getIgnoredCount() );
+	}
 
+	//@Ignore
+	@Test
+	public void testSkip() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestSkip.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 1, rn.getIgnoredCount() );
+		assertEquals( 2, rn.getFinishedCount() );
+	}
+
+	@Test
+	public void testMarkedFailButPassed() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestMarkedFailButPassed.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 1, rn.getFailureCount() );
+		assertEquals( 1, rn.getFinishedCount() );
+	}
+
+	
 	public class TestNotifier extends RunNotifier
 	{
 		private List<Failure> failures = new ArrayList<Failure>();
+		private List<Description> ignored = new ArrayList<Description>();
+		private List<Description> finished = new ArrayList<Description>();
 
 		@Override
 		public void fireTestFailure( final Failure failure )
 		{
 			failures.add( failure );
+		}
+
+		@Override
+		public void fireTestIgnored( Description description )
+		{
+			ignored.add( description );
+		}
+
+		@Override
+		public void fireTestFinished( Description description )
+		{
+			finished.add( description );
 		}
 
 		public int getFailureCount()
@@ -296,6 +364,26 @@ public class FuzzTesterTest
 		public List<Failure> getFailures()
 		{
 			return failures;
+		}
+
+		public int getIgnoredCount()
+		{
+			return ignored.size();
+		}
+
+		public List<Description> getIgnored()
+		{
+			return ignored;
+		}
+
+		public int getFinishedCount()
+		{
+			return finished.size();
+		}
+
+		public List<Description> getFinished()
+		{
+			return finished;
 		}
 	}
 }
