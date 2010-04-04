@@ -63,10 +63,10 @@ public class FuzzTestMethod extends FrameworkMethod
 	 * Return the test name for this testCase/testMethod pair
 	 *
 	 * @return FuzzTestCase name
-	 */
+	 * /
 	@Override
 	public String getName()
 	{
 		return fuzzTestCase.getName();
-	}
+	} */
 }
