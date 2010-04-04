@@ -120,8 +120,9 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 		List<FrameworkMethod> methods = new ArrayList<FrameworkMethod>();
 
 		FrameworkMethod fm = getFrameworkMethod( testCaseName );
-		for( FuzzTestCase tc : testCases )
-			methods.add( new FuzzTestMethod( fm, tc ) );
+		if( fm != null )
+			for( FuzzTestCase tc : testCases )
+				methods.add( new FuzzTestMethod( fm, tc ) );
 
 		return methods;
 	}
@@ -138,7 +139,8 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 			if( fm.getName().equals( methodName ) )
 				return fm;
 
-		throw new RuntimeException( "No test method: " + methodName + " annotated with @Fuzz" );
+		//throw new RuntimeException( "No test method: " + methodName + " annotated with @Fuzz" );
+		return null;
 	}
 
 	/**
@@ -170,12 +172,12 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 		EachTestNotifier eachNotifier = makeNotifier( method, notifier );
 		FuzzTestMethod tTestMethod = (FuzzTestMethod) method;
 
+		eachNotifier.fireTestStarted();
 		if( method.getAnnotation( Ignore.class ) != null || tTestMethod.getTestCase().isSkip() ) {
 			eachNotifier.fireTestIgnored();
 			return;
 		}
 
-		eachNotifier.fireTestStarted();
 		try {
 			methodBlock( tTestMethod ).evaluate();
 			if( tTestMethod.getTestCase().isFail() ) {
