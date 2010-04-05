@@ -27,6 +27,7 @@ package com.agwego.common;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
@@ -179,6 +180,7 @@ public class StringHelperTest
 	public void substringEnd( final String a, final String begin, final String end, final String expected )
 	{
 		final int beginIdx = NumberHelper.parseInt( begin );
-		assertEquals( expected, StringHelper.substring( a, beginIdx ));
+        final int endIdx = NumberHelper.parseInt( end );
+		assertEquals( expected, StringHelper.substring( a, beginIdx, endIdx ));
 	}
 }
