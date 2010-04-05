@@ -1,0 +1,155 @@
+/**
+ * @author Tim Desjardins
+ * @version $Rev: $
+ *
+ * $Id: $
+ */
+{
+    "TestCases" : [
+        {
+            "Comment" : "Test isSameIgnoreCase",
+            "MethodName" : "isSameIgnoreCase",
+            "Tests" : [
+                { "args" : [ "Mixed Case", "mixed case" ] },
+                { "args" : [ "Mixed Case", "mixed Case" ] },
+                { "args" : [ "MiXed Case", "MiXed Case" ] },
+                { "args" : [ null, null ] },
+                { "args" : [ "", "" ] },
+                { "args" : [ "", null ] },
+                { "args" : [ " ", "" ], "pass" : false },
+                { "args" : [ "Mixed Case", null ], "pass" : false },
+                { "args" : [ "", "Mixed Case" ], "pass" : false },
+                { "args" : [ "MiXed Case ", "Mixed Case" ], "pass" : false },
+                { "args" : [ "Mixed Case", "Not the same" ], "pass" : false }                                
+            ]
+        },
+        {
+            "Comment" : "Test isSame",
+            "MethodName" : "isSame",
+            "Tests" : [
+                { "args" : [ "MiXed Case", "MiXed Case" ] },
+                { "args" : [ null, null ] },
+                { "args" : [ "", "" ] },
+                { "args" : [ "", null ] },
+                { "args" : [ " ", "" ], "pass" : false },
+                { "args" : [ "Mixed Case", "mixed case" ], "pass" : false },
+                { "args" : [ "Mixed Case", "mixed Case" ], "pass" : false },
+                { "args" : [ "Mixed Case", null ], "pass" : false },
+                { "args" : [ "", "Mixed Case" ], "pass" : false },
+                { "args" : [ "MiXed Case ", "Mixed Case" ], "pass" : false },
+                { "args" : [ "Mixed Case", "Not the same" ], "pass" : false }
+            ]
+        },
+        {
+            "Comment" : "Test unempty",
+            "MethodName" : "unempty",
+            "Tests" : [
+                { "args" : [ null, "otherwise", "otherwise" ] },
+                { "args" : [ "", "otherwise", "otherwise" ] },
+                { "args" : [ " ", "otherwise", " " ] },
+                { "args" : [ "a", "otherwise", "a" ] },
+                { "args" : [ null, null, null ] }
+            ]
+        },
+        {
+            "Comment" : "Test isEmpty",
+            "MethodName" : "isEmptyString",
+            "Tests" : [
+                { "args" : [ "" ] },
+                { "args" : [ null ] },
+                { "args" : [ "otherwise" ], "pass" : false },                
+                { "args" : [ " " ], "pass" : false },
+                { "args" : [ "x" ], "pass" : false }
+            ]
+        },
+        {
+            "Comment" : "Test isEmpty",
+            "MethodName" : "isEmptyByteArray",
+            "Tests" : [
+                { "args" : [ "" ] },
+                { "args" : [ null ] },
+                { "args" : [ "otherwise" ], "pass" : false },
+                { "args" : [ " " ], "pass" : false },
+                { "args" : [ "x" ], "pass" : false }
+            ]
+        },
+        {
+            "Comment" : "Test isEmpty",
+            "MethodName" : "nulled",
+            "Tests" : [
+                { "args" : [ "", null ] },
+                { "args" : [ null, null ] },
+                { "args" : [ "otherwise", "otherwise" ] },
+                { "args" : [ " ", " " ] },
+                { "args" : [ "x", "x" ] }
+            ]
+        },
+        {
+            "Comment" : "Test isEmpty",
+            "MethodName" : "nulledObject",
+            "Tests" : [
+                { "args" : [ "", null ] },
+                { "args" : [ null, null ] },
+                { "args" : [ "otherwise", "otherwise" ] },
+                { "args" : [ " ", " " ] },
+                { "args" : [ "x", "x" ] }
+            ]
+        },
+        {
+            "Comment" : "Test isEmpty",
+            "MethodName" : "unnulled",
+            "Tests" : [
+                { "args" : [ "", "" ] },
+                { "args" : [ null, "" ] },
+                { "args" : [ "otherwise", "otherwise" ] },
+                { "args" : [ " ", " " ] },
+                { "args" : [ "x", "x" ] }
+            ]
+        },
+        {
+            "Comment" : "Test isEmpty",
+            "MethodName" : "unnulledOtherwise",
+            "Tests" : [
+                { "args" : [ "", "otherwise", "" ] },
+                { "args" : [ null, "otherwise", "otherwise" ] },
+                { "args" : [ "otherwise", "not", "otherwise" ] },
+                { "args" : [ " ", "not", " " ] },
+                { "args" : [ "x", "y", "x" ] }
+            ]
+        },
+        {
+            "Comment" : "Test isEmpty",
+            "MethodName" : "unnulledObjectOtherwise",
+            "Tests" : [
+                { "args" : [ "", "otherwise", "" ] },
+                { "args" : [ null, "otherwise", "otherwise" ] },
+                { "args" : [ "otherwise", "not", "otherwise" ] },
+                { "args" : [ " ", "not", " " ] },
+                { "args" : [ "x", "y", "x" ] }
+            ]
+        },
+        {
+            "Comment" : "Test isEmpty",
+            "MethodName" : "unnulledObject",
+            "Tests" : [
+                { "args" : [ "", "" ] },
+                { "args" : [ null, "" ] },
+                { "args" : [ "otherwise", "otherwise" ] },
+                { "args" : [ " ", " " ] },
+                { "args" : [ "x", "x" ] }
+            ]
+        },
+        {
+            "Comment" : "substring from begin index",
+            "MethodName" : "substring",
+            "Tests" : [
+                { "args" : [ "", "0", "" ] },
+                { "args" : [ null, "0", null ] },
+                { "args" : [ "1234567890", "2", "34567890" ] },
+                { "args" : [ "1234567890", "12", "" ] },
+                { "args" : [ "1234567890", "-1", "1234567890" ] },
+                { "args" : [ "1234567890", "0", "1234567890" ] }
+            ]
+        }
+    ]
+}

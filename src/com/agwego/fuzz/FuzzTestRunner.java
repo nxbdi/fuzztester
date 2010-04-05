@@ -91,10 +91,7 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 	 */
 	public Object createTest() throws Exception
 	{
-		TestClass tc = getTestClass();
-		tc.getOnlyConstructor();
-
-		return tc.getOnlyConstructor().newInstance(  );
+		return getTestClass().getOnlyConstructor().newInstance();
 	}
 
 	/**

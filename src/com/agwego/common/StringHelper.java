@@ -86,7 +86,7 @@ public class StringHelper
 
 	public static String nulled( String s )
 	{
-		if( ( s == null ) || ( s.length() == 0 ) )
+		if( isEmpty( s ) )
 			return null;
 		else
 			return s;

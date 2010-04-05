@@ -318,6 +318,8 @@ public class FuzzTesterTest
 		assertEquals( 2, rn.getFinishedCount() );
 	}
 
+
+	//@Ignore
 	@Test
 	public void testMarkedFailButPassed() throws Exception
 	{
@@ -331,12 +333,40 @@ public class FuzzTesterTest
 		assertEquals( 1, rn.getFinishedCount() );
 	}
 
+	//@Ignore
+	@Test
+	public void testAssumptions() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestAssumptions.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 1, rn.getFinishedCount() );
+	}
+
+	@Test
+	public void testAssumptionsFailed() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestAssumptionsFail.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 1, rn.getAssumptionsFailedCount() );
+		assertEquals( 1, rn.getFinishedCount() );
+	}
 	
 	public class TestNotifier extends RunNotifier
 	{
 		private List<Failure> failures = new ArrayList<Failure>();
 		private List<Description> ignored = new ArrayList<Description>();
 		private List<Description> finished = new ArrayList<Description>();
+		private List<Failure> assumptionsFailed = new ArrayList<Failure>();
 
 		@Override
 		public void fireTestFailure( final Failure failure )
@@ -354,6 +384,12 @@ public class FuzzTesterTest
 		public void fireTestFinished( Description description )
 		{
 			finished.add( description );
+		}
+
+		@Override
+		public void fireTestAssumptionFailed( Failure failure )
+		{
+			assumptionsFailed.add( failure );
 		}
 
 		public int getFailureCount()
@@ -384,6 +420,16 @@ public class FuzzTesterTest
 		public List<Description> getFinished()
 		{
 			return finished;
+		}
+
+		public int getAssumptionsFailedCount()
+		{
+			return assumptionsFailed.size();
+		}
+
+		public List<Failure> getAssumptionsFailed()
+		{
+			return assumptionsFailed;
 		}
 	}
 }
