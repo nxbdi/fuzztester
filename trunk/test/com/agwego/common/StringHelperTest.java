@@ -167,4 +167,18 @@ public class StringHelperTest
 		final int beginIdx = NumberHelper.parseInt( begin );
 		assertEquals( expected, StringHelper.substring( a, beginIdx ));
 	}
+
+	/**
+	 *
+	 * @param a test string
+	 * @param begin index
+     * @param end index
+	 * @param expected result
+	 */
+	@Fuzz
+	public void substringEnd( final String a, final String begin, final String end, final String expected )
+	{
+		final int beginIdx = NumberHelper.parseInt( begin );
+		assertEquals( expected, StringHelper.substring( a, beginIdx ));
+	}
 }
