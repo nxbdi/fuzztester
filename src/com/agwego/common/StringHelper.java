@@ -42,16 +42,23 @@ public class StringHelper
 {
 	static public String substring( String value, int beginIndex )
 	{
-		value = StringHelper.unnulled( value );
-		beginIndex = Math.min( beginIndex, value.length() );
+		final String tempValue = StringHelper.unnulled( value );
 
-		return substring( value, beginIndex, value.length() );
+        beginIndex = Math.min( beginIndex, tempValue.length() );
+
+		return substring( value, beginIndex, tempValue.length() );
 	}
 
 	// no leak version of SubString without out all the god damned exceptions
 	public static String substring( String s, int beginIndex, int endIndex )
 	{
-		if( s == null || beginIndex < 0 || endIndex > s.length() || beginIndex > endIndex || ( beginIndex == 0 && endIndex == s.length() ) )
+        if( s == null )
+            return s;
+
+        beginIndex = beginIndex < 0 ? 0 : beginIndex;
+        endIndex = Math.min( s.length(), endIndex < 0 ? s.length() : endIndex );
+        
+		if( beginIndex > endIndex || ( beginIndex == 0 && endIndex == s.length() ) )
 			return s;
 
 		char[] rtnStr = new char[endIndex - beginIndex];
