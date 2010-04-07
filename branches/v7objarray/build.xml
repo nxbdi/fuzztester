@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Copyright (c) 2010. Agwego Enterprises Inc.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  ~ THE SOFTWARE.
+  ~
+  ~ If you modify this software a credit would be nice
+  -
+  - $Id$
+  -
+  - Author: Tim Desjardins
+  -->
+
+<project name="fuzztester" basedir="." default="usage">
+    <property environment="env"/>
+	<property file="${basedir}/opt/personal/${env.USER}/build.${env.HOSTNAME}.properties"/>
+	<property file="build.properties"/>
+	<property name="name" value="fuzztester"/>
+
+    <property name="src.dir" value="src"/>
+	<property name="deploy.dir" value="deploy"/>
+    <property name="build.dir" value="build"/>
+	<property name="test.dir" value="test"/>
+    <property name="doc.dir" value="doc"/>
+
+    <mkdir dir="${build.dir}"/>
+    <path id="classpath-master">
+        <fileset dir="${basedir}/lib">
+            <include name="*.jar"/>
+        </fileset>
+
+        <pathelement path="${build.dir}"/>
+    </path>
+
+    <path id="classpath-test">
+	    <path refid="classpath-master"/>
+
+        <pathelement path="${test.dir}"/>        
+    </path>
+
+    <target name="usage" depends="get_revision">
+        <echo message=""/>
+        <echo message="${name} build file"/>
+        <echo message="------------------------------------"/>
+        <echo message=""/>
+        <echo message="Available targets are:"/>
+        <echo message=""/>
+
+        <echo message="build                 --> Build the application"/>
+        <echo message="package               --> Package the application"/>
+
+        <echo message="tests                 --> run tests"/>
+        <echo message="doc                   --> create javadoc"/>
+
+        <echo message="clean                 --> cleanup"/>
+        <echo message="spotless              --> revert to pristine"/>
+
+        <echo message=""/>
+
+	    <echo message="HOSTNAME: ${env.HOSTNAME}"/>
+	    <echo message="USER: ${env.USER}"/>
+	    <echo message="basedir: ${basedir}"/>
+        <echo message="revision: ${revision.number}"/>
+    </target>
+    
+	<target name="release_properties" depends="get_revision" description="build the WAR file for release embeds build information">
+		<echo message="revision.number = ${revision.number}" />
+	    <touch file="${build.dir}/build_tag.properties"/>
+	    <propertyfile comment="Build Information" file="${build.dir}/build_tag.properties">
+		    <entry key="build.date" type="date" pattern="EEEE MMM dd, yyyy" value="now"/>
+		    <entry key="build.timestamp" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss" value="now"/>
+		    <entry key="build.user.name" value="${user.name}"/>
+		    <entry key="build.computer" value="${env.COMPUTERNAME}"/>
+		    <entry key="build.revision_number" value="${revision.number}"/>
+            <entry key="fuzz.version" value="${fuzz.version}"/>
+	    </propertyfile>
+	</target>
+
+    <target name="build" description="Compile main source tree java files">
+        <mkdir dir="${build.dir}"/>
+        <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true" deprecation="false" optimize="false" failonerror="true">
+            <src path="${src.dir}"/>
+            <classpath refid="classpath-master"/>
+        </javac>
+        <copy file="${src.dir}/log4j.properties" tofile="${build.dir}/log4j.properties" overwrite="true"/>
+    </target>
+
+    <target name="jar" depends="build,release_properties" description="Create the archive">
+        <jar destfile="fuzz-tester-${fuzz.version}.jar" basedir="${build.dir}"/>
+    </target>
+
+    <target name="buildtests" description="Compile test tree java files">
+        <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true" deprecation="false" optimize="false" failonerror="true">
+            <src path="${test.dir}"/>
+            <classpath refid="classpath-test"/>
+        </javac>
+    </target>
+
+    <fileset dir="${build.dir}" id="test.classes">
+        <include name="**/*Test.class" />
+    </fileset>
+    <property name="test.classes.prop" refid="test.classes"/>
+
+    <target name="tests" depends="build, buildtests" description="Run tests">
+        <echo message="${test.classes.prop}"/>        
+
+        <junit printsummary="on" fork="true" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
+            <classpath refid="classpath-test"/>
+            <formatter type="plain" usefile="false" if="junit.formatter.use"/>
+
+            <batchtest>
+                <fileset refid="test.classes"/>
+            </batchtest>
+        </junit>
+
+        <fail if="tests.failed">
+            tests.failed=${tests.failed}
+            ***********************************************************
+            ****  One or more tests failed!  Check the output ...  ****
+            ***********************************************************
+        </fail>
+    </target>
+
+    <target name="clean" description="Clean output directories">
+        <delete quiet="false" failonerror="false">
+            <fileset dir="${build.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
+	    <touch file="${build.dir}/build_tag.properties"/>	    
+    </target>
+
+	<target name="spotless" depends="clean" description="Clean and revert to pristine">
+	    <delete quiet="false">
+	        <fileset dir="${basedir}">
+	            <include name="**/svn-commit.tmp*"/>
+                <include name="fuzz-tester-*.jar"/>
+	        </fileset>
+			<fileset dir="${build.dir}">
+	            <include name="build_tag.properties"/>
+            </fileset>
+	    </delete>
+        <delete dir="${build.dir}"/>
+        <delete dir="${doc.dir}/api"/>
+	</target>
+
+	<target name="get_revision" description="Sets property 'revision.number' to the head svn revision number">
+        <property name="revision" value="HEAD"/>
+
+        <!-- find out revision number of the current working dir -->
+        <exec executable="svnversion" outputproperty="svnlog.out">
+            <arg line="-n"/>
+        </exec>
+
+        <!-- need ant-contrib.jar for this in lib dir of ant install -->
+        <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+        <propertyregex property="revision.number" input="${svnlog.out}" select="\1">
+            <regexp pattern="([0-9]*).+"/>
+        </propertyregex>
+    </target>
+
+    <target  name="doc" description="Generate the javadoc">
+        <javadoc
+            packagenames="com.agwego.*"
+            sourcepath="${src.dir}"
+            destdir="${doc.dir}/api"
+            access="private"
+            author="true"
+            version="true"
+            use="true"
+            windowtitle="FuzzTester API"
+            classpathref="classpath-test">
+            <link href="http://java.sun.com/javase/6/docs/api/"/>
+            <link href="http://json-lib.sourceforge.net/apidocs/jdk15/"/>
+            <link href="http://kentbeck.github.com/junit/javadoc/latest/"/>
+            
+            <bottom><![CDATA[<i>Copyright &#169; 2010 Agwego Enterprise Inc. All Rights Reserved.</i>]]></bottom>
+        </javadoc>
+    </target>
+</project>
