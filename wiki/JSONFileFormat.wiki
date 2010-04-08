@@ -1,0 +1,7 @@
+#summary Detailed File Format for test cases in the JSON format
+
+= JSON Object format =
+
+== Simple Types ==
+* int, long, short, byte -> java.lang.Integer (if possible)
+* float, double -> java.lang.Double
