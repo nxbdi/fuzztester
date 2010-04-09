@@ -55,16 +55,17 @@ public class ArrayObjTest
 	protected final Log log = LogFactory.getLog( getClass() );
 
 	@Test
-	public void testAssumptionsFailed() throws Exception
+	public void arrayObject() throws Exception
 	{
-		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestAssumptionsFail.class );
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.array_obj.TestArrayObj.class );
 		List<Runner> children = ft.getChildren();
-		assertEquals( 1, children.size() );
-		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
-		TestNotifier rn = new TestNotifier();
-		ftRunner.run( rn );
-		assertEquals( 0, rn.getFailureCount() );
-		assertEquals( 1, rn.getAssumptionsFailedCount() );
-		assertEquals( 1, rn.getFinishedCount() );
+		assertEquals( 3, children.size() );
+		for( Runner ftRunner :  children  ) {
+			TestNotifier rn = new TestNotifier();
+			ftRunner.run( rn );
+			assertEquals( 0, rn.getFailureCount() );
+			assertEquals( 0, rn.getAssumptionsFailedCount() );
+			assertEquals( 1, rn.getFinishedCount() );
+		}
 	}
 }

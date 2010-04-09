@@ -28,7 +28,7 @@ import org.junit.internal.runners.statements.InvokeMethod;
 
 /**
  * A delegate for InvokeMethod, to "properly" match test case args with
- * that of the method. Note that the number and type (String) of test
+ * that of the method. Note that the number and type (Object) of test
  * args must match that of your test method.
  *
  * @author Tim Desjardins

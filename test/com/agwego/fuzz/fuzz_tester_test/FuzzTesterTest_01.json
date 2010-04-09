@@ -5,11 +5,11 @@
  * $Id:$
  */
 {
-    "TestCases" : [
+    "unitTest" : [
         {
             "Comment" : "Test mock",
-            "MethodName" : "mockTest",
-            "Tests" : [
+            "method" : "mockTest",
+            "testCases" : [
                 {
                     "name" : "Test prefix/postfix",
                     "args" : [ "arghhh", "arghhh" ]
