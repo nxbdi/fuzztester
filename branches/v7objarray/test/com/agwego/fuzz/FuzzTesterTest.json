@@ -5,11 +5,11 @@
  * $Id: FileFilterPrePostTest.json 8 2010-03-26 03:45:50Z agwego $
  */
 {
-    "TestCases" : [
+    "unitTest" : [
         {
             "Comment" : "Test accept",
-            "MethodName" : "accept",
-            "Tests" : [
+            "method" : "accept",
+            "method" [
                 {
                     "name" : "Test prefix/postfix",
                     "args" : [ "/this/is/a/test", "prefixFileName.xml", "prefix", "xml" ]
@@ -37,8 +37,8 @@
         },
         {
             "Comment" : "Test accept",
-            "MethodName" : "construtctor",
-            "Tests" : [
+            "method" : "construtctor",
+            "method" [
                 {
                     "name" : "Test consturctor",
                     "args" : [ "prefix", "xml" ]

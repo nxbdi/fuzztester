@@ -29,11 +29,11 @@
  * $Id: $
  */
 {
-    "TestCases" : [
+    "unitTest" : [
         {
             "Comment" : "Test isSameIgnoreCase",
-            "MethodName" : "isSameIgnoreCase",
-            "Tests" : [
+            "method" : "isSameIgnoreCase",
+            "method" [
                 { "args" : [ "Mixed Case", "mixed case" ] },
                 { "args" : [ "Mixed Case", "mixed Case" ] },
                 { "args" : [ "MiXed Case", "MiXed Case" ] },
@@ -49,8 +49,8 @@
         },
         {
             "Comment" : "Test isSame",
-            "MethodName" : "isSame",
-            "Tests" : [
+            "method" : "isSame",
+            "method" [
                 { "args" : [ "MiXed Case", "MiXed Case" ] },
                 { "args" : [ null, null ] },
                 { "args" : [ "", "" ] },
@@ -66,8 +66,8 @@
         },
         {
             "Comment" : "Test unempty",
-            "MethodName" : "unempty",
-            "Tests" : [
+            "method" : "unempty",
+            "method" [
                 { "args" : [ null, "otherwise", "otherwise" ] },
                 { "args" : [ "", "otherwise", "otherwise" ] },
                 { "args" : [ " ", "otherwise", " " ] },
@@ -77,8 +77,8 @@
         },
         {
             "Comment" : "Test isEmpty",
-            "MethodName" : "isEmptyString",
-            "Tests" : [
+            "method" : "isEmptyString",
+            "method" [
                 { "args" : [ "" ] },
                 { "args" : [ null ] },
                 { "args" : [ "otherwise" ], "pass" : false },                
@@ -88,8 +88,8 @@
         },
         {
             "Comment" : "Test isEmpty",
-            "MethodName" : "isEmptyByteArray",
-            "Tests" : [
+            "method" : "isEmptyByteArray",
+            "method" [
                 { "args" : [ "" ] },
                 { "args" : [ null ] },
                 { "args" : [ "otherwise" ], "pass" : false },
@@ -99,8 +99,8 @@
         },
         {
             "Comment" : "Test isEmpty",
-            "MethodName" : "nulled",
-            "Tests" : [
+            "method" : "nulled",
+            "method" [
                 { "args" : [ "", null ] },
                 { "args" : [ null, null ] },
                 { "args" : [ "otherwise", "otherwise" ] },
@@ -110,8 +110,8 @@
         },
         {
             "Comment" : "Test isEmpty",
-            "MethodName" : "nulledObject",
-            "Tests" : [
+            "method" : "nulledObject",
+            "method" [
                 { "args" : [ "", null ] },
                 { "args" : [ null, null ] },
                 { "args" : [ "otherwise", "otherwise" ] },
@@ -121,8 +121,8 @@
         },
         {
             "Comment" : "Test isEmpty",
-            "MethodName" : "unnulled",
-            "Tests" : [
+            "method" : "unnulled",
+            "method" [
                 { "args" : [ "", "" ] },
                 { "args" : [ null, "" ] },
                 { "args" : [ "otherwise", "otherwise" ] },
@@ -132,8 +132,8 @@
         },
         {
             "Comment" : "Test isEmpty",
-            "MethodName" : "unnulledOtherwise",
-            "Tests" : [
+            "method" : "unnulledOtherwise",
+            "method" [
                 { "args" : [ "", "otherwise", "" ] },
                 { "args" : [ null, "otherwise", "otherwise" ] },
                 { "args" : [ "otherwise", "not", "otherwise" ] },
@@ -143,8 +143,8 @@
         },
         {
             "Comment" : "Test isEmpty",
-            "MethodName" : "unnulledObjectOtherwise",
-            "Tests" : [
+            "method" : "unnulledObjectOtherwise",
+            "method" [
                 { "args" : [ "", "otherwise", "" ] },
                 { "args" : [ null, "otherwise", "otherwise" ] },
                 { "args" : [ "otherwise", "not", "otherwise" ] },
@@ -154,8 +154,8 @@
         },
         {
             "Comment" : "Test isEmpty",
-            "MethodName" : "unnulledObject",
-            "Tests" : [
+            "method" : "unnulledObject",
+            "method" [
                 { "args" : [ "", "" ] },
                 { "args" : [ null, "" ] },
                 { "args" : [ "otherwise", "otherwise" ] },
@@ -165,8 +165,8 @@
         },
         {
             "Comment" : "substring from begin index",
-            "MethodName" : "substring",
-            "Tests" : [
+            "method" : "substring",
+            "method" [
                 { "args" : [ "", "0", "" ] },
                 { "args" : [ null, "0", null ] },
                 { "args" : [ "1234567890", "2", "34567890" ] },
@@ -177,8 +177,8 @@
         },
         {
             "Comment" : "substring from begin index",
-            "MethodName" : "substringEnd",
-            "Tests" : [
+            "method" : "substringEnd",
+            "method" [
                 { "args" : [ "", "0", "2", "" ] },
                 { "args" : [ "", "2", "2", "" ] },
                 { "args" : [ "", "-1", "2", "" ] },

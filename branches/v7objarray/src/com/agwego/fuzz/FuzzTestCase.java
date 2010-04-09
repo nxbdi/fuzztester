@@ -25,6 +25,11 @@
 package com.agwego.fuzz;
 
 import com.agwego.common.StringHelper;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Models the test case object, this is the Java
@@ -65,33 +70,57 @@ import com.agwego.common.StringHelper;
 public class FuzzTestCase
 {
 	private String methodName;
-	private String name;
 	private String comment;
-	private String[] args;
+	private List<Object> args;
 	private String exceptionThrown;
 	private String exceptionMessage;
 	private int number;
 	private boolean pass = true;
 	private boolean skip = false;
 
-	/**
-	 * Get the test case name
-	 *
-	 * @return test case name
-	 */
-	public String getName()
+	protected static FuzzTestCase deserialize( JSONObject jobj, int testNumber, String methodName)
 	{
-		return name;
-	}
+		FuzzTestCase fuzzTestCase = new FuzzTestCase();
+		fuzzTestCase.setMethodName( methodName );
+		fuzzTestCase.setNumber( testNumber );
+		fuzzTestCase.setArgs( new ArrayList<Object>() );
+		fuzzTestCase.setComment( jobj.containsKey( "comment" ) ? jobj.getString( "comment" ) : "");
 
-	/**
-	 * Set the test case name
-	 *
-	 * @param name test case name
-	 */
-	public void setName( String name )
-	{
-		this.name = name;
+		JSONArray jargs = jobj.getJSONArray( "args" );
+		for( Object obj : jargs ) {
+			if( obj instanceof JSONObject ) {
+				JSONObject aobj = ( (JSONObject) obj );
+				if( aobj.containsKey( "objectType" ) ) {
+					if( aobj.getString( "objectType" ).equals( "bean" ) ) {
+						try {
+							JSONObject o = aobj.getJSONObject( "object" );
+							Class c = Class.forName( aobj.getString( "objectClass" ) );
+							fuzzTestCase.addArg( JSONObject.toBean( o, c ) );
+						} catch( ClassNotFoundException ex ) {
+							throw new RuntimeException( "Nested argument objects that do not contain objectType are not allowed" );
+						}
+					} else if( aobj.getString( "objectType" ).equals( "constructor" ) ) {
+						try {
+							Class klass = Class.forName( aobj.getString( "objectClass" ) );
+							
+							Object o = JSONObject.toBean( aobj, klass );
+							System.out.println( " OBJECt" + o.toString() );
+
+
+						} catch( ClassNotFoundException ex ) {
+							throw new RuntimeException( "Nested argument objects that do not contain objectType are not allowed" );
+						}
+					}
+				} else {
+					throw new RuntimeException( "Nested argument objects that do not contain objectType are not allowed" );
+				}
+
+			} else {
+				fuzzTestCase.addArg( obj );
+			}
+		}
+
+		return fuzzTestCase;
 	}
 
 	/**
@@ -157,21 +186,26 @@ public class FuzzTestCase
 	/**
 	 * Get the args to call the test method with (via reflection)
 	 *
-	 * @return String[] of method arguments
+	 * @return Object [] of method arguments
 	 */
-	public String[] getArgs()
+	public Object [] getArgs()
 	{
-		return args;
+		return args.toArray();
 	}
 
 	/**
 	 * Set the arguments to call the test method with
 	 *
-	 * @param args String[]
+	 * @param args List<Object>
 	 */
-	public void setArgs( String[] args )
+	public void setArgs( List<Object> args )
 	{
 		this.args = args;
+	}
+
+	public void addArg( Object arg )
+	{
+		args.add( arg );
 	}
 
 	/**
