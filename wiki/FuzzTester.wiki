@@ -14,3 +14,7 @@ Future enhancements will include support for template driven inputs, macros for 
  # annotate your tests
  # create your test data in JSON format
  # run your tests
+
+= Test Restrictions =
+
+ * Unit tests must have a unique method names and argument signature (otherwise an exception will be thrown)
