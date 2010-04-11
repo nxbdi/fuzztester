@@ -17,4 +17,4 @@ Future enhancements will include support for template driven inputs, macros for 
 
 = Test Restrictions =
 
- * Unit tests must have a unique method names and argument signature (otherwise an exception will be thrown)
+ * Unit tests must have unique method names and argument signatures (otherwise an exception will be thrown)
