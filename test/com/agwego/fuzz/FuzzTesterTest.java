@@ -367,4 +367,34 @@ public class FuzzTesterTest
 		assertEquals( 1, rn.getAssumptionsFailedCount() );
 		assertEquals( 1, rn.getFinishedCount() );
 	}
+
+	//@Ignore
+	@Test
+	public void testNoPrefix() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestNoPrefix.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 0, rn.getAssumptionsFailedCount() );
+		assertEquals( 1, rn.getFinishedCount() );
+	}
+
+	//@Ignore
+	@Test
+	public void testJunit() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestJunit.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 2, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 0, rn.getAssumptionsFailedCount() );
+		assertEquals( 1, rn.getFinishedCount() );
+	}    
 }
