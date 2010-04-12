@@ -25,6 +25,9 @@
 package com.agwego.fuzz;
 
 import com.agwego.common.StringHelper;
+import com.google.gson.*;
+
+import java.lang.reflect.Method;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -78,7 +81,12 @@ public class FuzzTestCase
 	private boolean pass = true;
 	private boolean skip = false;
 
-	protected static FuzzTestCase deserialize( JSONObject jobj, int testNumber, String methodName)
+	public FuzzTestCase()
+	{
+		args = new ArrayList<Object>();
+	}
+
+	protected static FuzzTestCase deserialize( final JSONObject jobj, final int testNumber, final String methodName)
 	{
 		FuzzTestCase fuzzTestCase = new FuzzTestCase();
 		fuzzTestCase.setMethodName( methodName );
@@ -112,7 +120,7 @@ public class FuzzTestCase
 						}
 					}
 				} else {
-					throw new RuntimeException( "Nested argument objects that do not contain objectType are not allowed" );
+					//throw new RuntimeException( "Nested argument objects that do not contain objectType are not allowed" );
 				}
 
 			} else {
@@ -121,6 +129,70 @@ public class FuzzTestCase
 		}
 
 		return fuzzTestCase;
+	}
+
+	public static String jsonGetAsString( JsonObject jObject, String key )
+	{
+		return jObject.has( key ) ? jObject.get( key ).getAsString() : null ;
+	}
+
+	public static Boolean jsonGetAsBoolean( JsonObject jObject, String key, Boolean otherwise )
+	{
+		return jObject.has( key ) ? jObject.get( key ).getAsBoolean() : otherwise;
+	}
+
+	//@SuppressWarnings( )
+	protected static FuzzTestCase deserialize( final JsonObject jobj, final int testNumber, final String methodName, final Class testClass )
+	{
+		FuzzTestCase fuzzTestCase = new FuzzTestCase();
+		fuzzTestCase.setMethodName( methodName );
+		fuzzTestCase.setNumber( testNumber );
+		fuzzTestCase.setArgs( new ArrayList<Object>() );
+		fuzzTestCase.setComment( jsonGetAsString( jobj, "comment" ));
+		fuzzTestCase.setExceptionThrown( jsonGetAsString( jobj, "exceptionThrown" ));
+		fuzzTestCase.setExceptionMessage( jsonGetAsString( jobj, "exceptionMessage" ));
+		fuzzTestCase.setSkip( jsonGetAsBoolean( jobj, "skip", false ));
+		fuzzTestCase.setPass( jsonGetAsBoolean( jobj, "pass", true ));
+
+		Gson consumer = new GsonBuilder()
+			.setPrettyPrinting()
+			.create();
+
+		JsonArray jargs = jobj.getAsJsonArray( "args" );
+		Class params [] = getMethodParams( testClass, methodName, jargs.size() );
+
+		int idx = 0;
+		for( JsonElement jarg : jargs ) {
+			Object arg = consumer.fromJson( jarg, params[idx] == Object.class ? String.class : params[idx] );
+			fuzzTestCase.addArg( arg );
+			idx++;
+		}
+
+		return fuzzTestCase;
+	}
+
+	protected static Class[] getMethodParams( final Class testClass, final String methodName, final int argsNum )
+	{
+		Method methods[] = testClass.getMethods();
+		Class params [] = null;
+		Method testMethod = null;
+		for( Method method : methods ) {
+			if( method.getName().equals( methodName) ) {
+				params = method.getParameterTypes();
+				if( params.length != argsNum )
+					continue;
+				if( testMethod == null ) {
+					testMethod = method;
+				} else {
+					throw new RuntimeException( "Method names must be unique: " + testMethod );
+				}
+			}
+		}
+
+		if( params == null )
+			throw new RuntimeException( "No test method with matching parameters signature" );
+
+		return params;
 	}
 
 	/**
@@ -140,7 +212,7 @@ public class FuzzTestCase
 	 */
 	public boolean isFail()
 	{
-		return !pass;
+		return ! pass;
 	}
 
 	/**
@@ -354,6 +426,6 @@ public class FuzzTestCase
 	 */
 	public String toString()
 	{
-		return String.format( "%s, #%d, Pass: %b %s", methodName, number, pass, ( exceptionThrown != null ? exceptionThrown : "" ) );
+		return String.format( "%s, #%d, Pass: %b %s", methodName, number, pass, ( ! StringHelper.isEmpty( exceptionThrown ) ? exceptionThrown : "" ) );
 	}
 }

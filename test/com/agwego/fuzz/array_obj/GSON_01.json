@@ -1,13 +1,8 @@
-/**
- * @author Tim Desjardins
- * @version $Rev: 8 $
- *
- * $Id:$
- */
-
 {
+    "comment" : "Test Google's GSON code",
+    "id" : "$Id:$",
     "unitTest" : [
-        {
+       {
             "method" : "mockInteger",
             "testCases" : [
                 {
@@ -37,13 +32,9 @@
                 {
                     "args" : [ false,
                         {
-                            "objectType" : "bean",
-                            "objectClass" : "com.agwego.fuzz.array_obj.TestObject",
-                            "object" : {
-                                "name" : "Test name",
-                                "value" : 2.2,
-                                "count" : 3                            
-                            }
+                             "name" : "Test name",
+                             "value" : 2.2,
+                             "count" : 3
                         }
                     ]
                 }

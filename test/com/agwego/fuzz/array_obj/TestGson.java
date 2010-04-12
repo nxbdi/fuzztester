@@ -25,19 +25,56 @@
 package com.agwego.fuzz.array_obj;
 
 import com.agwego.common.NumberHelper;
+import com.agwego.fuzz.FuzzTestBlock;
+import com.agwego.fuzz.FuzzTestCase;
+import com.agwego.fuzz.FuzzTestUnit;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
-import org.junit.Ignore;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
 @RunWith( FuzzTester.class )
 @Parameters( TestDirectory = "test/com/agwego/fuzz/array_obj", Prefix = "GSON_01" )
 public class TestGson
 {
+
+	@Test
+	public void gson()
+	{
+		final Log log = LogFactory.getLog( getClass() );
+
+		ArrayList<FuzzTestCase> fcases = new ArrayList<FuzzTestCase>();
+		FuzzTestCase fcase = new FuzzTestCase();
+		fcase.addArg( 1 );
+		fcase.addArg( "2" );
+		fcases.add( fcase );
+		FuzzTestBlock fblock = new FuzzTestBlock();
+
+		ArrayList<FuzzTestBlock> fblocks = new ArrayList<FuzzTestBlock>();
+		fblock.setMethod(  "mockInteger" );
+		fblock.setTestCases( fcases );
+		fblocks.add( fblock );
+		FuzzTestUnit funit = new FuzzTestUnit();
+		funit.setUnitTest( fblocks );
+
+		Gson consumer = new GsonBuilder()
+				.setDateFormat( "yyyy-MM-dd HH:mm:ss.SSSZ" )
+				.setPrettyPrinting().create();
+
+		String x = consumer.toJson( funit );
+
+		//log.info( "\n\n" + x);
+	}
+	
 	//@Ignore
 	@Fuzz
 	public void mockInteger( final String input, final Integer expected  )
@@ -67,5 +104,7 @@ public class TestGson
 	{
 		assertFalse( input );
 		assertEquals( testObject.getName(), "Test name" );
+		assertEquals( testObject.getValue(), new Double( 2.2 ) );
+		assertEquals( testObject.getCount(), new Integer( 3 ) );
 	}
 }
