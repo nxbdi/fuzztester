@@ -1,0 +1,15 @@
+#summary To do list
+
+= To Do =
+In no particular order
+ * add generators
+ * test nested complex objects
+ * tests for unicode
+ * packaging 
+ * purge JSONLib code in favour of GSON
+ * Docs:
+ ** users guide
+ ** tutorial
+ ** update javadoc
+ ** publish javadoc to Googlecode
+ 
