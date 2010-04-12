@@ -3,6 +3,7 @@
 In no particular order
  * test nested complex objects
  * tests for unicode
+ * add skip at the method level
  * packaging 
  * purge JSONLib code in favour of GSON
  * configurable GSON deserializers
