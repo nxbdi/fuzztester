@@ -1,7 +1,6 @@
 #summary To do list
 
 In no particular order
- * add generators
  * test nested complex objects
  * tests for unicode
  * packaging 
@@ -11,4 +10,9 @@ In no particular order
   * tutorial
   * update javadoc
   * publish javadoc to Googlecode
+
+Future enhancements
+ * add generators
+ * macros
+ * template driven input
  
