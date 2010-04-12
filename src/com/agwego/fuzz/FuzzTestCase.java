@@ -24,6 +24,7 @@
 
 package com.agwego.fuzz;
 
+import com.agwego.common.GsonHelper;
 import com.agwego.common.StringHelper;
 import com.google.gson.*;
 
@@ -84,16 +85,6 @@ public class FuzzTestCase
 		args = new ArrayList<Object>();
 	}
 
-	public static String jsonGetAsString( JsonObject jObject, String key )
-	{
-		return jObject.has( key ) ? jObject.get( key ).getAsString() : null ;
-	}
-
-	public static Boolean jsonGetAsBoolean( JsonObject jObject, String key, Boolean otherwise )
-	{
-		return jObject.has( key ) ? jObject.get( key ).getAsBoolean() : otherwise;
-	}
-
 	//@SuppressWarnings( )
 	protected static FuzzTestCase deserialize( final JsonObject jobj, final int testNumber, final String methodName, final Class testClass )
 	{
@@ -101,11 +92,11 @@ public class FuzzTestCase
 		fuzzTestCase.setMethodName( methodName );
 		fuzzTestCase.setNumber( testNumber );
 		fuzzTestCase.setArgs( new ArrayList<Object>() );
-		fuzzTestCase.setComment( jsonGetAsString( jobj, "comment" ));
-		fuzzTestCase.setExceptionThrown( jsonGetAsString( jobj, "exceptionThrown" ));
-		fuzzTestCase.setExceptionMessage( jsonGetAsString( jobj, "exceptionMessage" ));
-		fuzzTestCase.setSkip( jsonGetAsBoolean( jobj, "skip", false ));
-		fuzzTestCase.setPass( jsonGetAsBoolean( jobj, "pass", true ));
+		fuzzTestCase.setComment( GsonHelper.jsonGetAsString( jobj, "comment" ));
+		fuzzTestCase.setExceptionThrown( GsonHelper.jsonGetAsString( jobj, "exceptionThrown" ));
+		fuzzTestCase.setExceptionMessage( GsonHelper.jsonGetAsString( jobj, "exceptionMessage" ));
+		fuzzTestCase.setSkip( GsonHelper.jsonGetAsBoolean( jobj, "skip", false ));
+		fuzzTestCase.setPass( GsonHelper.jsonGetAsBoolean( jobj, "pass", true ));
 
 		Gson consumer = new GsonBuilder()
 			.setPrettyPrinting()
@@ -133,17 +124,14 @@ public class FuzzTestCase
 			if( method.getName().equals( methodName) ) {
 				params = method.getParameterTypes();
 				if( params.length != argsNum )
-					continue;
-				if( testMethod == null ) {
+					throw new RuntimeException( String.format( "Method '%s' with incorrect argument signature", methodName ));
+				if( testMethod == null )
 					testMethod = method;
-				} else {
-					throw new RuntimeException( "Method names must be unique: " + testMethod );
-				}
 			}
 		}
 
 		if( params == null )
-			throw new RuntimeException( "No test method with matching parameters signature" );
+			throw new RuntimeException( String.format( "No test method '%s' with matching parameters signature", methodName ));
 
 		return params;
 	}

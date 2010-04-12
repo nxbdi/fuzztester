@@ -29,17 +29,12 @@ import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
-import org.junit.runner.notification.Failure;
-import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -200,20 +195,10 @@ public class FuzzTesterTest
 		try {
 			FuzzTester ft = new FuzzTester( FuzzTesterTest.NoMethodExists.class );
 		} catch( Throwable ex ) {
-			assertEquals( "No test method with matching parameters signature", ex.getMessage() );
+			assertEquals( "No test method 'noMethodExists' with matching parameters signature", ex.getMessage() );
+            exceptionCaught = true;
 		}
-		/*
-		List<Runner> children = ft.getChildren();
-		assertEquals( 1, children.size() );
-		FuzzTestRunner runner = (FuzzTestRunner) children.get( 0 );
-		try {
-			runner.getChildren();
-		} catch( Throwable ex ) {
-			exceptionCaught = true;
-		}
-
-		assertFalse( exceptionCaught );
-		*/
+        assertTrue( exceptionCaught );
 	}
 
 			@RunWith( FuzzTester.class )
