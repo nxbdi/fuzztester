@@ -72,9 +72,8 @@ public class FuzzTester extends Suite
 		Parameters params = klass.getAnnotation( Parameters.class );
 
 		log.debug( "TestDirectory " + params.TestDirectory() );
-		String prefix = params.Prefix();
-		if( StringHelper.isEmpty( prefix ) )
-			prefix = klass.getSimpleName();
+        String prefix = StringHelper.unempty( params.Prefix(), klass.getSimpleName() );
+
 		log.debug( "Prefix " + prefix );
 		log.debug( "Suffix " + params.Suffix() );
 		log.debug( "TestDirectoryRootPropertyName " + params.TestDirectoryRootPropertyName() );
