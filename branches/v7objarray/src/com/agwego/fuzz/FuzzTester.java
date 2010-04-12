@@ -28,6 +28,7 @@ import com.agwego.common.FileHelper;
 import com.agwego.common.StringHelper;
 import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
+import com.google.gson.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.logging.Log;
@@ -81,7 +82,9 @@ public class FuzzTester extends Suite
 		log.debug( "Suffix " + params.Suffix() );
 		log.debug( "TestDirectoryRootPropertyName " + params.TestDirectoryRootPropertyName() );
 
-		Map<String,List<FuzzTestCase>> testMethods = getTestMethods( getTestJsonObjects( params.TestDirectory(), prefix, params.Suffix() ) );
+		Map<String,List<FuzzTestCase>> testMethods;// = getTestMethods( getTestJsonObjects( params.TestDirectory(), prefix, params.Suffix() ) );
+
+		testMethods = getTestMethods( params.TestDirectory(), prefix, params.Suffix(), klass );      // TODO
 
 		// add the Fuzz tests
 		for( Map.Entry< String, List<FuzzTestCase>> ltc : testMethods.entrySet() )
@@ -101,13 +104,53 @@ public class FuzzTester extends Suite
 	 * @param dirName List of JSONObjects containing tests
 	 * @param prefix Look for files that start like
 	 * @param suffix Look for files that end in
+	 * @param testClass the class we're are testing
 	 * @return the map of the TestCases
+	 * @throws InitializationError if there are errors reading the file 
 	 */
-	protected Map<String,List<FuzzTestCase>> getTestMethods( String dirName, String prefix, String suffix )
+	protected Map<String,List<FuzzTestCase>> getTestMethods( String dirName, String prefix, String suffix, Class testClass ) throws InitializationError
 	{
-		
+		Map<String,List<FuzzTestCase>> testMethods = new HashMap<String,List<FuzzTestCase>>();
+		List<JsonObject> tests = getTests( dirName, prefix, suffix );
 
-		return null;
+		for( JsonObject test : tests ) {
+			JsonArray testUnits = test.getAsJsonArray( TEST_UNIT );
+			for( JsonElement x : testUnits ) {
+				JsonObject unitTest = x.getAsJsonObject();
+				// TODO add assertion of method_name existence
+				JsonArray testCases = unitTest.getAsJsonArray( TEST_CASES );
+				int idx = 1;
+				List<FuzzTestCase> fuzzTestCases = new ArrayList<FuzzTestCase>();
+				for( JsonElement y : testCases ) {
+					JsonObject tcj = y.getAsJsonObject();
+					FuzzTestCase fuzzTestCase = FuzzTestCase.deserialize( tcj, idx, unitTest.get( METHOD_NAME).getAsString(), testClass );
+					fuzzTestCases.add( fuzzTestCase );
+					idx++;
+				}
+				if( testMethods.containsKey( unitTest.get( METHOD_NAME ).getAsString() ))
+					testMethods.get( unitTest.get( METHOD_NAME ).getAsString()).addAll( fuzzTestCases );
+				else
+					testMethods.put( unitTest.get( METHOD_NAME ).getAsString(), fuzzTestCases );				
+			}
+		}
+
+		return testMethods;
+	}
+
+	protected List<JsonObject> getTests( final String dirName, final String prefix, final String suffix ) throws InitializationError
+	{
+		List<JsonObject> js = new ArrayList<JsonObject>();
+		JsonParser jParser = new JsonParser();
+
+		try {
+			for( File f: FileHelper.getFileList( dirName, prefix, suffix ) )
+				js.add( jParser.parse( FileHelper.readFile( f )).getAsJsonObject() ) ;
+		} catch( Exception ex ) {
+			log.info( ex );
+			throw new InitializationError( ex );
+		}
+
+		return js;
 	}
 
 	/**
@@ -136,33 +179,30 @@ public class FuzzTester extends Suite
 	/**
 	 * Get the test methods converting the JSON representation into FuzzTestCase(s)
 	 *
-	 * @param unitTests List of JSONObjects containing tests
+	 * @param tests List of JSONObjects containing tests
 	 * @return the map of the TestCases
 	 */
-	protected Map<String,List<FuzzTestCase>> getTestMethods( List<JSONObject> unitTests )
+	protected Map<String,List<FuzzTestCase>> getTestMethods( List<JSONObject> tests )
 	{
 		Map<String,List<FuzzTestCase>> testMethods = new HashMap<String,List<FuzzTestCase>>();
-		for( JSONObject jobj : unitTests ) {
-			List tmpTestCases = jobj.getJSONArray( TEST_UNIT );
-			for( Object x : tmpTestCases ) {
-				JSONObject tcd = (JSONObject) x;
-				JSONArray tests = tcd.getJSONArray( TEST_CASES );
-				Iterator titr = tests.iterator();
+		for( JSONObject test : tests ) {
+			List testUnits = test.getJSONArray( TEST_UNIT );
+			for( Object x : testUnits ) {
+				JSONObject unitTest = (JSONObject) x;
+				JSONArray testCases = unitTest.getJSONArray( TEST_CASES );
+				Iterator titr = testCases.iterator();
 				int idx = 1;
 				List<FuzzTestCase> fuzzTestCases = new ArrayList<FuzzTestCase>();
 				while( titr.hasNext() ) {
 					JSONObject tcj = (JSONObject) titr.next();
-					FuzzTestCase fuzzTestCase = FuzzTestCase.deserialize( tcj, idx, tcd.getString( METHOD_NAME ) );
-					//FuzzTestCase fuzzTestCase = (FuzzTestCase) JSONObject.toBean( tcj, FuzzTestCase.class );
-					//fuzzTestCase.setNumber( idx );
-					//fuzzTestCase.setMethodName( tcd.getString( METHOD_NAME ) );
+					FuzzTestCase fuzzTestCase = FuzzTestCase.deserialize( tcj, idx, unitTest.getString( METHOD_NAME ) );
 					fuzzTestCases.add( fuzzTestCase );
 					idx++;
 				}
-				if( testMethods.containsKey( tcd.getString( METHOD_NAME ) ))
-					testMethods.get( tcd.getString( METHOD_NAME )).addAll( fuzzTestCases );
+				if( testMethods.containsKey( unitTest.getString( METHOD_NAME ) ))
+					testMethods.get( unitTest.getString( METHOD_NAME )).addAll( fuzzTestCases );
 				else
-					testMethods.put( tcd.getString( METHOD_NAME ), fuzzTestCases );
+					testMethods.put( unitTest.getString( METHOD_NAME ), fuzzTestCases );
 			}
 		}
 

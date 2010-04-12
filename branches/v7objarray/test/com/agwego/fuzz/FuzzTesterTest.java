@@ -197,7 +197,12 @@ public class FuzzTesterTest
 	{
 		boolean exceptionCaught = false;
 
-		FuzzTester ft = new FuzzTester( FuzzTesterTest.NoMethodExists.class );
+		try {
+			FuzzTester ft = new FuzzTester( FuzzTesterTest.NoMethodExists.class );
+		} catch( Throwable ex ) {
+			assertEquals( "No test method with matching parameters signature", ex.getMessage() );
+		}
+		/*
 		List<Runner> children = ft.getChildren();
 		assertEquals( 1, children.size() );
 		FuzzTestRunner runner = (FuzzTestRunner) children.get( 0 );
@@ -208,6 +213,7 @@ public class FuzzTesterTest
 		}
 
 		assertFalse( exceptionCaught );
+		*/
 	}
 
 			@RunWith( FuzzTester.class )
@@ -347,6 +353,7 @@ public class FuzzTesterTest
 		assertEquals( 1, rn.getFinishedCount() );
 	}
 
+	//@Ignore
 	@Test
 	public void testAssumptionsFailed() throws Exception
 	{
