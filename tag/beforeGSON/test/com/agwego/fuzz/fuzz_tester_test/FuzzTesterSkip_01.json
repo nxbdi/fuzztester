@@ -1,0 +1,30 @@
+/**
+ * @author Tim Desjardins
+ * @version $Rev: 8 $
+ *
+ * $Id:$
+ */
+{
+    "TestCases" : [
+        {
+            "Comment" : "Catch the Wrong Exception",
+            "MethodName" : "mockTest",
+            "Tests" : [
+                {
+                    "skip" : true,
+                    "name" : "Test ignore",
+                    "args" : [ "arghhh", "arghhh" ]
+                },
+                {
+                    "skip" : false,
+                    "name" : "Test ignore",
+                    "args" : [ "arghhh", "arghhh" ]
+                },
+                {
+                    "name" : "Test ignore",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

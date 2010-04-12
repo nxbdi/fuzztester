@@ -1,0 +1,68 @@
+/**
+ * @author Tim Desjardins
+ * @version $Rev$
+ *
+ * $Id$
+ */
+{
+    "TestCases" : [
+        {
+            "Comment" : "Test accept",
+            "MethodName" : "accept",
+            "Tests" : [
+                {
+                    "name" : "Test prefix/postfix",
+                    "args" : [ "/this/is/a/test", "prefixFileName.xml", "prefix", "xml" ]
+                },
+                {
+                    "name" : "Test w/prefix",
+                    "args" : [ "/this/is/a/test", "prefixFileName.xml", "p", "xml" ]
+                },
+                {
+                    "name" : "Test w/ false prefix",
+                    "pass" : false,
+                    "args" : [ "/this/is/a/test", "prefixFileName.xml", "Xprefix", "xml" ]
+                },
+                {
+                    "name" : "Test w/ false postfix",
+                    "pass" : false,
+                    "args" : [ "/this/is/a/test", "prefixFileName.xml", "prefix", "xm" ]
+                },
+                {
+                    "name" : "Test w/ null prefix",
+                    "pass" : false,
+                    "args" : [ "/this/is/a/test", "prefixFileName.xml", null, "xm" ]
+                }
+            ]
+        },
+        {
+            "Comment" : "Test accept",
+            "MethodName" : "construtctor",
+            "Tests" : [
+                {
+                    "name" : "Test consturctor",
+                    "args" : [ "prefix", "xml" ]
+                },
+                {
+                    "exceptionThrown" : "java.lang.RuntimeException",
+                    "exceptionMessage" : "Prefix is required",
+                    "name" : "Test consturctor with null prefix",
+                    "args" : [ null, "postfix" ]
+                },
+                {
+                    "exceptionThrown" : "java.lang.RuntimeException",
+                    "exceptionMessage" : "Postfix is required",
+                    "name" : "Test consturctor with null postfix",
+                    "args" : [ "prefix", null ]
+                },
+                {
+                    "exceptionThrown" : "java.lang.RuntimeException",
+                    "exceptionMessage" : "Prefix is required",
+                    "name" : "Test consturctor with null prefix and postfix",
+                    "args" : [ null, null ]
+                }
+
+            ]
+        }
+    ]
+}
