@@ -7,8 +7,8 @@ In no particular order
  * packaging 
  * purge JSONLib code in favour of GSON
  * Docs:
-  ** users guide
-  ** tutorial
-  ** update javadoc
-  ** publish javadoc to Googlecode
+  * users guide
+  * tutorial
+  * update javadoc
+  * publish javadoc to Googlecode
  
