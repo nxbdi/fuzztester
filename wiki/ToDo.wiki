@@ -1,6 +1,5 @@
 #summary To do list
 
-= To Do =
 In no particular order
  * add generators
  * test nested complex objects
