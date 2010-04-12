@@ -5,7 +5,7 @@ In no particular order
  * tests for unicode
  * add skip at the method level
  * packaging 
- * --purge JSONLib code in favour of GSON--
+ * ~~purge JSONLib code in favour of GSON~~
  * configurable GSON deserializers
  * Docs:
   * user guide
