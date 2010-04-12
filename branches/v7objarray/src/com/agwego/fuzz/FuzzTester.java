@@ -29,8 +29,6 @@ import com.agwego.common.StringHelper;
 import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
 import com.google.gson.*;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.runner.Runner;
@@ -82,9 +80,7 @@ public class FuzzTester extends Suite
 		log.debug( "Suffix " + params.Suffix() );
 		log.debug( "TestDirectoryRootPropertyName " + params.TestDirectoryRootPropertyName() );
 
-		Map<String,List<FuzzTestCase>> testMethods;// = getTestMethods( getTestJsonObjects( params.TestDirectory(), prefix, params.Suffix() ) );
-
-		testMethods = getTestMethods( params.TestDirectory(), prefix, params.Suffix(), klass );      // TODO
+		Map<String,List<FuzzTestCase>> testMethods = getTestMethods( params.TestDirectory(), prefix, params.Suffix(), klass );
 
 		// add the Fuzz tests
 		for( Map.Entry< String, List<FuzzTestCase>> ltc : testMethods.entrySet() )
@@ -151,62 +147,6 @@ public class FuzzTester extends Suite
 		}
 
 		return js;
-	}
-
-	/**
-	 * Get the list of TestCases from the JSON file on disk
-	 * 
-	 * @param dirName Name of directory of test files
-	 * @param prefix Look for files that start like
-	 * @param suffix Look for files that end in
-	 * @return The list of JSONObject
-	 * @throws InitializationError if there are errors reading the file
-	 */
-	protected List<JSONObject> getTestJsonObjects( final String dirName, final String prefix, final String suffix ) throws InitializationError
-	{
-		List<JSONObject> js = new ArrayList<JSONObject>();
-		try {
-			for( File f: FileHelper.getFileList( dirName, prefix, suffix ) )
-				js.add( JSONObject.fromObject( FileHelper.readFile( f )) );
-		} catch( Exception ex ) {
-			log.info( ex );
-			throw new InitializationError( ex );
-		}
-
-		return js;
-	}
-	
-	/**
-	 * Get the test methods converting the JSON representation into FuzzTestCase(s)
-	 *
-	 * @param tests List of JSONObjects containing tests
-	 * @return the map of the TestCases
-	 */
-	protected Map<String,List<FuzzTestCase>> getTestMethods( List<JSONObject> tests )
-	{
-		Map<String,List<FuzzTestCase>> testMethods = new HashMap<String,List<FuzzTestCase>>();
-		for( JSONObject test : tests ) {
-			List testUnits = test.getJSONArray( TEST_UNIT );
-			for( Object x : testUnits ) {
-				JSONObject unitTest = (JSONObject) x;
-				JSONArray testCases = unitTest.getJSONArray( TEST_CASES );
-				Iterator titr = testCases.iterator();
-				int idx = 1;
-				List<FuzzTestCase> fuzzTestCases = new ArrayList<FuzzTestCase>();
-				while( titr.hasNext() ) {
-					JSONObject tcj = (JSONObject) titr.next();
-					FuzzTestCase fuzzTestCase = FuzzTestCase.deserialize( tcj, idx, unitTest.getString( METHOD_NAME ) );
-					fuzzTestCases.add( fuzzTestCase );
-					idx++;
-				}
-				if( testMethods.containsKey( unitTest.getString( METHOD_NAME ) ))
-					testMethods.get( unitTest.getString( METHOD_NAME )).addAll( fuzzTestCases );
-				else
-					testMethods.put( unitTest.getString( METHOD_NAME ), fuzzTestCases );
-			}
-		}
-
-		return testMethods;
 	}
 
 	/**

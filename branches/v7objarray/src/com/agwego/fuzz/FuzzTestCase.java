@@ -28,8 +28,6 @@ import com.agwego.common.StringHelper;
 import com.google.gson.*;
 
 import java.lang.reflect.Method;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,51 +82,6 @@ public class FuzzTestCase
 	public FuzzTestCase()
 	{
 		args = new ArrayList<Object>();
-	}
-
-	protected static FuzzTestCase deserialize( final JSONObject jobj, final int testNumber, final String methodName)
-	{
-		FuzzTestCase fuzzTestCase = new FuzzTestCase();
-		fuzzTestCase.setMethodName( methodName );
-		fuzzTestCase.setNumber( testNumber );
-		fuzzTestCase.setArgs( new ArrayList<Object>() );
-		fuzzTestCase.setComment( jobj.containsKey( "comment" ) ? jobj.getString( "comment" ) : "");
-
-		JSONArray jargs = jobj.getJSONArray( "args" );
-		for( Object obj : jargs ) {
-			if( obj instanceof JSONObject ) {
-				JSONObject aobj = ( (JSONObject) obj );
-				if( aobj.containsKey( "objectType" ) ) {
-					if( aobj.getString( "objectType" ).equals( "bean" ) ) {
-						try {
-							JSONObject o = aobj.getJSONObject( "object" );
-							Class c = Class.forName( aobj.getString( "objectClass" ) );
-							fuzzTestCase.addArg( JSONObject.toBean( o, c ) );
-						} catch( ClassNotFoundException ex ) {
-							throw new RuntimeException( "Nested argument objects that do not contain objectType are not allowed" );
-						}
-					} else if( aobj.getString( "objectType" ).equals( "constructor" ) ) {
-						try {
-							Class klass = Class.forName( aobj.getString( "objectClass" ) );
-							
-							Object o = JSONObject.toBean( aobj, klass );
-							System.out.println( " OBJECt" + o.toString() );
-
-
-						} catch( ClassNotFoundException ex ) {
-							throw new RuntimeException( "Nested argument objects that do not contain objectType are not allowed" );
-						}
-					}
-				} else {
-					//throw new RuntimeException( "Nested argument objects that do not contain objectType are not allowed" );
-				}
-
-			} else {
-				fuzzTestCase.addArg( obj );
-			}
-		}
-
-		return fuzzTestCase;
 	}
 
 	public static String jsonGetAsString( JsonObject jObject, String key )
