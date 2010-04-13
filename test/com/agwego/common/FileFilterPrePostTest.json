@@ -1,15 +1,9 @@
-/**
- * @author Tim Desjardins
- * @version $Rev$
- *
- * $Id$
- */
 {
-    "TestCases" : [
+    "unitTest" : [
         {
-            "Comment" : "Test accept",
-            "MethodName" : "accept",
-            "Tests" : [
+            "comment" : "Test accept",
+            "method" : "accept",
+            "testCases" : [
                 {
                     "name" : "Test prefix/postfix",
                     "args" : [ "/this/is/a/test", "prefixFileName.xml", "prefix", "xml" ]
@@ -36,9 +30,9 @@
             ]
         },
         {
-            "Comment" : "Test accept",
-            "MethodName" : "construtctor",
-            "Tests" : [
+            "comment" : "Test accept",
+            "method" : "construtctor",
+            "testCases" : [
                 {
                     "name" : "Test consturctor",
                     "args" : [ "prefix", "xml" ]

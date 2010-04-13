@@ -45,6 +45,7 @@ public class StringHelperTest
      * @param a the directory for FileFilter accept (doesn't have to exist)
      * @param b the file name to test for (prefix/postfix)
     */
+    //@Ignore
 	@Fuzz
 	public void isSameIgnoreCase( final String a, final String b )
 	{
@@ -55,6 +56,7 @@ public class StringHelperTest
      * @param a the file filter prefix
      * @param b the file filter postfix
      */
+    //@Ignore
 	@Fuzz
 	public void isSame( final String a, final String b )
 	{
@@ -66,6 +68,7 @@ public class StringHelperTest
      * @param otherwise the file filter postfix
      * @param expected the file filter postfix
      */
+    //@Ignore
 	@Fuzz
 	public void unempty( final String a, final String otherwise, final String expected )
 	{
@@ -75,6 +78,7 @@ public class StringHelperTest
     /**
      * @param a the file filter prefix
      */
+    //@Ignore
 	@Fuzz
 	public void isEmptyString( final String a )
 	{
@@ -84,6 +88,7 @@ public class StringHelperTest
     /**
      * @param a the file filter prefix
      */
+    //@Ignore
 	@Fuzz
 	public void isEmptyByteArray( final String a )
 	{
@@ -98,6 +103,7 @@ public class StringHelperTest
      * @param a the file filter prefix
      * @param expected the result
      */
+    //@Ignore
 	@Fuzz
 	public void nulled( final String a, final String expected )
 	{
@@ -108,6 +114,7 @@ public class StringHelperTest
      * @param a the file filter prefix
      * @param expected the result
      */
+    //@Ignore
 	@Fuzz
 	public void nulledObject( final Object a, final Object expected )
 	{
@@ -118,6 +125,7 @@ public class StringHelperTest
 	 * @param a the test String
 	 * @param expected the result
 	 */
+	//@Ignore
 	@Fuzz
 	public void unnulled( final String a, final String expected )
 	{
@@ -129,6 +137,7 @@ public class StringHelperTest
 	 * @param otherwise if null
 	 * @param expected the result
 	 */
+	//@Ignore
 	@Fuzz
 	public void unnulledOtherwise( final String a, final String otherwise, final String expected )
 	{
@@ -150,6 +159,7 @@ public class StringHelperTest
 	 * @param otherwise if null
 	 * @param expected the result
 	 */
+	//@Ignore
 	@Fuzz
 	public void unnulledObjectOtherwise( final Object a, final String otherwise, final String expected )
 	{
@@ -162,6 +172,7 @@ public class StringHelperTest
 	 * @param begin index
 	 * @param expected result
 	 */
+	//@Ignore
 	@Fuzz
 	public void substring( final String a, final String begin, final String expected )
 	{
@@ -176,6 +187,7 @@ public class StringHelperTest
      * @param end index
 	 * @param expected result
 	 */
+	//@Ignore	
 	@Fuzz
 	public void substringEnd( final String a, final String begin, final String end, final String expected )
 	{

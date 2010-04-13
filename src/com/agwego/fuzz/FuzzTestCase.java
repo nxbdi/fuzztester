@@ -24,7 +24,14 @@
 
 package com.agwego.fuzz;
 
+import com.agwego.common.GsonHelper;
 import com.agwego.common.StringHelper;
+import com.google.gson.*;
+
+import java.lang.reflect.Method;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Models the test case object, this is the Java
@@ -65,33 +72,68 @@ import com.agwego.common.StringHelper;
 public class FuzzTestCase
 {
 	private String methodName;
-	private String name;
 	private String comment;
-	private String[] args;
+	private List<Object> args;
 	private String exceptionThrown;
 	private String exceptionMessage;
 	private int number;
 	private boolean pass = true;
 	private boolean skip = false;
 
-	/**
-	 * Get the test case name
-	 *
-	 * @return test case name
-	 */
-	public String getName()
+	public FuzzTestCase()
 	{
-		return name;
+		args = new ArrayList<Object>();
 	}
 
-	/**
-	 * Set the test case name
-	 *
-	 * @param name test case name
-	 */
-	public void setName( String name )
+	//@SuppressWarnings( )
+	protected static FuzzTestCase deserialize( final JsonObject jobj, final int testNumber, final String methodName, final Class testClass )
 	{
-		this.name = name;
+		FuzzTestCase fuzzTestCase = new FuzzTestCase();
+		fuzzTestCase.setMethodName( methodName );
+		fuzzTestCase.setNumber( testNumber );
+		fuzzTestCase.setArgs( new ArrayList<Object>() );
+		fuzzTestCase.setComment( GsonHelper.jsonGetAsString( jobj, "comment" ));
+		fuzzTestCase.setExceptionThrown( GsonHelper.jsonGetAsString( jobj, "exceptionThrown" ));
+		fuzzTestCase.setExceptionMessage( GsonHelper.jsonGetAsString( jobj, "exceptionMessage" ));
+		fuzzTestCase.setSkip( GsonHelper.jsonGetAsBoolean( jobj, "skip", false ));
+		fuzzTestCase.setPass( GsonHelper.jsonGetAsBoolean( jobj, "pass", true ));
+
+		Gson consumer = new GsonBuilder()
+			.setPrettyPrinting()
+			.create();
+
+		JsonArray jargs = jobj.getAsJsonArray( "args" );
+		Class params [] = getMethodParams( testClass, methodName, jargs.size() );
+
+		int idx = 0;
+		for( JsonElement jarg : jargs ) {
+			Object arg = consumer.fromJson( jarg, params[idx] == Object.class ? String.class : params[idx] );
+			fuzzTestCase.addArg( arg );
+			idx++;
+		}
+
+		return fuzzTestCase;
+	}
+
+	protected static Class[] getMethodParams( final Class testClass, final String methodName, final int argsNum )
+	{
+		Method methods[] = testClass.getMethods();
+		Class params [] = null;
+		Method testMethod = null;
+		for( Method method : methods ) {
+			if( method.getName().equals( methodName) ) {
+				params = method.getParameterTypes();
+				if( params.length != argsNum )
+					throw new RuntimeException( String.format( "Method '%s' with incorrect argument signature", methodName ));
+				if( testMethod == null )
+					testMethod = method;
+			}
+		}
+
+		if( params == null )
+			throw new RuntimeException( String.format( "No test method '%s' with matching parameters signature", methodName ));
+
+		return params;
 	}
 
 	/**
@@ -111,7 +153,7 @@ public class FuzzTestCase
 	 */
 	public boolean isFail()
 	{
-		return !pass;
+		return ! pass;
 	}
 
 	/**
@@ -157,21 +199,26 @@ public class FuzzTestCase
 	/**
 	 * Get the args to call the test method with (via reflection)
 	 *
-	 * @return String[] of method arguments
+	 * @return Object [] of method arguments
 	 */
-	public String[] getArgs()
+	public Object [] getArgs()
 	{
-		return args;
+		return args.toArray();
 	}
 
 	/**
 	 * Set the arguments to call the test method with
 	 *
-	 * @param args String[]
+	 * @param args List<Object>
 	 */
-	public void setArgs( String[] args )
+	public void setArgs( List<Object> args )
 	{
 		this.args = args;
+	}
+
+	public void addArg( Object arg )
+	{
+		args.add( arg );
 	}
 
 	/**
@@ -320,6 +367,6 @@ public class FuzzTestCase
 	 */
 	public String toString()
 	{
-		return String.format( "%s, #%d, Pass: %b %s", methodName, number, pass, ( exceptionThrown != null ? exceptionThrown : "" ) );
+		return String.format( "%s, #%d, Pass: %b %s", methodName, number, pass, ( ! StringHelper.isEmpty( exceptionThrown ) ? exceptionThrown : "" ) );
 	}
 }

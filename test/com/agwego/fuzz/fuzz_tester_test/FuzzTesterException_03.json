@@ -1,15 +1,9 @@
-/**
- * @author Tim Desjardins
- * @version $Rev: 8 $
- *
- * $Id:$
- */
 {
-    "TestCases" : [
+    "unitTest" : [
         {
             "Comment" : "Catch the Wrong Exception",
-            "MethodName" : "mockException",
-            "Tests" : [
+            "method" : "mockException",
+            "testCases" : [
                 {
                     "exceptionThrown" : "java.lang.Exception",
                     "name" : "Another Test",
