@@ -1,0 +1,15 @@
+{
+    "unitTest" : [
+        {
+            "Comment" : "Catch the Wrong Exception",
+            "method" : "mockException",
+            "testCases" : [
+                {
+                    "exceptionThrown" : "java.lang.Exception",
+                    "name" : "Another Test",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

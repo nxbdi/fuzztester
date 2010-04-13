@@ -1,0 +1,24 @@
+{
+    "unitTest" : [
+        {
+            "Comment" : "Catch the Wrong Exception",
+            "method" : "mockTest",
+            "testCases" : [
+                {
+                    "skip" : true,
+                    "name" : "Test ignore",
+                    "args" : [ "arghhh", "arghhh" ]
+                },
+                {
+                    "skip" : false,
+                    "name" : "Test ignore",
+                    "args" : [ "arghhh", "arghhh" ]
+                },
+                {
+                    "name" : "Test ignore",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

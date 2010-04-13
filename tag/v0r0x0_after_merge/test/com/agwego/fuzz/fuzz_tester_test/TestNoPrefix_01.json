@@ -1,0 +1,13 @@
+{
+    "unitTest" : [
+        {
+            "comment" : "Test no prefix",
+            "method" : "mockTest",
+            "testCases" : [
+                {
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

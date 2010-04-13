@@ -1,0 +1,44 @@
+{
+    "comment" : "Test Google's GSON code",
+    "id" : "$Id:$",
+    "unitTest" : [
+       {
+            "method" : "mockInteger",
+            "testCases" : [
+                {
+                    "args" : [ "99", 99 ]
+                }
+            ]
+         },
+         {
+            "method" : "mockDouble",
+            "testCases" : [
+                {
+                    "args" : [ "99.8", 99.8 ]
+                }
+            ]
+         },
+         {
+            "method" : "mockBoolean",
+            "testCases" : [
+                {
+                    "args" : [ "false", false ]
+                }
+            ]
+         },
+         {
+            "method" : "mockTestObject",
+            "testCases" : [
+                {
+                    "args" : [ false,
+                        {
+                             "name" : "Test name",
+                             "value" : 2.2,
+                             "count" : 3
+                        }
+                    ]
+                }
+            ]
+         }
+    ]
+}
