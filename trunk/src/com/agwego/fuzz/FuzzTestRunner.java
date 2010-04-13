@@ -136,7 +136,6 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 			if( fm.getName().equals( methodName ) )
 				return fm;
 
-		//throw new RuntimeException( "No test method: " + methodName + " annotated with @Fuzz" );
 		return null;
 	}
 
