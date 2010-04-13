@@ -24,8 +24,6 @@
 
 package com.agwego.fuzz;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -39,10 +37,8 @@ import static org.junit.Assert.*;
  */
 public class FuzzTestCaseTest
 {
-	protected final Log log = LogFactory.getLog( getClass() );
-
 	@Test
-	public void testIncorrectMethodSignature()
+	public void incorrectMethodSignature()
 	{
         Boolean exceptionCaught = false;
         try {
@@ -55,7 +51,7 @@ public class FuzzTestCaseTest
 	}
 
     @Test
-    public void testTooManyMethodSignatures()
+    public void tooManyMethodSignatures()
     {
         Boolean exceptionCaught = false;
         try {
@@ -69,7 +65,7 @@ public class FuzzTestCaseTest
 
 
 	@Test
-	public void testNoMethodSignature()
+	public void noMethodSignature()
 	{
         Boolean exceptionCaught = false;
         try {
@@ -79,5 +75,41 @@ public class FuzzTestCaseTest
             assertEquals( "No test method 'noMockTest' with matching parameters signature", ex.getMessage() );
         }
         assertTrue( exceptionCaught );
+	}
+
+	@Test
+	public void setComment()
+	{
+		FuzzTestCase f = new FuzzTestCase();
+		f.setComment( "testing" );
+		assertEquals( "testing", f.getComment() );
+	}
+
+	@Test
+	public void setMethodName()
+	{
+		FuzzTestCase f = new FuzzTestCase();
+		FuzzTestCase x = f.setMethodName( "testing" );
+		assertEquals( "testing", f.getMethodName() );
+		assertEquals( f, x );		
+	}
+
+	@Test
+	public void setNumber()
+	{
+		FuzzTestCase f = new FuzzTestCase();
+		FuzzTestCase x = f.setNumber( 87 );
+		assertEquals( 87, f.getNumber() );
+		assertEquals( f, x );
+	}
+
+	@Test
+	public void setPass()
+	{
+		FuzzTestCase f = new FuzzTestCase();
+		f.setPass( true );
+		assertTrue( f.getPass() );
+		assertTrue( f.isPass() );
+		assertFalse( f.isFail() );		
 	}
 }

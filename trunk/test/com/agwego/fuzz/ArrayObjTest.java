@@ -24,36 +24,21 @@
 
 package com.agwego.fuzz;
 
-import com.agwego.fuzz.annotations.Fuzz;
-import com.agwego.fuzz.annotations.Parameters;
-import com.agwego.fuzz.exception.ParametersError;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.Description;
-import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
-import org.junit.runner.notification.Failure;
-import org.junit.runner.notification.RunNotifier;
-import org.junit.runners.model.FrameworkMethod;
-import org.junit.runners.model.InitializationError;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Tim Desjardins
- * @version $Rev: 8 $
+ * @version $Rev: $
  *
- * $Id: FileFilterPrePostTest.java 8 2010-03-26 03:45:50Z agwego $
+ * $Id: $
  */
 public class ArrayObjTest
 {
-	protected final Log log = LogFactory.getLog( getClass() );
-
 	@Test
 	public void arrayObject() throws Exception
 	{
