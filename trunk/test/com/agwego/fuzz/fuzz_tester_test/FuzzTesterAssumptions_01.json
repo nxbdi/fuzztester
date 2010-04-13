@@ -1,15 +1,9 @@
-/**
- * @author Tim Desjardins
- * @version $Rev: 8 $
- *
- * $Id:$
- */
 {
-    "TestCases" : [
+    "unitTest" : [
         {
             "Comment" : "Catch the Wrong Exception",
-            "MethodName" : "mockTest",
-            "Tests" : [
+            "method" : "mockTest",
+            "testCases" : [
                 {
                     "name" : "Test ignore",
                     "args" : [ "This is a long test string", "long", "test" ]

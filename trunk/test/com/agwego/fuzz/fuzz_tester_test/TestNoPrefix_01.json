@@ -1,12 +1,10 @@
 {
     "unitTest" : [
         {
-            "Comment" : "Catch the Wrong Exception",
+            "comment" : "Test no prefix",
             "method" : "mockTest",
             "testCases" : [
                 {
-                    "pass" : false,
-                    "name" : "Test ignore",
                     "args" : [ "arghhh", "arghhh" ]
                 }
             ]

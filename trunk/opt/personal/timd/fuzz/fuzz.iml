@@ -9,6 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="libs_src" level="project" />
     <orderEntry type="module-library">
       <library name="libs">
         <CLASSES>

@@ -29,17 +29,12 @@ import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
-import org.junit.runner.notification.Failure;
-import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -197,17 +192,13 @@ public class FuzzTesterTest
 	{
 		boolean exceptionCaught = false;
 
-		FuzzTester ft = new FuzzTester( FuzzTesterTest.NoMethodExists.class );
-		List<Runner> children = ft.getChildren();
-		assertEquals( 1, children.size() );
-		FuzzTestRunner runner = (FuzzTestRunner) children.get( 0 );
 		try {
-			runner.getChildren();
+			FuzzTester ft = new FuzzTester( FuzzTesterTest.NoMethodExists.class );
 		} catch( Throwable ex ) {
-			exceptionCaught = true;
+			assertEquals( "No test method 'noMethodExists' with matching parameters signature", ex.getMessage() );
+            exceptionCaught = true;
 		}
-
-		assertFalse( exceptionCaught );
+        assertTrue( exceptionCaught );
 	}
 
 			@RunWith( FuzzTester.class )
@@ -347,6 +338,7 @@ public class FuzzTesterTest
 		assertEquals( 1, rn.getFinishedCount() );
 	}
 
+	//@Ignore
 	@Test
 	public void testAssumptionsFailed() throws Exception
 	{
@@ -360,76 +352,34 @@ public class FuzzTesterTest
 		assertEquals( 1, rn.getAssumptionsFailedCount() );
 		assertEquals( 1, rn.getFinishedCount() );
 	}
-	
-	public class TestNotifier extends RunNotifier
+
+	//@Ignore
+	@Test
+	public void testNoPrefix() throws Exception
 	{
-		private List<Failure> failures = new ArrayList<Failure>();
-		private List<Description> ignored = new ArrayList<Description>();
-		private List<Description> finished = new ArrayList<Description>();
-		private List<Failure> assumptionsFailed = new ArrayList<Failure>();
-
-		@Override
-		public void fireTestFailure( final Failure failure )
-		{
-			failures.add( failure );
-		}
-
-		@Override
-		public void fireTestIgnored( Description description )
-		{
-			ignored.add( description );
-		}
-
-		@Override
-		public void fireTestFinished( Description description )
-		{
-			finished.add( description );
-		}
-
-		@Override
-		public void fireTestAssumptionFailed( Failure failure )
-		{
-			assumptionsFailed.add( failure );
-		}
-
-		public int getFailureCount()
-		{
-			return failures.size();
-		}
-
-		public List<Failure> getFailures()
-		{
-			return failures;
-		}
-
-		public int getIgnoredCount()
-		{
-			return ignored.size();
-		}
-
-		public List<Description> getIgnored()
-		{
-			return ignored;
-		}
-
-		public int getFinishedCount()
-		{
-			return finished.size();
-		}
-
-		public List<Description> getFinished()
-		{
-			return finished;
-		}
-
-		public int getAssumptionsFailedCount()
-		{
-			return assumptionsFailed.size();
-		}
-
-		public List<Failure> getAssumptionsFailed()
-		{
-			return assumptionsFailed;
-		}
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestNoPrefix.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 0, rn.getAssumptionsFailedCount() );
+		assertEquals( 1, rn.getFinishedCount() );
 	}
+
+	//@Ignore
+	@Test
+	public void testJunit() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestJunit.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 2, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 0, rn.getAssumptionsFailedCount() );
+		assertEquals( 1, rn.getFinishedCount() );
+	}    
 }
