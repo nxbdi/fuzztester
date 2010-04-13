@@ -107,7 +107,7 @@
         <jar destfile="fuzz-tester-${fuzz.version}.jar" basedir="${build.dir}"/>
     </target>
 
-    <target name="buildtests" description="Compile test tree java files">
+    <target name="buildtests" depends="build" description="Compile test tree java files">
         <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true" deprecation="false" optimize="false" failonerror="true">
             <src path="${test.dir}"/>
             <classpath refid="classpath-test"/>
@@ -119,7 +119,7 @@
     </fileset>
     <property name="test.classes.prop" refid="test.classes"/>
 
-    <target name="tests" depends="build, buildtests" description="Run tests">
+    <target name="tests" depends="buildtests" description="Run tests">
         <echo message="${test.classes.prop}"/>        
 
         <junit printsummary="on" fork="true" haltonfailure="false" failureproperty="tests.failed" showoutput="true">

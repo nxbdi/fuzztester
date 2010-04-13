@@ -27,10 +27,10 @@ package com.agwego.common;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Tim Desjardins
@@ -45,7 +45,6 @@ public class StringHelperTest
      * @param a the directory for FileFilter accept (doesn't have to exist)
      * @param b the file name to test for (prefix/postfix)
     */
-    //@Ignore
 	@Fuzz
 	public void isSameIgnoreCase( final String a, final String b )
 	{
@@ -56,7 +55,6 @@ public class StringHelperTest
      * @param a the file filter prefix
      * @param b the file filter postfix
      */
-    //@Ignore
 	@Fuzz
 	public void isSame( final String a, final String b )
 	{
@@ -68,7 +66,6 @@ public class StringHelperTest
      * @param otherwise the file filter postfix
      * @param expected the file filter postfix
      */
-    //@Ignore
 	@Fuzz
 	public void unempty( final String a, final String otherwise, final String expected )
 	{
@@ -78,7 +75,6 @@ public class StringHelperTest
     /**
      * @param a the file filter prefix
      */
-    //@Ignore
 	@Fuzz
 	public void isEmptyString( final String a )
 	{
@@ -88,7 +84,6 @@ public class StringHelperTest
     /**
      * @param a the file filter prefix
      */
-    //@Ignore
 	@Fuzz
 	public void isEmptyByteArray( final String a )
 	{
@@ -103,7 +98,6 @@ public class StringHelperTest
      * @param a the file filter prefix
      * @param expected the result
      */
-    //@Ignore
 	@Fuzz
 	public void nulled( final String a, final String expected )
 	{
@@ -114,7 +108,6 @@ public class StringHelperTest
      * @param a the file filter prefix
      * @param expected the result
      */
-    //@Ignore
 	@Fuzz
 	public void nulledObject( final Object a, final Object expected )
 	{
@@ -125,7 +118,6 @@ public class StringHelperTest
 	 * @param a the test String
 	 * @param expected the result
 	 */
-	//@Ignore
 	@Fuzz
 	public void unnulled( final String a, final String expected )
 	{
@@ -137,7 +129,6 @@ public class StringHelperTest
 	 * @param otherwise if null
 	 * @param expected the result
 	 */
-	//@Ignore
 	@Fuzz
 	public void unnulledOtherwise( final String a, final String otherwise, final String expected )
 	{
@@ -159,7 +150,6 @@ public class StringHelperTest
 	 * @param otherwise if null
 	 * @param expected the result
 	 */
-	//@Ignore
 	@Fuzz
 	public void unnulledObjectOtherwise( final Object a, final String otherwise, final String expected )
 	{
@@ -172,7 +162,6 @@ public class StringHelperTest
 	 * @param begin index
 	 * @param expected result
 	 */
-	//@Ignore
 	@Fuzz
 	public void substring( final String a, final String begin, final String expected )
 	{
@@ -187,12 +176,41 @@ public class StringHelperTest
      * @param end index
 	 * @param expected result
 	 */
-	//@Ignore	
 	@Fuzz
 	public void substringEnd( final String a, final String begin, final String end, final String expected )
 	{
 		final int beginIdx = NumberHelper.parseInt( begin );
         final int endIdx = NumberHelper.parseInt( end );
 		assertEquals( expected, StringHelper.substring( a, beginIdx, endIdx ));
+	}
+
+	/**
+	 *
+	 * @param a test string
+	 * @param begin index
+	 * @param expected result
+	 */
+	@Fuzz
+	public void substringBuilder( final String a, final String begin, final String expected )
+	{
+		final int beginIdx = NumberHelper.parseInt( begin );
+		StringBuilder ex = new StringBuilder( expected );
+		StringBuilder test = StringHelper.substringBuilder( a, beginIdx );
+		assertTrue( new StringBuilder( expected ).toString().equals( StringHelper.substringBuilder( a, beginIdx ).toString() ));
+	}
+
+	/**
+	 *
+	 * @param a test string
+	 * @param begin index
+     * @param end index
+	 * @param expected result
+	 */
+	@Fuzz
+	public void substringBuilderEnd( final String a, final String begin, final String end, final String expected )
+	{
+		final int beginIdx = NumberHelper.parseInt( begin );
+        final int endIdx = NumberHelper.parseInt( end );
+		assertTrue( new StringBuilder( expected ).equals( StringHelper.substringBuilder( a, beginIdx, endIdx )));
 	}
 }
