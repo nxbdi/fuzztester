@@ -67,17 +67,23 @@ public class StringHelper
 		return new String( rtnStr );
 	}
 
-	static public StringBuilder substringBuilder( String value, int beginIndex )
+	static public StringBuilder substringBuilder( String s, int beginIndex )
 	{
-		value = StringHelper.unnulled( value );
-		beginIndex = Math.min( beginIndex, value.length() );
+		if( s == null )
+			return null;
 
-		return substringBuilder( value, beginIndex, value.length() );
+		s = StringHelper.unnulled( s );
+		beginIndex = Math.min( beginIndex, s.length() );
+
+		return substringBuilder( s, beginIndex, s.length() );
 	}
 
 	// no leak version of SubString without out all the god damned exceptions
 	public static StringBuilder substringBuilder( String s, int beginIndex, int endIndex )
 	{
+		if( s == null )
+			return null;
+
 		return new StringBuilder( substring( s, beginIndex, endIndex ) );
 	}	
 

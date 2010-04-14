@@ -25,6 +25,7 @@
 package com.agwego.fuzz;
 
 import com.agwego.common.FileHelper;
+import com.agwego.common.GsonHelper;
 import com.agwego.common.StringHelper;
 import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
@@ -54,6 +55,7 @@ public class FuzzTester extends Suite
 	public static final String METHOD_NAME = "method";
 	public static final String TEST_CASES = "testCases";
 	public static final String TEST_UNIT = "unitTest";
+	public static final String TEST_SKIP = "skip";
 
 	/**
 	 * Only called reflectively. Do not use programmatically.
@@ -108,15 +110,22 @@ public class FuzzTester extends Suite
 		List<JsonObject> tests = getTests( dirName, prefix, suffix );
 
 		for( JsonObject test : tests ) {
+			JsonArray only = GsonHelper.getAsArray( test, "only" );
 			JsonArray testUnits = test.getAsJsonArray( TEST_UNIT );
 			for( JsonElement x : testUnits ) {
 				JsonObject unitTest = x.getAsJsonObject();
 				// TODO add assertion of method_name existence
+				boolean skip = GsonHelper.getAsBoolean( unitTest, TEST_SKIP, false );
 				JsonArray testCases = unitTest.getAsJsonArray( TEST_CASES );
 				int idx = 1;
 				List<FuzzTestCase> fuzzTestCases = new ArrayList<FuzzTestCase>();
 				for( JsonElement y : testCases ) {
 					JsonObject tcj = y.getAsJsonObject();
+					tcj.addProperty(
+							TEST_SKIP, skip ||
+							! in( unitTest.get( METHOD_NAME ).getAsString(), only ) ||
+							GsonHelper.getAsBoolean( tcj, TEST_SKIP, false )
+					);
 					FuzzTestCase fuzzTestCase = FuzzTestCase.deserialize( tcj, idx, unitTest.get( METHOD_NAME).getAsString(), testClass );
 					fuzzTestCases.add( fuzzTestCase );
 					idx++;
@@ -129,6 +138,11 @@ public class FuzzTester extends Suite
 		}
 
 		return testMethods;
+	}
+
+	protected boolean in( final String key, final JsonArray array )
+	{
+		return array.size() == 0 || GsonHelper.in( key, array );		
 	}
 
 	protected List<JsonObject> getTests( final String dirName, final String prefix, final String suffix ) throws InitializationError

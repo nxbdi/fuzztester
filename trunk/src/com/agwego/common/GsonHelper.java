@@ -24,6 +24,8 @@
 
 package com.agwego.common;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
@@ -33,14 +35,27 @@ import com.google.gson.JsonObject;
  */
 public class GsonHelper
 {
-    public static String jsonGetAsString( JsonObject jObject, String key )
+    public static String getAsString( final JsonObject jObject, final String key )
     {
         return jObject.has( key ) ? jObject.get( key ).getAsString() : null ;
     }
 
-    public static Boolean jsonGetAsBoolean( JsonObject jObject, String key, Boolean otherwise )
+    public static Boolean getAsBoolean( final JsonObject jObject, final String key, final Boolean otherwise )
     {
         return jObject.has( key ) ? jObject.get( key ).getAsBoolean() : otherwise;
     }
 
+	public static JsonArray getAsArray( final JsonObject jObject, final String key )
+	{
+		return jObject.has( key ) ? jObject.getAsJsonArray( key ) : new JsonArray();
+	}
+
+	public static boolean in( final String key, final JsonArray array )
+	{
+		for( JsonElement jElement : array )
+			if( jElement.getAsString().equals( key ) )
+				return true;
+
+		return false;
+	}
 }
