@@ -24,9 +24,11 @@
 
 package com.agwego.common;
 
+import com.agwego.fuzz.FuzzTestAssert;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
+import org.junit.Assert;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
@@ -188,29 +190,24 @@ public class StringHelperTest
 	 *
 	 * @param a test string
 	 * @param begin index
+     * @param end index
 	 * @param expected result
 	 */
 	@Fuzz
-	public void substringBuilder( final String a, final String begin, final String expected )
+	public void substringBuilderEnd( final String a, final Integer begin, final Integer end, final StringBuilder expected )
 	{
-		final int beginIdx = NumberHelper.parseInt( begin );
-		StringBuilder ex = new StringBuilder( expected );
-		StringBuilder test = StringHelper.substringBuilder( a, beginIdx );
-		assertTrue( new StringBuilder( expected ).toString().equals( StringHelper.substringBuilder( a, beginIdx ).toString() ));
+		FuzzTestAssert.assertEquals( expected, StringHelper.substringBuilder( a, begin, end ));
 	}
 
 	/**
 	 *
 	 * @param a test string
 	 * @param begin index
-     * @param end index
 	 * @param expected result
 	 */
 	@Fuzz
-	public void substringBuilderEnd( final String a, final String begin, final String end, final String expected )
+	public void substringBuilder( final String a, final Integer begin, final StringBuilder expected )
 	{
-		final int beginIdx = NumberHelper.parseInt( begin );
-        final int endIdx = NumberHelper.parseInt( end );
-		assertTrue( new StringBuilder( expected ).equals( StringHelper.substringBuilder( a, beginIdx, endIdx )));
+		FuzzTestAssert.assertEquals( expected, StringHelper.substringBuilder( a, begin ) );
 	}
 }
