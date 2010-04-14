@@ -85,34 +85,46 @@ public class FuzzTestCase
 		args = new ArrayList<Object>();
 	}
 
-	//@SuppressWarnings( )
+	@SuppressWarnings( "unchecked method invocation: <T>fromJson(com.google.gson.JsonElement,java.lang.Class<T>) in com.google.gson.Gson is applied to (com.google.gson.Jon: <T>fromJson(com.google.gson.JsonElement,java.lang.Class<T>) in com.google.gson.Gson is applied to (com.google.gson.J" )
 	protected static FuzzTestCase deserialize( final JsonObject jobj, final int testNumber, final String methodName, final Class testClass )
 	{
 		FuzzTestCase fuzzTestCase = new FuzzTestCase();
 		fuzzTestCase.setMethodName( methodName );
 		fuzzTestCase.setNumber( testNumber );
-		fuzzTestCase.setArgs( new ArrayList<Object>() );
-		fuzzTestCase.setComment( GsonHelper.jsonGetAsString( jobj, "comment" ));
-		fuzzTestCase.setExceptionThrown( GsonHelper.jsonGetAsString( jobj, "exceptionThrown" ));
-		fuzzTestCase.setExceptionMessage( GsonHelper.jsonGetAsString( jobj, "exceptionMessage" ));
-		fuzzTestCase.setSkip( GsonHelper.jsonGetAsBoolean( jobj, "skip", false ));
-		fuzzTestCase.setPass( GsonHelper.jsonGetAsBoolean( jobj, "pass", true ));
-
-		Gson consumer = new GsonBuilder()
-			.setPrettyPrinting()
-			.create();
+		fuzzTestCase.setComment( GsonHelper.getAsString( jobj, "comment" ));
+		fuzzTestCase.setExceptionThrown( GsonHelper.getAsString( jobj, "exceptionThrown" ));
+		fuzzTestCase.setExceptionMessage( GsonHelper.getAsString( jobj, "exceptionMessage" ));
+		fuzzTestCase.setSkip( GsonHelper.getAsBoolean( jobj, "skip", false ));
+		fuzzTestCase.setPass( GsonHelper.getAsBoolean( jobj, "pass", true ));
 
 		JsonArray jargs = jobj.getAsJsonArray( "args" );
 		Class params [] = getMethodParams( testClass, methodName, jargs.size() );
 
 		int idx = 0;
-		for( JsonElement jarg : jargs ) {
-			Object arg = consumer.fromJson( jarg, params[idx] == Object.class ? String.class : params[idx] );
-			fuzzTestCase.addArg( arg );
+		for( JsonElement jarg : jargs ) {			
+			fuzzTestCase.addArg( createArg( jarg, params[idx] ));
 			idx++;
 		}
 
 		return fuzzTestCase;
+	}
+
+	@SuppressWarnings( "unchecked method invocation: <T>fromJson(com.google.gson.JsonElement,java.lang.Class<T>) in com.google.gson.Gson is applied to (com.google.gson.Jon: <T>fromJson(com.google.gson.JsonElement,java.lang.Class<T>) in com.google.gson.Gson is applied to (com.google.gson.J" )
+	protected static Object createArg( JsonElement jarg, Class argClass )
+	{
+		Gson consumer = new GsonBuilder()
+			.setPrettyPrinting()
+			.create();
+
+		Object arg;
+		if( argClass == StringBuilder.class && jarg.isJsonPrimitive() ) {
+			String tempArg = consumer.fromJson( jarg, String.class );
+			arg = tempArg == null ? null: new StringBuilder( tempArg );
+		} else {
+			arg = consumer.fromJson( jarg, argClass == Object.class ? String.class : argClass );
+		}
+
+		return arg;
 	}
 
 	protected static Class[] getMethodParams( final Class testClass, final String methodName, final int argsNum )
