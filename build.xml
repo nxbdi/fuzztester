@@ -99,6 +99,7 @@
         <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true" deprecation="false" optimize="false" failonerror="true">
             <src path="${src.dir}"/>
             <classpath refid="classpath-master"/>
+            <!--compilerarg  value="-Xlint"/-->
         </javac>
         <copy file="${src.dir}/log4j.properties" tofile="${build.dir}/log4j.properties" overwrite="true"/>
     </target>
