@@ -117,14 +117,11 @@ public class FuzzTestCase
 			.create();
 
 		Object arg;
-		if( argClass == StringBuilder.class && jarg.isJsonPrimitive() ) {
-			String tempArg = consumer.fromJson( jarg, String.class );
-			arg = tempArg == null ? null: new StringBuilder( tempArg );
+		if( argClass == StringBuilder.class ) {
+			return consumer.fromJson( jarg, String.class ) == null ? null: new StringBuilder( consumer.fromJson( jarg, String.class ) );
 		} else {
-			arg = consumer.fromJson( jarg, argClass == Object.class ? String.class : argClass );
+			return consumer.fromJson( jarg, argClass == Object.class ? String.class : argClass );
 		}
-
-		return arg;
 	}
 
 	protected static Class[] getMethodParams( final Class testClass, final String methodName, final int argsNum )
@@ -222,11 +219,11 @@ public class FuzzTestCase
 	 * Set the arguments to call the test method with
 	 *
 	 * @param args List<Object>
-	 */
+	 * /
 	public void setArgs( List<Object> args )
 	{
 		this.args = args;
-	}
+	}  */
 
 	public void addArg( Object arg )
 	{
