@@ -27,17 +27,23 @@ package com.agwego.fuzz.fuzz_tester_test;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith( FuzzTester.class )
-@Parameters( TestDirectory = "test/com/agwego/fuzz/fuzz_tester_test", Prefix = "FuzzTesterSkip_01" )
-public class TestSkip
+@Parameters( TestDirectory = "test/com/agwego/fuzz/fuzz_tester_test", Prefix = "FuzzTesterSkip_03" )
+public class TestSkipOnly
 {
 	@Fuzz
 	public void mockTest( final String input, final String expected )
 	{
-		assertEquals( "This assert should fail, as expected", expected, input  );
+		assertEquals( expected, input  );
+	}
+
+	@Fuzz
+	public void mockTest2( final String input, final String expected )
+	{
+		assertEquals( expected, input  );
 	}
 }

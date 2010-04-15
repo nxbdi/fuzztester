@@ -1,0 +1,13 @@
+{
+    "unitTest" : [
+        {
+            "method" : "readFile",
+            "testCases" : [
+                { "args" : [ "test/com/agwego/common/test1.file", "" ] },
+                { "args" : [ "test/com/agwego/common/test2.file", "123" ] },
+                { "args" : [ null, null ] },
+                { "args" : ["file.does.not.exist", null ] }
+             ]
+        }
+    ]
+}

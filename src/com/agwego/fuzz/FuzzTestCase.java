@@ -119,6 +119,8 @@ public class FuzzTestCase
 		Object arg;
 		if( argClass == StringBuilder.class ) {
 			return consumer.fromJson( jarg, String.class ) == null ? null: new StringBuilder( consumer.fromJson( jarg, String.class ) );
+		} else if( argClass == Integer.class ) {
+			return consumer.fromJson( jarg, Integer.class ) == null ? null: consumer.fromJson( jarg, Integer.class );
 		} else {
 			return consumer.fromJson( jarg, argClass == Object.class ? String.class : argClass );
 		}
@@ -216,15 +218,8 @@ public class FuzzTestCase
 	}
 
 	/**
-	 * Set the arguments to call the test method with
-	 *
-	 * @param args List<Object>
-	 * /
-	public void setArgs( List<Object> args )
-	{
-		this.args = args;
-	}  */
-
+	 * @param arg add the command line argument
+	 */
 	public void addArg( Object arg )
 	{
 		args.add( arg );
