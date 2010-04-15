@@ -32,8 +32,8 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 
 @RunWith( FuzzTester.class )
-@Parameters( TestDirectory = "test/com/agwego/fuzz/fuzz_tester_test", Prefix = "FuzzTesterSkip_01" )
-public class TestSkip
+@Parameters( TestDirectory = "test/com/agwego/fuzz/fuzz_tester_test", Prefix = "FuzzTesterSkip_02" )
+public class TestSkipMethod
 {
 	@Fuzz
 	public void mockTest( final String input, final String expected )

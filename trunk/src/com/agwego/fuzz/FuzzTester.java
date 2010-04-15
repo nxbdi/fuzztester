@@ -122,9 +122,8 @@ public class FuzzTester extends Suite
 				for( JsonElement y : testCases ) {
 					JsonObject tcj = y.getAsJsonObject();
 					tcj.addProperty(
-							TEST_SKIP, skip ||
-							! in( unitTest.get( METHOD_NAME ).getAsString(), only ) ||
-							GsonHelper.getAsBoolean( tcj, TEST_SKIP, false )
+							TEST_SKIP,
+							skip || ! in( unitTest.get( METHOD_NAME ).getAsString(), only ) || GsonHelper.getAsBoolean( tcj, TEST_SKIP, false )
 					);
 					FuzzTestCase fuzzTestCase = FuzzTestCase.deserialize( tcj, idx, unitTest.get( METHOD_NAME).getAsString(), testClass );
 					fuzzTestCases.add( fuzzTestCase );

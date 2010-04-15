@@ -24,37 +24,37 @@
 
 package com.agwego.common;
 
+import com.agwego.fuzz.FuzzTestAssert;
+import com.agwego.fuzz.FuzzTester;
+import com.agwego.fuzz.annotations.Fuzz;
+import com.agwego.fuzz.annotations.Parameters;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * @author Tim Desjardins
- * @version $Rev$
- * $Id$
+ * @version $Rev: 22 $
+ * $Id: FileFilterPrePostTest.java 22 2010-04-01 04:56:35Z agwego $
  */
-public class NumberHelper
+@RunWith( FuzzTester.class )
+@Parameters( TestDirectory = "test/com/agwego/common", Prefix = "FileHelperTest" )
+public class FileHelperTest
 {
-	/**
-	 * Parse an integer and return 0 no matter what if the string isn't an integer
-	 *
-	 * @param value string as an integer to parse
-	 * @return the string to int all parse errors returns 0
-	 */
-	static public Integer parseInt( final String value )
+ 	@Test
+	public void classTest()
 	{
-		return parseInt( value, 0 );
+		FileHelper nh = new FileHelper(); 
 	}
 
-	/**
-	 * half a dozen of the other
-	 *
-	 * @param value  string as an integer to parse
-	 * @param otherwise if the string isn't a number
-	 * @return return the parsed string as an Integer, if any errors return otherwise
-	 */
-	static public Integer parseInt( final String value, final Integer otherwise )
+	@Fuzz
+	public void readFile( String fileName, String expected ) throws IOException
 	{
-		try {
-			return new Integer( StringHelper.nulled( value ) );
-		} catch( Exception x ) {
-			return otherwise;
-		}
+		assertEquals( expected, FileHelper.readFile( fileName ));
 	}
 }

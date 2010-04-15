@@ -1,0 +1,25 @@
+{
+    "unitTest" : [
+        {
+            "method" : "parseIntOtherwise",
+            "testCases" : [
+                { "args" : [ "0", 9, 0 ] },
+                { "args" : [ "1", 9, 1 ] },
+                { "args" : [ "-1", 9, -1] },
+                { "args" : [ null, 9, 9 ] },
+                { "args" : [ "stuff", 9, 9 ] },
+                { "args" : [ "stuff", null, null ] }              
+            ]
+        },
+        {
+            "method" : "parseInt",
+            "testCases" : [
+                { "args" : [ "0", 0 ] },
+                { "args" : [ "1", 1 ] },
+                { "args" : [ "-1", -1] },
+                { "args" : [ null, 0 ] },
+                { "args" : [ "stuff", 0 ] }
+            ]
+        }
+    ]
+}

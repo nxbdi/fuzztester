@@ -28,7 +28,7 @@ import com.agwego.fuzz.FuzzTestAssert;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
-import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
@@ -209,5 +209,11 @@ public class StringHelperTest
 	public void substringBuilder( final String a, final Integer begin, final StringBuilder expected )
 	{
 		FuzzTestAssert.assertEquals( expected, StringHelper.substringBuilder( a, begin ) );
+	}
+
+	@Test
+	public void tClass()
+	{
+		new StringHelper();
 	}
 }

@@ -29,17 +29,12 @@ import com.agwego.fuzz.annotations.Parameters;
 import com.agwego.fuzz.exception.ParametersError;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
-import org.junit.runner.notification.Failure;
-import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -55,19 +50,27 @@ public class FuzzTesterTest
 	protected final Log log = LogFactory.getLog( getClass() );
 
 	@Test
-	public void testSkip() throws Exception
+	public void testSkipOnly() throws Exception
 	{
-		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestSkip.class );
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestSkipOnly.class );
 		List<Runner> children = ft.getChildren();
-		assertEquals( 1, children.size() );
+		assertEquals( 2, children.size() );
 		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
 		TestNotifier rn = new TestNotifier();
 		ftRunner.run( rn );
 		assertEquals( 0, rn.getFailureCount() );
-		assertEquals( 1, rn.getIgnoredCount() );
-		assertEquals( 2, rn.getFinishedCount() );
+		assertEquals( 3, rn.getIgnoredCount() );
+		assertEquals( 0, rn.getFinishedCount() );
+
+		ftRunner = (FuzzTestRunner) children.get( 1 );
+		rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 0, rn.getIgnoredCount() );
+		assertEquals( 1, rn.getFinishedCount() );
+
 	}
-	
+
     @Test
     public void parameters()
     {
@@ -367,5 +370,33 @@ public class FuzzTesterTest
 		assertEquals( 0, rn.getFailureCount() );
 		assertEquals( 0, rn.getAssumptionsFailedCount() );
 		assertEquals( 1, rn.getFinishedCount() );
+	}
+
+	@Test
+	public void testSkip() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestSkip.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 1, rn.getIgnoredCount() );
+		assertEquals( 2, rn.getFinishedCount() );
+	}
+
+	@Test
+	public void testSkipMethod() throws Exception
+	{
+		FuzzTester ft = new FuzzTester( com.agwego.fuzz.fuzz_tester_test.TestSkipMethod.class );
+		List<Runner> children = ft.getChildren();
+		assertEquals( 1, children.size() );
+		FuzzTestRunner ftRunner = (FuzzTestRunner) children.get( 0 );
+		TestNotifier rn = new TestNotifier();
+		ftRunner.run( rn );
+		assertEquals( 0, rn.getFailureCount() );
+		assertEquals( 3, rn.getIgnoredCount() );
+		assertEquals( 0, rn.getFinishedCount() );
 	}
 }

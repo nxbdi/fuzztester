@@ -1,0 +1,29 @@
+{
+    "only" : [ "mockTest2" ],
+    "unitTest" : [
+        {
+            "method" : "mockTest",
+            "testCases" : [
+                {
+                    "skip" : true,
+                    "args" : [ "arghhh", "arghhh" ]
+                },
+                {
+                    "skip" : false,
+                    "args" : [ "arghhh", "arghhh" ]
+                },
+                {
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        },
+        {
+            "method" : "mockTest2",
+            "testCases" : [
+                {
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}
