@@ -32,11 +32,11 @@
     <SUITE FILE_PATH="coverage/timd$AllTests.ic" NAME="AllTests Coverage Results" MODIFIED="1271299380906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.agwego.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/timd$FileHelperTest.ic" NAME="FileHelperTest Coverage Results" MODIFIED="1271302194281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.agwego.common.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/timd$FuzzSuite.ic" NAME="FuzzSuite Coverage Results" MODIFIED="1271129690611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.agwego.fuzz.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/timd$FileHelperTest.ic" NAME="FileHelperTest Coverage Results" MODIFIED="1271302194281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.agwego.common.*</FILTER>
     </SUITE>
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -194,7 +194,7 @@
       <file leaf-file-name="FileHelperTest.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/FileHelperTest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="29" selection-start="60" selection-end="60" vertical-scroll-proportion="0.12846348">
+            <state line="3" column="29" selection-start="60" selection-end="60" vertical-scroll-proportion="0.051307846">
               <folding />
             </state>
           </provider>
@@ -285,8 +285,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -427,7 +428,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -444,9 +444,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="JUnit.FileHelperTest">
     <configuration default="false" name="FuzzTesterTest" type="JUnit" factoryName="JUnit" temporary="true">
@@ -1004,7 +1004,6 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258317" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1015,6 +1014,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29843444" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258317" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994433" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1054,114 +1054,82 @@
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/../../../lib/junit-4.8.1.jar!/org/junit/runners/model/RunnerBuilder.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="35" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="12" column="35" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../../../lib/junit-4.8.1.jar!/org/junit/internal/requests/ClassRequest.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="13" column="35" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/NumberHelperTest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="47" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="9" column="47" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../../../lib/junit-4.8.1.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="276" selection-end="276" vertical-scroll-proportion="0.16721311">
-          <folding />
-        </state>
+        <state line="7" column="11" selection-start="276" selection-end="276" vertical-scroll-proportion="0.16721311" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/common/StringHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="13" selection-start="1609" selection-end="1609" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="40" column="13" selection-start="1609" selection-end="1609" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/common/NumberHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="13" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.0752">
-          <folding />
-        </state>
+        <state line="31" column="13" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.0752" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/StringHelperTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="8" selection-start="5772" selection-end="5772" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="216" column="8" selection-start="5772" selection-end="5772" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/NumberHelperTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="13" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="44" column="13" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/CommonSuite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="257" selection-end="257" vertical-scroll-proportion="0.28052804">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="3249" selection-end="3249" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="0" selection-start="3864" selection-end="3864" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/common/FileHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../lib/junit-4.8.1.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="40" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="0" selection-start="5452" selection-end="5452" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="11" column="28" selection-start="257" selection-end="257" vertical-scroll-proportion="0.28052804" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/FileHelperTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="2008" selection-end="2008" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="57" column="0" selection-start="2008" selection-end="2008" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/common/FileHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../lib/junit-4.8.1.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="40" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="184" column="0" selection-start="5452" selection-end="5452" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="0" selection-start="3864" selection-end="3864" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="0" selection-start="3249" selection-end="3249" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/FileHelperTest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="29" selection-start="60" selection-end="60" vertical-scroll-proportion="0.12846348">
+        <state line="3" column="29" selection-start="60" selection-end="60" vertical-scroll-proportion="0.051307846">
           <folding />
         </state>
       </provider>
