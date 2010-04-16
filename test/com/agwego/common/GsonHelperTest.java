@@ -27,13 +27,9 @@ package com.agwego.common;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
+import com.google.gson.JsonObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 /**
@@ -42,46 +38,18 @@ import static org.junit.Assert.*;
  * $Id: FileFilterPrePostTest.java 22 2010-04-01 04:56:35Z agwego $
  */
 @RunWith( FuzzTester.class )
-@Parameters( TestDirectory = "test/com/agwego/common", Prefix = "FileHelperTest" )
-public class FileHelperTest
+@Parameters( TestDirectory = "test/com/agwego/common", Prefix = "GsonHelperTest" )
+public class GsonHelperTest
 {
  	@Test
 	public void classTest()
 	{
-		FileHelper nh = new FileHelper(); 
+		GsonHelper gh = new GsonHelper(); // I'm anal about 100% coverage
 	}
 
 	@Fuzz
-	public void readFile( final String fileName, final String expected ) throws IOException
+	public void getAsString( final JsonObject jObject, final String key, final String otherwise, final String expected )
 	{
-		assertEquals( expected, FileHelper.readFile( fileName ));
-	}
 
-	@Fuzz
-	public void getFileList( final String dirName, final String prefix, final String postfix, final Integer fileCount, final String [] expectedFiles ) throws Exception
-	{
-		List<File> files = FileHelper.getFileList( dirName, prefix, postfix );
-		assertEquals( fileCount.longValue(), files.size() );
-		assertFileListEquals( expectedFiles, files );
-	}
-
-	private void assertFileListEquals( final String [] expected, List<File> actual )
-	{
-		if( actual.size() == 0 )
-			actual = null;
-
-		if( actual == null || expected == null ) {
-			if( actual != null || expected != null )
-				fail();
-			return ;
-		}
-
-		if( actual.size() != expected.length )
-			fail();
-
-		for( int idx = 0; idx < actual.size(); idx++ ) {
-			if( ! actual.get( idx ).getName().equals( expected[ idx ] ))
-				fail();
-		}
 	}
 }

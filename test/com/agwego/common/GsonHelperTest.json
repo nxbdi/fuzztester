@@ -1,0 +1,10 @@
+{
+    "unitTest" : [
+        {
+            "method" : "getAsString",
+            "testCases" : [
+                { "args" : [ "{ \"one\" : 1, \"two\" : 2 }", "one", "9", "1"  ] }                
+             ]
+        }
+    ]
+}
