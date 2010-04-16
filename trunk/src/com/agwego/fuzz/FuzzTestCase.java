@@ -72,7 +72,7 @@ import java.util.List;
 public class FuzzTestCase
 {
 	private String methodName;
-	private String comment;
+	private String message;
 	private List<Object> args;
 	private String exceptionThrown;
 	private String exceptionMessage;
@@ -91,7 +91,7 @@ public class FuzzTestCase
 		FuzzTestCase fuzzTestCase = new FuzzTestCase();
 		fuzzTestCase.setMethodName( methodName );
 		fuzzTestCase.setNumber( testNumber );
-		fuzzTestCase.setComment( GsonHelper.getAsString( jobj, "comment" ));
+		fuzzTestCase.setMessage( GsonHelper.getAsString( jobj, "comment" ));
 		fuzzTestCase.setExceptionThrown( GsonHelper.getAsString( jobj, "exceptionThrown" ));
 		fuzzTestCase.setExceptionMessage( GsonHelper.getAsString( jobj, "exceptionMessage" ));
 		fuzzTestCase.setSkip( GsonHelper.getAsBoolean( jobj, "skip", false ));
@@ -116,7 +116,6 @@ public class FuzzTestCase
 			.setPrettyPrinting()
 			.create();
 
-		Object arg;
 		if( argClass == StringBuilder.class ) {
 			return consumer.fromJson( jarg, String.class ) == null ? null: new StringBuilder( consumer.fromJson( jarg, String.class ) );
 		} else if( argClass == Integer.class ) {
@@ -188,23 +187,23 @@ public class FuzzTestCase
 	}
 
 	/**
-	 * Get the test's comment
+	 * Get the test's message
 	 *
 	 * @return comment
 	 */
-	public String getComment()
+	public String getMessage()
 	{
-		return comment;
+		return message;
 	}
 
 	/**
-	 * Set the test's comment
+	 * Set the test's message
 	 *
-	 * @param comment -
+	 * @param message -
 	 */
-	public void setComment( String comment )
+	public void setMessage( String message )
 	{
-		this.comment = comment;
+		this.message = message;
 	}
 
 	/**

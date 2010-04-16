@@ -81,8 +81,8 @@ public class FuzzTestCaseTest
 	public void setComment()
 	{
 		FuzzTestCase f = new FuzzTestCase();
-		f.setComment( "testing" );
-		assertEquals( "testing", f.getComment() );
+		f.setMessage( "testing" );
+		assertEquals( "testing", f.getMessage() );
 	}
 
 	@Test
