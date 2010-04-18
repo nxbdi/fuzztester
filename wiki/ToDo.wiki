@@ -3,7 +3,7 @@
 In no particular order
  * test nested complex objects
  * tests for any unicode issues
- * add tests for @Rules
+ * ~~add tests for @Rules~~
  * ~~add skip at the method level~~
  * ~~add only run primitive at the unitTests level~~
  * packaging 
