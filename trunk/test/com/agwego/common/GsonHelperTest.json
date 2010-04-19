@@ -3,7 +3,38 @@
         {
             "method" : "getAsString",
             "testCases" : [
-                { "args" : [ "{ \"one\" : 1, \"two\" : 2 }", "one", "9", "1"  ] }                
+                { "args" : [ "one", "1"  ] },
+                { "args" : [ "ONE", null  ] },
+                { "args" : [ "two", "1"  ], "pass" : false }
+             ]
+        },
+        {
+            "method" : "getAsBoolean",
+            "testCases" : [
+                { "args" : [ "b_true", false, true  ] },
+                { "args" : [ "b_false", true, false  ] },
+                { "args" : [ "b_not", false, false ] },
+                { "args" : [ "b_not", true, true ] }
+             ]
+        },
+        {
+            "method" : "getAsArray",
+            "testCases" : [
+                { "args" : [ "a1", [ 1, 1, 2, 3 ]] },
+                { "args" : [ "a2", [] ] },
+                { "args" : [ "a3", []] },
+                { "args" : [ "a4", []] },
+                { "args" : [ "a5", []] }
+             ]
+        },
+        {
+            "method" : "in",
+            "testCases" : [
+                { "args" : [ "a4", "b", false ] },
+                { "args" : [ "a1", 1, true ] },
+                { "args" : [ "a1", 0, false ] },
+                { "args" : [ "a2", null, false ] },                
+                { "args" : [ "a5", 2, false ] }
              ]
         }
     ]

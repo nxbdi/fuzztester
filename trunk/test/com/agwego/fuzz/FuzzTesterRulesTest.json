@@ -1,0 +1,10 @@
+{
+    "unitTest" : [
+        {
+            "method" : "fuzzRules",
+            "testCases" : [
+                { "args" : [] }
+            ]
+        }
+    ]
+}

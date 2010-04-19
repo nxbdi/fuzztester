@@ -25,20 +25,20 @@
 package com.agwego.fuzz;
 
 import com.agwego.fuzz.annotations.Fuzz;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.internal.AssumptionViolatedException;
 import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.internal.runners.model.ReflectiveCallable;
 import org.junit.internal.runners.statements.Fail;
+import org.junit.internal.runners.statements.RunBefores;
 import org.junit.rules.MethodRule;
 import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
-import org.junit.runners.model.FrameworkField;
-import org.junit.runners.model.FrameworkMethod;
-import org.junit.runners.model.InitializationError;
-import org.junit.runners.model.Statement;
+import org.junit.runners.model.*;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -174,7 +174,9 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 		}
 
 		try {
+			
 			methodBlock( tTestMethod ).evaluate();
+
 			if( tTestMethod.getTestCase().isFail() ) {
 				eachNotifier.addFailure(
 					new Exception( "Test marked as fail, PASSED! " + tTestMethod.getTestCase() )
@@ -268,7 +270,11 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 		}
 
 		Statement statement = methodInvoker( testMethod, test );
+		//statement = withRules( testMethod, getTestClass(), statement );
 		statement = withRules( testMethod, test, statement );
+
+		//statement = withBeforeClasses( statement );
+		//statement = withAfterClasses( statement );
 		return statement;
 	}
 
@@ -334,6 +340,8 @@ class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 		try {
 			return (MethodRule) each.get( test );
 		} catch( IllegalAccessException e ) {
+			throw new RuntimeException( "How did getFields return a field we couldn't access?" );
+		} catch( IllegalArgumentException ex ) {
 			throw new RuntimeException( "How did getFields return a field we couldn't access?" );
 		}
 	}

@@ -47,11 +47,23 @@ public class GsonHelper
 
 	public static JsonArray getAsArray( final JsonObject jObject, final String key )
 	{
-		return jObject.has( key ) ? jObject.getAsJsonArray( key ) : new JsonArray();
+		if( jObject != null && jObject.has( key ) ) {
+			try {
+				JsonArray array = jObject.getAsJsonArray( key );
+				return array;
+			} catch( ClassCastException ex ) {
+				// fall through
+			}
+		}
+
+		return new JsonArray();
 	}
 
 	public static boolean in( final String key, final JsonArray array )
 	{
+		if( array == null )
+			return false;
+	
 		for( JsonElement jElement : array )
 			if( jElement.getAsString().equals( key ) )
 				return true;

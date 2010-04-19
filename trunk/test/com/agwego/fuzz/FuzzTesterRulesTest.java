@@ -24,16 +24,44 @@
 
 package com.agwego.fuzz;
 
+import com.agwego.fuzz.annotations.Fuzz;
+import com.agwego.fuzz.annotations.Parameters;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 
-@RunWith(value=Suite.class)
-@Suite.SuiteClasses( value={
-	FuzzTesterTest.class,
-	ArrayObjTest.class,
-	FuzzTestCaseTest.class,
-	FuzzTesterRulesTest.class
-})
-public class FuzzSuite
-{	
+import java.io.File;
+import java.io.IOException;
+
+import static org.junit.Assert.assertTrue;
+
+/**
+ * @author Tim Desjardins
+ * @version $Rev: 8 $
+ *
+ * $Id: FileFilterPrePostTest.java 8 2010-03-26 03:45:50Z agwego $
+ */
+@RunWith( FuzzTester.class )
+@Parameters( TestDirectory = "test/com/agwego/fuzz" )
+public class FuzzTesterRulesTest
+{
+	@Rule
+	public TemporaryFolder folder = new TemporaryFolder();
+
+	@Test
+	public void testUsingTempFolder() throws IOException
+	{
+		File root = folder.getRoot();
+		assertTrue( root.canRead() );
+		assertTrue( root.exists() );		
+	}
+
+	@Fuzz
+	public void fuzzRules() throws IOException
+	{
+		File root = folder.getRoot();
+		assertTrue( root.canRead() );
+		assertTrue( root.exists() );
+	}
 }

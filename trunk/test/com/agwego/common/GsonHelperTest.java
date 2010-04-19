@@ -27,20 +27,40 @@ package com.agwego.common;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 /**
  * @author Tim Desjardins
- * @version $Rev: 22 $
- * $Id: FileFilterPrePostTest.java 22 2010-04-01 04:56:35Z agwego $
+ * @version $Rev: $
+ * $Id: $
  */
 @RunWith( FuzzTester.class )
 @Parameters( TestDirectory = "test/com/agwego/common", Prefix = "GsonHelperTest" )
 public class GsonHelperTest
 {
+	private final JsonObject testJsonObject = initJsonObject();
+
+	public static JsonObject initJsonObject()
+	{
+		JsonParser jParser = new JsonParser();
+		try {
+			return jParser.parse( FileHelper.readFile( "test/com/agwego/common/gson_helper_test/test.json" )).getAsJsonObject();
+		} catch( IOException ex ) {
+			throw new RuntimeException( ex );
+		}
+	}
+
  	@Test
 	public void classTest()
 	{
@@ -48,8 +68,40 @@ public class GsonHelperTest
 	}
 
 	@Fuzz
-	public void getAsString( final JsonObject jObject, final String key, final String otherwise, final String expected )
+	public void getAsString( final String key, final String expected )
 	{
+		assertEquals( GsonHelper.getAsString( testJsonObject, key ), expected );
+	}
 
+	@Fuzz
+	public void getAsBoolean( final String key, final Boolean otherwise, final Boolean expected )
+	{
+		assertTrue( GsonHelper.getAsBoolean( testJsonObject, key, otherwise ) == expected );
+	}
+
+	@Fuzz
+	public void getAsArray( final String key, final String [] expected )
+	{
+		JsonArray ja = GsonHelper.getAsArray( testJsonObject, key );
+		assertTrue( ja.size() == expected.length );
+	}
+
+	@Test
+	public void getAsArrayWithNull()
+	{
+		JsonArray ja = GsonHelper.getAsArray( null, "something" );
+		assertTrue( ja.size() == 0 );
+	}
+
+	@Fuzz
+	public void in( final String arrayKey, final String key, final Boolean expected )
+	{
+		assertTrue( GsonHelper.in( key, GsonHelper.getAsArray( testJsonObject, arrayKey ) ) == expected );
+	}
+
+	@Test
+	public void inWithNull()
+	{
+		assertTrue( ! GsonHelper.in( "one", null ) );
 	}
 }

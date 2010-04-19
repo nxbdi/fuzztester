@@ -11,7 +11,6 @@
             "method" : "accept",
             "method" [
                 {
-                    "name" : "Test prefix/postfix",
                     "args" : [ "/this/is/a/test", "prefixFileName.xml", "prefix", "xml" ]
                 },
                 {

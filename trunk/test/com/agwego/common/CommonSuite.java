@@ -6,10 +6,11 @@ import org.junit.runners.Suite;
 @RunWith(value=Suite.class)
 @Suite.SuiteClasses(
 	value={
-		FileFilterPrePostTest.class,
 		StringHelperTest.class,
 		NumberHelperTest.class,
-		FileHelperTest.class
+		FileHelperTest.class,		
+		FileFilterPrePostTest.class,
+		GsonHelperTest.class
 	}
 )
 public class CommonSuite
