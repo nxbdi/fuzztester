@@ -24,8 +24,22 @@
 
 package com.agwego.fuzz.exception;
 
+/**
+ * FuzzTestRunner, Parameters specific errors
+ *
+ * @see com.agwego.fuzz.annotations.Parameters
+ * @author Tim Desjardins
+ * @version $Rev$
+ * <br/>
+ * $Id$
+ */
 public class ParametersError extends Exception
 {
+	/**
+	 * Construct a parameters error
+	 *
+	 * @param msg - error message
+	 */
 	public ParametersError( String msg )
 	{
 		super( msg );
