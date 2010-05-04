@@ -30,12 +30,18 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotated tests with @Fuzz will be be run by the fuzz test runner
+ * Specify the @Parameters to be used by @FuzzTestRunner <br/>
+ * The parameters are:
+ * <ul>
+ * <li> TestDirectory </li>
+ * <li> Prefix </li>
+ * <li> Suffix </li>
+ * <li> TestDirectoryRootPropertyName </li>
  *
  * @author Tim Desjardins
- * @version $Rev: $
- *
- * $Id: $
+ * @version $Rev$
+ * <br/>
+ * $Id$
  */
 @Retention( RetentionPolicy.RUNTIME )
 @Target( ElementType.TYPE )
