@@ -28,15 +28,14 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 /**
- * Used to filter file names, specify a prefix and a postfix
- * to filter files.
- *
- * @see java.io.FilenameFilter
- *
+ * Used to filter file names, specify a prefix and a postfix to filter files.
+ * 
  * @author Tim Desjardins
  * @version $Rev$
- * 
+ * <br/>
  * $Id$
+ *
+ * @see java.io.FilenameFilter
  */
 public class FileFilterPrePost implements FilenameFilter
 {
@@ -44,6 +43,8 @@ public class FileFilterPrePost implements FilenameFilter
 	private final String postfix;
 
 	/**
+	 * Construct a filter
+	 * 
 	 * @param prefix the prefix to match for this filter
 	 * @param postfix the postfix to match for this filter
 	 */
@@ -60,6 +61,8 @@ public class FileFilterPrePost implements FilenameFilter
 	}
 
 	/**
+	 * Tests if a specified file should be included in a file list.
+	 * 
 	 * @param dir the directory (File handle) to search
 	 * @param name file name to match
 	 * @return does the name match the prefix and postfix

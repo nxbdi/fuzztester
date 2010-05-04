@@ -25,8 +25,11 @@
 package com.agwego.common;
 
 /**
+ * Number helpers
+ * 
  * @author Tim Desjardins
  * @version $Rev$
+ * <br/>
  * $Id$
  */
 public class NumberHelper
@@ -43,7 +46,7 @@ public class NumberHelper
 	}
 
 	/**
-	 * half a dozen of the other
+	 * Parse an integer string and return, return the default (otherwise) if the string isn't an integer
 	 *
 	 * @param value  string as an integer to parse
 	 * @param otherwise if the string isn't a number

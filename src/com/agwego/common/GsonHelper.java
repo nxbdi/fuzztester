@@ -29,28 +29,53 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
+ * Gson Helpers
+ * 
  * @author Tim Desjardins
- * @version $Rev:$
- * $Id: $
+ * @version $Rev$
+ * <br/>
+ * $Id$
  */
 public class GsonHelper
 {
+	/**
+	 * Short hand, encapsulate the check if the object has the key and return the appropriate String otherwise null
+	 *
+	 * @param jObject the JsonObject in question
+	 * @param key the key to lookup
+	 * @return the value for key as a String
+	 */
     public static String getAsString( final JsonObject jObject, final String key )
     {
         return jObject.has( key ) ? jObject.get( key ).getAsString() : null ;
     }
 
+	/**
+	 * Short hand, encapsulate the check if the object has the key and return the appropriate Boolean, otherwise the
+	 * default value
+	 *
+	 * @param jObject the JsonObject in question
+	 * @param key the key to lookup
+	 * @param otherwise - if the key doesn't exist
+	 * @return the value for key as a Boolean
+	 */
     public static Boolean getAsBoolean( final JsonObject jObject, final String key, final Boolean otherwise )
     {
         return jObject.has( key ) ? jObject.get( key ).getAsBoolean() : otherwise;
     }
 
+	/**
+	 * Short hand, check if the object is not null and the key is presence return the result as a JsonArray
+	 *
+	 * @param jObject the JsonObject in question
+	 * @param key the key to lookup
+	 * @return the JsonArray for this key or a new empty JsonArray
+	 */
 	public static JsonArray getAsArray( final JsonObject jObject, final String key )
 	{
 		if( jObject != null && jObject.has( key ) ) {
 			try {
-				JsonArray array = jObject.getAsJsonArray( key );
-				return array;
+				return jObject.getAsJsonArray( key );
 			} catch( ClassCastException ex ) {
 				// fall through
 			}
@@ -59,6 +84,13 @@ public class GsonHelper
 		return new JsonArray();
 	}
 
+	/**
+	 * Determine if the key is present in the given JsonArray
+	 * 
+	 * @param key the key to lookup
+	 * @param array the JsonArray in question
+	 * @return is the key present in the JsonArray (a null array returns false)
+	 */
 	public static boolean in( final String key, final JsonArray array )
 	{
 		if( array == null )

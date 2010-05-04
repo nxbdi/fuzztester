@@ -29,15 +29,17 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * File Helpers
+ *
  * @author Tim Desjardins
  * @version $Rev$
- * 
+ * <br/>
  * $Id$
  */
 public final class FileHelper
 {
 	/**
-	 * readFile read a file given a fq file name and return the contents as a String
+	 * readFile read a file given a file name and return the contents as a String
 	 *
 	 * @param file_name the file to read
 	 * @return the contents of file_name
@@ -70,11 +72,13 @@ public final class FileHelper
 	}
 
 	/**
+	 * Get a file list for dirName constrained by file prefix and postfix
+	 *
 	 * @param dirName The directory to list
 	 * @param prefix The prefix for any file
 	 * @param postfix The postfix for the file
 	 * @return List<File> the filtered list
-	 * @throws Exception if the dirName doesn't exist or the file list throws an IO exception (see File.listFiles())
+	 * @throws Exception if the dirName doesn't exist or the file list throws an IO exception () See: {@link java.io.File#listFiles}
 	 */
 	public static List<File> getFileList( final String dirName, final String prefix, final String postfix ) throws Exception
 	{
