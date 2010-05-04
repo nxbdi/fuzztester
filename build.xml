@@ -107,8 +107,8 @@
     <!-- release properties -->
 	<target name="release_properties" depends="get-revision" description="build the WAR file for release embeds build information">
 		<echo message="revision.number = ${revision.number}" />
-	    <touch file="${build.dir}/build_tag.properties"/>
-	    <propertyfile comment="Build Information" file="${build.dir}/build_tag.properties">
+	    <touch file="${out.prod.dir}/build_tag.properties"/>
+	    <propertyfile comment="Build Information" file="${out.prod.dir}/build_tag.properties">
 		    <entry key="build.date" type="date" pattern="EEEE MMM dd, yyyy" value="now"/>
 		    <entry key="build.timestamp" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss" value="now"/>
 		    <entry key="build.user.name" value="${user.name}"/>
@@ -143,11 +143,20 @@
 
             <!--compilerarg  value="-Xlint"/-->
         </javac>
-        <copy file="${src.dir}/log4j.properties" tofile="${build.dir}/log4j.properties" overwrite="true"/>
+        <copy file="${src.dir}/log4j.properties" tofile="${out.prod.dir}/log4j.properties" overwrite="true"/>
     </target>
 
     <target name="jar" depends="build,release_properties" description="Create the archive">
-        <jar destfile="fuzz-tester-${fuzz.version}.jar" basedir="${build.dir}"/>
+        <jar destfile="fuzz-tester-${fuzz.version}.jar" basedir="${out.prod.dir}">        
+            <manifest>
+               <attribute name="Main-Class" value="com.agwego.fuzz.Version"/>
+            </manifest>
+        </jar>
+
+    </target>
+
+    <target name="package" depends="jar" description="Package fuzz tester">
+        
     </target>
 
     <target name="buildtests" depends="build" description="Compile test tree java files">
@@ -214,7 +223,7 @@
                 <include name="**/*.class"/>
             </fileset>
         </delete>
-	    <touch file="${build.dir}/build_tag.properties"/>	    
+	    <touch file="${out.prod.dir}/build_tag.properties"/>
     </target>
 
 	<target name="spotless" depends="clean" description="Clean and revert to pristine">
@@ -223,7 +232,7 @@
 	            <include name="**/svn-commit.tmp*"/>
                 <include name="fuzz-tester-*.jar"/>
 	        </fileset>
-			<fileset dir="${build.dir}">
+			<fileset dir="${out.prod.dir}">
 	            <include name="build_tag.properties"/>
             </fileset>
 	    </delete>
