@@ -34,19 +34,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Models the test case object, this is the Java
- * representation of the JSON test case object.
+ * Models the test case object, this is the Java representation of the JSON test case object.
  * <pre>
        {
-           "Comment" : "Test accept",
-            "MethodName" : "construtctor",
-            "Tests" : [
+            "comment" : "Test accept",
+            "method" : "construtctor",
+            "testCases" : [
                 <b>{
                     "name" : "Test consturctor",
                     "args" : [ "prefix", "xml" ]
                 },
                 {
-                    "pass" : fail
+                    "pass" : false,
                     "name" : "Test consturctor",
                     "args" : [ "prefix", null ]
                 },
@@ -54,6 +53,16 @@ import java.util.List;
                     "skip" : true
                     "name" : "Test consturctor",
                     "args" : [ "prefix", "xml" ]
+                },
+                {
+                    "exceptionThrown" : "java.lang.RuntimeException",
+                    "name" : "Test consturctor with null prefix",
+                    "args" : [ null, "postfix" ]
+                },
+                {
+                    "exceptionMessage" : "Prefix is required",
+                    "name" : "Test consturctor with null prefix",
+                    "args" : [ null, "postfix" ]
                 },
                 {
                     "exceptionThrown" : "java.lang.RuntimeException",
@@ -80,6 +89,9 @@ public class FuzzTestCase
 	private boolean pass = true;
 	private boolean skip = false;
 
+	/**
+	 * Construct a FuzzTestCase
+	 */
 	public FuzzTestCase()
 	{
 		args = new ArrayList<Object>();
