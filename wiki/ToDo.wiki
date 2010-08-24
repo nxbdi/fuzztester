@@ -20,6 +20,7 @@ In no particular order
    * JSON file format
    * ignore
    * mixing @Test with @Fuxx
+   * Multiple JSON files
   * update javadoc
   * publish javadoc to Googlecode
 
