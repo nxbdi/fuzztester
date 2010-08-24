@@ -12,7 +12,14 @@ In no particular order
  * Honour @BeforeClass @AfterClass
  * Docs:
   * user guide
-  * tutorial
+  * quick start
+  * tutorial/example
+   * Exceptions
+   * pass/fail
+   * type handling
+   * JSON file format
+   * ignore
+   * mixing @Test with @Fuxx
   * update javadoc
   * publish javadoc to Googlecode
 
