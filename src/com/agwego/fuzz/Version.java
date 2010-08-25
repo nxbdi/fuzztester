@@ -15,6 +15,6 @@ public class Version
 		System.out.println( "Built On: " + buildTags.getProperty( "build.computer", "not set" ));
 		System.out.println( "Build Date: " + buildTags.getProperty( "build.date", "not set" ));
 		System.out.println( "Build Time Stamp: " + buildTags.getProperty( "build.timestamp", "not set" ));
-		System.out.println( "Build revision summary: " + buildTags.getProperty( "build.revision_number", "not set" ));
+		System.out.println( "Build revision number (SVN): " + buildTags.getProperty( "build.revision_number", "not set" ));
 	}
 }
