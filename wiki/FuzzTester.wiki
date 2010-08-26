@@ -22,9 +22,10 @@ Future enhancements will include support for template driven inputs, macros for 
 
 = Benefits =
  * Add test cases without recompiling (just run)
- * Mix @fuzz and @test in the same file
+ * Mix @fuzz and @test in the same test
  * One or many JSON formatted test files per unit test
  * Test cases show up properly in JUnit test runner
+ * Easy exception handling test for exception and or message
 
 = Dependencies =
  * [http://code.google.com/p/google-gson/ GSON 1.4]
