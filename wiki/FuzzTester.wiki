@@ -18,6 +18,7 @@ Future enhancements will include support for template driven inputs, macros for 
 = Test Restrictions =
 
  * Unit tests must have unique method names and argument signatures (otherwise an exception will be thrown)
+ * Method parameters must subclass object (no primitives)
 
 = Dependencies =
  * [http://code.google.com/p/google-gson/ GSON 1.4]
