@@ -20,6 +20,12 @@ Future enhancements will include support for template driven inputs, macros for 
  * Unit tests must have unique method names and argument signatures (otherwise an exception will be thrown)
  * Method parameters must subclass object (no primitives)
 
+= Benefits =
+ * Add test cases without recompiling (just run)
+ * Mix @fuzz and @test in the same file
+ * One or many JSON formatted test files per unit test
+ * Test cases show up properly in JUnit test runner
+
 = Dependencies =
  * [http://code.google.com/p/google-gson/ GSON 1.4]
  * [http://junit.org/ JUnit 4.8.1]
