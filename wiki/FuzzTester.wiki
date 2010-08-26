@@ -29,6 +29,7 @@ Future enhancements will include support for template driven inputs, macros for 
  * Properly supports 'null'
  * few restrictions on how you wish to manage your JSON test files
  * support for arrays [] in test method arguments
+ * skip individual testcases, skip entire methods, or only run certain tests
 
 = Dependencies =
  * [http://code.google.com/p/google-gson/ GSON 1.4]
