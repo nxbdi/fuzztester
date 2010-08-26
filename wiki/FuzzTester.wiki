@@ -18,7 +18,7 @@ Future enhancements will include support for template driven inputs, macros for 
 = Test Restrictions =
 
  * Unit tests must have unique method names and argument signatures (otherwise an exception will be thrown)
- * Method parameters must subclass object (no primitives)
+ * Method parameters must subclass object (no primitives, you can use primitives in the JSON files which will be casted to their Object representation)
 
 = Benefits =
  * Add test cases without recompiling (just run)
@@ -26,6 +26,7 @@ Future enhancements will include support for template driven inputs, macros for 
  * One or many JSON formatted test files per unit test
  * Test cases show up properly in JUnit test runner
  * Easy exception handling test for exception and or message
+ * Properly supports 'null'
 
 = Dependencies =
  * [http://code.google.com/p/google-gson/ GSON 1.4]
