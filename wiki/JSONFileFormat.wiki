@@ -7,7 +7,12 @@
  * float, double -> java.lang.Double
 
 == Test Format ==
+Unit tests
 {{{
 Object
-    (*only*)
+    ("only") : [ "testCaseName", ... ],
+    ("skip") : Boolean,
+    "unitTest" : Array[
+        ("skip") : Boolean
+    ]
 }}}
