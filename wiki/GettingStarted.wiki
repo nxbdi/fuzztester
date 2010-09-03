@@ -13,12 +13,3 @@ FuzzTester is a [http://junit.org/ jUnit] add on, it integrates with all jUnit t
  * [http://commons.apache.org/logging/ commons-logging 1.0.4]
 
  Note that included in the release is a fuzz-tester-dependencies-version.jar that rolls up the Apache commons and GSON libraries. 
-
-
-
-= Details =
-
-Add your content here.  Format your content with:
- * Text in *bold* or _italic_
- * Headings, paragraphs, and lists
- * Automatic links to other wiki pages
