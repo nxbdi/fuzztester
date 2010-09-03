@@ -4,7 +4,7 @@
 
 FuzzTester is a [http://junit.org/ jUnit] add on, it integrates with all jUnit test runners.
 
-== Dependencies ==
+== Required Jars ==
  * [http://github.com/KentBeck/junit/downloads JUnit 4] tested with 4.8.1
  * [http://code.google.com/p/google-gson/ GSON 1.4]
  * [http://commons.apache.org/beanutils/ commons-beanutils 1.7.0]
@@ -12,4 +12,4 @@ FuzzTester is a [http://junit.org/ jUnit] add on, it integrates with all jUnit t
  * [http://commons.apache.org/lang/ commons-lang 2.4]
  * [http://commons.apache.org/logging/ commons-logging 1.0.4]
 
- Note that included in the release is a fuzz-tester-dependencies-version.jar that rolls up the Apache commons and GSON libraries. 
+Note that included in the release is a fuzz-tester-dependencies-version.jar that rolls up the Apache Commons and GSON libraries.
