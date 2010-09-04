@@ -32,5 +32,5 @@ Future enhancements
  * add generators
  * macros
  * template driven input
- * wild cards to exception message testing
+ * add wild cards to exception message testing
  
