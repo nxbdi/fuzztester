@@ -34,3 +34,21 @@ public void truncExample( final String input, final Integer endIndex, final Stri
 }
 }}}
  A couple of important thing to note: unlike JUnit tests which don't take any arguments, fuzz tester test fixtures can take arguments, how many and what types are up to you and are largely dictated by the methods you're testing. Test fixtures tend be rather concise which makes the tests easier to understand since data handling/manipulation isn't interwoven with the test code.
+ # Create your test data using the Fuzz-Tester JSON format, the easiest thing to do is copy one of the examples and modify it for your tests, as and example:
+{{{
+{
+1    "unitTest" : [
+        {
+2            "ignore" : false,
+3            "comment" : "Getting Started Trunc Test (input, length, expected)",
+4            "method" : "truncExample",
+5            "testCases" : [
+6                { "args" : [ "", 6, "" ] },
+7                { "args" : [ "123456789", -1, "123456789" ] },
+8                { "args" : [ "123456789", 0, "" ] },
+9                { "args" : [ null, 1, null ] }
+            ]
+        }
+    ]
+}
+}}}
