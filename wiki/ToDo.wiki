@@ -24,10 +24,11 @@ In no particular order
    * mixing @Test with @Fuxx
    * Multiple JSON files
   * update javadoc
-  * publish javadoc to Googlecode
+  * ~~publish javadoc to Googlecode~~
 
 Future enhancements
  * add generators
  * macros
  * template driven input
+ * wild cards to exception message testing
  
