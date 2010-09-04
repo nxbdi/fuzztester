@@ -24,3 +24,11 @@ Note that included in the release is a fuzz-tester-dependencies-version.jar that
 }}}
   # uses the JUnit @RunWith annotation to say use the fuzztester runner
   # provides the test file(s) location and name(s)
+ # Mark your test fixtures with the @Fuzz annotation
+{{{
+@Fuzz
+public void truncExample( final String input, final Integer endIndex, final String expected )
+{
+    assertEquals( expected, GettingStarted.trunc( input, endIndex ));
+}
+}}}
