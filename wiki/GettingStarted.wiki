@@ -22,6 +22,5 @@ Note that included in the release is a fuzz-tester-dependencies-version.jar that
 2 @Parameters( TestDirectory = "test/com/agwego/fuzz/examples", Prefix = "GettingStarted" )
 3 public class GettingStartedTest {
 }}}
-
- # uses the JUnit @RunWith annotation to say use the fuzztester runner
- # provides the test file(s) location and name(s)
+  # uses the JUnit @RunWith annotation to say use the fuzztester runner
+  # provides the test file(s) location and name(s)
