@@ -46,9 +46,15 @@ public void truncExample( final String input, final Integer endIndex, final Stri
 6                { "args" : [ "", 6, "" ] },
 7                { "args" : [ "123456789", -1, "123456789" ] },
 8                { "args" : [ "123456789", 0, "" ] },
-9                { "args" : [ null, 1, null ] }
+9                { "args" : [ null, 1, null ], "pass" : true }
             ]
         }
     ]
 }
 }}}
+  # "unitTest" simply indicates this is a test.
+  # "ignore" optional item defaults to fault but allows you to ignore the test method
+  # "comment" optional item allows you to provide commentary
+  # "method" the name of the method to execute the testCases on
+  # "testCases" is an array of testCase objects
+  6-9 Are individual tests cases with arguments to the test method - in this case tuncExample - the arguments are represented as an array, for each "args" object the test method will be executed, there is also the ability to assert the tests assert since you may expect some tests to fail you can test for that by using "pass" : false.
