@@ -13,3 +13,12 @@ FuzzTester is a [http://junit.org/ jUnit] add on, it integrates with all jUnit t
  * [http://commons.apache.org/logging/ commons-logging 1.0.4]
 
 Note that included in the release is a fuzz-tester-dependencies-version.jar that rolls up the Apache Commons and GSON libraries.
+
+== Simple Test Case ==
+
+ # Annotate your class with the fuzztester-runner and the test parameters which is a file or files with your test data.
+{{{
+1 @RunWith( FuzzTester.class )
+2 @Parameters( TestDirectory = "test/com/agwego/fuzz/examples", Prefix = "GettingStarted" )
+3 public class GettingStartedTest {
+}}}
