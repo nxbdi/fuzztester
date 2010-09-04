@@ -16,9 +16,11 @@ Note that included in the release is a fuzz-tester-dependencies-version.jar that
 
 == Simple Test Case ==
 
- # Annotate your class with the fuzztester-runner and the test parameters which is a file or files with your test data.
+ # Annotate your class with the fuzztester-runner and the test parameters which is a file or files with your test data
 {{{
 1 @RunWith( FuzzTester.class )
 2 @Parameters( TestDirectory = "test/com/agwego/fuzz/examples", Prefix = "GettingStarted" )
 3 public class GettingStartedTest {
 }}}
+ # uses the JUnit @RunWith annotation to say use the fuzztester runner
+ # provides the test file(s) location and name(s)
