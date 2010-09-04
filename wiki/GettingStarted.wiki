@@ -25,7 +25,7 @@ Note that included in the release is a fuzz-tester-dependencies-version.jar that
   # uses the JUnit @RunWith annotation to say use the fuzztester runner
   # provides the test file(s) location and name(s)
   <br/>
- # Mark your test fixtures with the @Fuzz annotation. A couple of important thing to note: unlike JUnit tests which don't take any arguments, fuzz tester test fixtures can take arguments, how many and what types are up to you and are largely dictated by the methods you're testing. Test fixtures tend be rather concise which makes the tests easier to understand since data handling/manipulation isn't interwoven with the test code.
+ # Mark your test fixtures with the @Fuzz annotation.
 {{{
 @Fuzz
 public void truncExample( final String input, final Integer endIndex, final String expected )
@@ -33,6 +33,7 @@ public void truncExample( final String input, final Integer endIndex, final Stri
     assertEquals( expected, GettingStarted.trunc( input, endIndex ));
 }
 }}}
+  A couple of important thing to note: unlike JUnit tests which don't take any arguments, Fuzz Tester test fixtures can take arguments, how many and what types are up to you and are largely dictated by the methods you're testing. Test fixtures tend to be rather concise which makes the tests easier to understand since data handling/manipulation isn't interwoven with the test code.
  # Create your test data using the Fuzz-Tester JSON format, the easiest thing to do is copy one of the examples and modify it for your tests, as and example:
 {{{
 {
