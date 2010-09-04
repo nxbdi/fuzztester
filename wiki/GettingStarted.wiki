@@ -33,3 +33,4 @@ public void truncExample( final String input, final Integer endIndex, final Stri
     assertEquals( expected, GettingStarted.trunc( input, endIndex ));
 }
 }}}
+  The important thing to note here is that unlike JUnit tests which don't take any arguments, fuzz tester test fixtures can take arguments, how many and what types are up to you and are largely dictated by the methods you're testing.
