@@ -52,7 +52,7 @@ public void truncExample( final String input, final Integer endIndex, final Stri
     ]
 }
 }}}
-  1. "unitTest" simply indicates this is a test.<br>2. "ignore" optional item defaults to fault but allows you to ignore the test method
+    1. "unitTest" simply indicates this is a test.<br>2. "ignore" optional item defaults to fault but allows you to ignore the test method
   3. "comment" optional item allows you to provide commentary
   4. "method" the name of the method to execute the testCases on
   5. "testCases" is an array of testCase objects
