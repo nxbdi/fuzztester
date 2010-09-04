@@ -3,13 +3,15 @@
 In no particular order
  * test nested complex objects
  * tests for any unicode issues
+ * packaging
+ * configurable GSON deserializers
+ * Honour @BeforeClass @AfterClass
+ * treat exception message checking as "begins with"
  * ~~add tests for @Rules~~
  * ~~add skip at the method level~~
  * ~~add only run primitive at the unitTests level~~
- * packaging 
  * ~~purge JSONLib code in favour of GSON~~
- * configurable GSON deserializers
- * Honour @BeforeClass @AfterClass
+
  * Docs:
   * user guide
   * quick start
