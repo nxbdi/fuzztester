@@ -34,7 +34,7 @@ public void truncExample( final String input, final Integer endIndex, final Stri
 }
 }}}
   A couple of important thing to note: unlike JUnit tests which don't take any arguments, Fuzz Tester test fixtures can take arguments, how many and what types are up to you and are largely dictated by the methods you're testing. Test fixtures tend to be rather concise which makes the tests easier to understand since data handling/manipulation isn't interwoven with the test code.
- # Create your test data using the Fuzz-Tester JSON format, the easiest thing to do is copy one of the examples and modify it for your tests, as and example:
+ # Create your test data using the Fuzz-Tester JSON format, the easiest thing to do is copy one of the examples and modify it for your tests, as an example:
 {{{
 {
 1    "unitTest" : [
@@ -52,4 +52,4 @@ public void truncExample( final String input, final Integer endIndex, final Stri
     ]
 }
 }}}
-  <br>1. "unitTest" simply indicates this is a test<br>2. "ignore" optional item defaults to fault but allows you to ignore the test method<br>3. "comment" optional item allows you to provide commentary<br>4. "method" the name of the method to execute the testCases on<br>5. "testCases" is an array of testCase objects<br>6-9. Are individual tests cases with arguments to the test method - in this case tuncExample - the arguments are represented as an array, for each "args" object the test method will be executed, there is also the ability to assert the tests assert since you may expect some tests to fail you can test for that by using "pass" : false.
+  <br>1. "unitTest" simply indicates this is a test <br> 2. "ignore" optional item defaults to fault but allows you to ignore the test method <br> 3. "comment" optional item allows you to provide commentary <br> 4. "method" the name of the method to execute the testCases on <br> 5. "testCases" is an array of testCase objects <br> 6-9. Are individual tests cases with arguments to the test method - in this case tuncExample - the arguments are represented as an array, for each "args" object the test method will be executed, there is also the ability to assert the tests assert since you may expect some tests to fail you can test for that by using "pass" : false.
