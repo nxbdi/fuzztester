@@ -21,11 +21,11 @@ Future enhancements will include support for template driven inputs, macros for 
  * Method parameters must subclass object (no primitives, you can use primitives in the JSON files which will be casted to their Object representation )
 
 = Benefits =
- * Add test cases without recompiling (just run)
- * Mix @fuzz and @test in the same test
+ * Add test cases without recompiling (just run) allows you to rapidly add tests without coding (until test fails of course)
+ * Mix @fuzz and @test in the same test class
  * One or many JSON formatted test files per unit test
  * Test cases show up properly in JUnit test runner
- * Easy exception handling test for exception and or message
+ * Easy exception handling, test for the exception class and or message
  * Properly supports 'null'
  * few restrictions on how you wish to manage your JSON test files
  * support for arrays [] in test method arguments
