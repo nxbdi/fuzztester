@@ -24,7 +24,7 @@ Note that included in the release is a fuzz-tester-dependencies-version.jar that
 }}}
   # uses the JUnit @RunWith annotation to say use the fuzztester runner
   # provides the test file(s) location and name(s)
-
+  <br/>
  # Mark your test fixtures with the @Fuzz annotation
 {{{
 @Fuzz
