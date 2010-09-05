@@ -14,7 +14,7 @@ FuzzTester is a [http://junit.org/ jUnit] add on, it integrates with all jUnit t
 
 Note that included in the release is a fuzz-tester-dependencies-version.jar that rolls up the Apache Commons and GSON libraries.
 
-== Simple Test Case (in 4 steps)==
+= Simple Test Case (in 4 steps)=
 
  # Annotate your class with the fuzztester-runner and the test parameters which is a file or files with your test data
 {{{
