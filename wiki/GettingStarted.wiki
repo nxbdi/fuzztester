@@ -90,5 +90,5 @@ Exception testing is completely controlled using the JSON test files and you hav
 }}}
   # simply declare the fully qualified exception name and run your test
   # is an example of catching an exception class and the corresponding message
-  # test for the exception message (in this release no wild cards are allowed
-  # and of course you can also test just for the message 
+  # test for the exception message (in this release no wild cards are allowed)
+  # an example of just testing for the exception message
