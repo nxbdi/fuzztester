@@ -25,7 +25,7 @@ Note that included in the release is a fuzz-tester-dependencies-version.jar that
   # uses the JUnit [http://kentbeck.github.com/junit/javadoc/latest/org/junit/runner/RunWith.html @RunWith] annotation to say use the fuzztester runner
   # use the Fuzz Tester [http://fuzztester.googlecode.com/svn/trunk/doc/api/index.html @Parameters] annotation that provides the test file(s) location and name(s)
   <br/>
- # Mark your test fixtures with the @Fuzz annotation.
+ # Mark your test fixtures with the [http://fuzztester.googlecode.com/svn/trunk/doc/api/index.html @Fuzz] annotation.
 {{{
 @Fuzz
 public void truncExample( final String input, final Integer endIndex, final String expected )
