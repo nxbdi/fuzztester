@@ -61,7 +61,7 @@ public void truncExample( final String input, final Integer endIndex, final Stri
 
 For a complete example project download fuzz-tester-examples-version.zip, which covers the preceding and other features. 
 
-== Testing Exceptions ==
+= Testing Exceptions =
 Exception testing is completely controlled using the JSON test files and you have the option to test for the exception class and or the exception message. There are no required annotations or special actions required in your test fixture, other than declaring your method throws an exception assuming the method you're testing throws a declared exception.
 
 {{{
