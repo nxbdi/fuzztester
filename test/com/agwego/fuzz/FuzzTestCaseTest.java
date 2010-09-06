@@ -72,7 +72,7 @@ public class FuzzTestCaseTest
 		    FuzzTestCase.getMethodParams( com.agwego.fuzz.fuzz_tester_test.FuzzTestCaseTest.class, "noMockTest", 2 );
         } catch( Throwable ex ) {
             exceptionCaught = true;
-            assertEquals( "No test method 'noMockTest' with matching parameters signature", ex.getMessage() );
+            assertEquals( "No test method 'noMockTest' with matching parameters signature, (check your JSON test file)", ex.getMessage() );
         }
         assertTrue( exceptionCaught );
 	}

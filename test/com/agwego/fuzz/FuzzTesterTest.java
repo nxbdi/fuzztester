@@ -211,7 +211,7 @@ public class FuzzTesterTest
 			FuzzTester ft = new FuzzTester( FuzzTesterTest.NoMethodExists.class );
 		} catch( Throwable ex ) {
 			exceptionCaught = true;
-			assertEquals( "No test method 'noMethodExists' with matching parameters signature", ex.getMessage() );
+			assertEquals( "No test method 'noMethodExists' with matching parameters signature, (check your JSON test file)", ex.getMessage() );
 		}
 
 		assertTrue( exceptionCaught );
