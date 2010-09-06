@@ -8,6 +8,9 @@ Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) fo
  * int, long, short, byte -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/Integer.html java.lang.Integer] (if possible)
  * float, double -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/Double.html java.lang.Double]
  * boolean -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/Boolean.html java.lang.Boolean]
+ * string -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/String.html  java.lang.String]
+ * arrays of simple types or simple json objects
+ * simple json objects (i.e. no object graphs yet, essentially any object that is composed of simple types
 
 == Test Format ==
 Unit tests
@@ -19,15 +22,10 @@ Unit tests
             "comment" : "Getting Started Trunc Test (input, length, expected)",  # optional
             "method" : "truncExample",  # required the method name to test
             "testCases" : [  # required, list of test cases to run
-                { "args" : [ "", 6, "" ] },
-                { "args" : [ "1", 6, "1" ] },
                 { "args" : [ "12", 6, "12" ] },
                 { "args" : [ "123456", 6, "123456" ] },
-                { "args" : [ "123456789", 6, "123456" ] },
                 { "args" : [ "123456789", -1, "123456789" ] },
-                { "args" : [ "123456789", 0, "" ] },
                 { "args" : [ null, 1, null ] }
-
             ]
         },
         {
