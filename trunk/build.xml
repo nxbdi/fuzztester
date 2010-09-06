@@ -55,6 +55,19 @@
         </fileset>
     </path>
 
+    <fileset dir="${basedir}/lib" id="package-dependency-libs">
+        <exclude name="junit*"/>
+        <exclude name="*src*"/>
+        <include name="*.jar"/>
+        <!--include name="gson.LICENSE"/-->
+        <!--include name="commons.LICENSE.txt"/-->               
+    </fileset>
+
+    <fileset dir="${basedir}/lib" id="package-dependency-collateral">
+        <include name="gson.LICENSE"/>
+        <include name="commons.LICENSE.txt"/>
+    </fileset>
+
     <path id="classpath-prod">
         <pathelement path="${out.prod.dir}"/>
     </path>
@@ -156,12 +169,45 @@
         </jar>
     </target>
 
-    <target name="package" depends="jar" description="Package fuzz tester">
+    <target name="package" depends="jar, package-dependencies, examples" description="Package fuzz tester">
         <property name="pkg.dir" value="${package.dir}/fuzz-tester-${fuzz.version}"/>
         <mkdir dir="${pkg.dir}"/>
         <copy file="fuzz-tester-${fuzz.version}.jar" todir="${pkg.dir}"/>
         <copy file="${doc.dir}/LICENSE" todir="${pkg.dir}"/>
         <copy file="${doc.dir}/README" todir="${pkg.dir}"/>
+    </target>
+
+	<target name="package-dependencies">
+        <property name="pkg.dir" value="${package.dir}/fuzz-tester-${fuzz.version}"/>
+        <mkdir dir="${pkg.dir}"/>
+		<property name="package.jar.name" value="fuzz-tester-dependencies-${fuzz.version}.jar"/>
+
+		<property name="package.jar" value="${pkg.dir}/${package.jar.name}"/>
+        <delete file="${package.jar}"/>
+
+		<echo message="Packaging Dependencies: ${package.jar}"/>
+
+		<jar destfile="${pkg.dir}/temp_final.jar" filesetmanifest="skip">
+			<zipgroupfileset refid="package-dependency-libs"/>
+		</jar>
+
+		<zip destfile="${package.jar}">
+			<zipfileset src="${pkg.dir}/temp_final.jar" excludes="META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA"/>
+            <fileset refid="package-dependency-collateral"/>
+		</zip>
+
+		<delete file="${pkg.dir}/temp_final.jar"/>
+	</target>
+
+    <target name="examples" description="Zip up the examples">
+        <property name="pkg.dir" value="${package.dir}/fuzz-tester-${fuzz.version}"/>
+        <mkdir dir="${pkg.dir}"/>
+        <zip
+            destfile="${pkg.dir}/fuzz-tester-examples-${fuzz.version}.zip"
+            basedir="${basedir}/examples"
+            excludes="**/build/** **/*.class"
+            >
+        </zip>
     </target>
 
     <target name="buildtests" depends="build" description="Compile test tree java files">
@@ -228,6 +274,7 @@
                 <include name="**/*.class"/>
             </fileset>
         </delete>
+        <mkdir dir="${out.prod.dir}"/>
 	    <touch file="${out.prod.dir}/build_tag.properties"/>
     </target>
 
@@ -241,9 +288,10 @@
 	            <include name="build_tag.properties"/>
             </fileset>
 	    </delete>
-        <delete dir="${build.dir}"/>
-        <delete dir="${doc.dir}/api"/>
-        <delete dir="${doc.dir}/coverage"/>
+        <delete dir="${build.dir}" includeEmptyDirs="true"/>
+        <delete dir="${doc.dir}/api" includeEmptyDirs="true"/>
+        <delete dir="${doc.dir}/coverage" includeEmptyDirs="true"/>
+        <delete dir="${package.dir}" includeEmptyDirs="true"/>
 	</target>
 
     <target name="version" depends="jar">
@@ -265,7 +313,7 @@
         </propertyregex>
     </target>
 
-    <target  name="doc" description="Generate the javadoc">
+    <target name="doc" description="Generate the javadoc">
         <javadoc
             packagenames="com.agwego.*"
             sourcepath="${src.dir}"
