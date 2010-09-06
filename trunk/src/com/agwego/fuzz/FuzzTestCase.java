@@ -153,7 +153,7 @@ public class FuzzTestCase
 		}
 
 		if( params == null )
-			throw new RuntimeException( String.format( "No test method '%s' with matching parameters signature", methodName ));
+			throw new RuntimeException( String.format( "No test method '%s' with matching parameters signature, (check your JSON test file)", methodName ));
 
 		return params;
 	}
