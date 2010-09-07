@@ -67,22 +67,7 @@ An example of passing beans and arrays
 
 {{{
 {
-    "only" : [ "truncExample", "exceptionExample" ], # optional, a list of method names to run
     "unitTest" : [ # required
-        {
-            "skip" : true,  # optional, default false, skip this method in its entirety 
-            "comment" : "Getting Started Trunc Test (input, length, expected)",  # optional
-            "method" : "truncExample",  # required the method name to test
-            "testCases" : [  # required, list of test cases to run
-                { "args" : [ "12", 6, "12" ] },
-                { "args" : [ "123456", 6, "123456" ] },
-                { "args" : [ "123456789", -1, "123456789" ] },
-                {
-                  "args" : [ null, 1, null ],
-                  "pass" : false, # optional, assert the result of the test, default true
-                }
-            ]
-        },
         {
             "method" : "truncExample2", 
             "testCases" : [
