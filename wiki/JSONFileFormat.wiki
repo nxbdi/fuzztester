@@ -19,7 +19,7 @@ Here's an example JSON test file,
 {{{
 {
     "only" : [ "truncExample", "exceptionExample" ], # optional, a list of method names to run
-    "unitTest" : [
+    "unitTest" : [ # required
         {
             "skip" : true,  # optional, default false, skip this method in its entirety 
             "comment" : "Getting Started Trunc Test (input, length, expected)",  # optional
