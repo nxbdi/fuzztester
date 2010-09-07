@@ -13,7 +13,9 @@ Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) fo
  * simple planar objects(beans) (i.e. no object graphs yet, any object that is composed of simple types from above)
 
 == Test Format ==
-Unit tests
+
+Here's an example JSON test file,
+
 {{{
 {
     "only" : [ "truncExample", "exceptionExample" ], # optional, a list of method names to run
