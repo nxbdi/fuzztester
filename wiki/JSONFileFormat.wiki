@@ -19,7 +19,7 @@ Unit tests
     "only" : [ "truncExample", "exceptionExample" ], # optional, a list of method names to run
     "unitTest" : [
         {
-            "ignore" : true,  # optional default false
+            "ignore" : true,  # optional, default false
             "comment" : "Getting Started Trunc Test (input, length, expected)",  # optional
             "method" : "truncExample",  # required the method name to test
             "testCases" : [  # required, list of test cases to run
@@ -32,7 +32,7 @@ Unit tests
         {
             "comment" : "Getting Started except(input, expected)",
             "method" : "exceptionExample",
-            "skip" : true, # optional default false
+            "skip" : true, # optional, default false
             "testCases" : [
                 {
                     "name" : "some descriptive text", # optional
