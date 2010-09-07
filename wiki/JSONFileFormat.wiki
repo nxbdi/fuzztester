@@ -62,7 +62,8 @@ Here's an example JSON test file,
 }
 }}}
 
-=== Passing beans via the args array ===
+=== Complex method arguments ===
+An example of passing beans and arrays
 
 {{{
 {
