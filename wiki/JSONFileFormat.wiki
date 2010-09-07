@@ -16,7 +16,7 @@ Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) fo
 Unit tests
 {{{
 {
-    "only" : [ "truncExample", "exceptionExample" ], # optional a list of method names to run
+    "only" : [ "truncExample", "exceptionExample" ], # optional, a list of method names to run
     "unitTest" : [
         {
             "ignore" : true,  # optional default false
