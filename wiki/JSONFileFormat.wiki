@@ -87,13 +87,11 @@ Here's an example JSON test file,
             "testCases" : [
                 { 
                   "args" : [ 
-                               { "memberData1" : "12", "someVariable" : 6, "anotherVariable" : 4.5 },
-                               true,
-                               "xyz"
-                           ],
-                  
-                },
-                { "args" : [ "123456", 6, "123456" ] },
+                       { "memberData1" : "12", "someVariable" : 6, "anotherVariable" : 4.5 },
+                       true,
+                       "xyz"
+                  ]
+                }
             ]
         }
     ]
