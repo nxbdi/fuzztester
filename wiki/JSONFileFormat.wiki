@@ -31,8 +31,10 @@ Unit tests
         {
             "comment" : "Getting Started except(input, expected)",
             "method" : "exceptionExample",
+            "skip" : true, # optional default false
             "testCases" : [
                 {
+                    "name" : "some descriptive text", # optional
                     "args" : [ "1", null ],
                     "exceptionThrown" : "java.lang.Exception"
                 },
