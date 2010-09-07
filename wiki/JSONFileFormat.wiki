@@ -48,7 +48,7 @@ Unit tests
                     "exceptionMessage" : "This is a test exception: 1"
                 },
                 {
-                    "skip" : true, # optional, skip this test
+                    "skip" : true, # optional, skip this test, default false
                     "args" : [ null, null ]
                 }
             ]
