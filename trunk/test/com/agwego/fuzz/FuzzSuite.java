@@ -32,7 +32,8 @@ import org.junit.runners.Suite;
 	FuzzTesterTest.class,
 	ArrayObjTest.class,
 	FuzzTestCaseTest.class,
-	FuzzTesterRulesTest.class
+	FuzzTesterRulesTest.class,
+	JsonFormatTest.class
 })
 public class FuzzSuite
 {	
