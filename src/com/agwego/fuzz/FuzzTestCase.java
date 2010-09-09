@@ -26,6 +26,7 @@ package com.agwego.fuzz;
 
 import com.agwego.common.GsonHelper;
 import com.agwego.common.StringHelper;
+import com.agwego.fuzz.exception.FuzzTestJsonError;
 import com.google.gson.*;
 
 import java.lang.reflect.Method;
@@ -98,7 +99,7 @@ public class FuzzTestCase
 	}
 
 	@SuppressWarnings( "unchecked method invocation: <T>fromJson(com.google.gson.JsonElement,java.lang.Class<T>) in com.google.gson.Gson is applied to (com.google.gson.Jon: <T>fromJson(com.google.gson.JsonElement,java.lang.Class<T>) in com.google.gson.Gson is applied to (com.google.gson.J" )
-	protected static FuzzTestCase deserialize( final JsonObject jobj, final int testNumber, final String methodName, final Class testClass )
+	protected static FuzzTestCase deserialize( final JsonObject jobj, final int testNumber, final String methodName, final Class testClass ) throws FuzzTestJsonError
 	{
 		FuzzTestCase fuzzTestCase = new FuzzTestCase();
 		fuzzTestCase.setMethodName( methodName );
@@ -110,7 +111,15 @@ public class FuzzTestCase
 		fuzzTestCase.setPass( GsonHelper.getAsBoolean( jobj, "pass", true ));
 
 		JsonArray jargs = jobj.getAsJsonArray( "args" );
-		Class params [] = getMethodParams( testClass, methodName, jargs.size() );
+		if( jargs == null || jargs.size() == 0 ) {
+			throw new FuzzTestJsonError( String.format( "Method '%s' has no argument list", methodName ) );
+		}
+		Class params [];
+		try {
+			params = getMethodParams( testClass, methodName, jargs.size() );
+		} catch( FuzzTestJsonError ex ) {
+			throw new FuzzTestJsonError( ex.getMessage() );
+		}
 
 		int idx = 0;
 		for( JsonElement jarg : jargs ) {			
@@ -137,7 +146,7 @@ public class FuzzTestCase
 		}
 	}
 
-	protected static Class[] getMethodParams( final Class testClass, final String methodName, final int argsNum )
+	protected static Class[] getMethodParams( final Class testClass, final String methodName, final int argsNum ) throws FuzzTestJsonError
 	{
 		Method methods[] = testClass.getMethods();
 		Class params [] = null;
@@ -153,7 +162,7 @@ public class FuzzTestCase
 		}
 
 		if( params == null )
-			throw new RuntimeException( String.format( "No test method '%s' with matching parameters signature, (check your JSON test file)", methodName ));
+			throw new FuzzTestJsonError( String.format( "No test method '%s' with matching parameters signature, (check your JSON test file)", methodName ));
 
 		return params;
 	}

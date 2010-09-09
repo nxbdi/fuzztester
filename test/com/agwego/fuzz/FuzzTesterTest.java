@@ -26,6 +26,7 @@ package com.agwego.fuzz;
 
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
+import com.agwego.fuzz.exception.FuzzTestJsonError;
 import com.agwego.fuzz.exception.ParametersError;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -80,6 +81,9 @@ public class FuzzTesterTest
 	    } catch( ParametersError ex ) {
 		    log.info( "x Exception: " + ex.getMessage() );
 		    fail();
+	    } catch( FuzzTestJsonError ex ) {
+		    log.info( "x Exception: " + ex.getMessage() );
+		    fail();
 	    } catch( InitializationError ex ) {
 		    assertEquals( ex.getCauses().size(), 1 );
 			assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", ex.getCauses().get( 0 ).getMessage() );
@@ -104,7 +108,10 @@ public class FuzzTesterTest
 		} catch( ParametersError ex ) {
 			log.info( "x Exception: " + ex.getMessage() );
 			fail();
-		} catch( InitializationError ex ) {
+		} catch( FuzzTestJsonError ex ) {
+		    log.info( "x Exception: " + ex.getMessage() );
+		    fail();
+	    }catch( InitializationError ex ) {
 			assertEquals( ex.getCauses().size(), 1 );
 			assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", ex.getCauses().get( 0 ).getMessage() );
 			exceptionCaught = true;
@@ -128,7 +135,10 @@ public class FuzzTesterTest
 		} catch( ParametersError ex ) {
 			assertEquals( "@Parameters( TestDirectory, Prefix, Suffix = '.json', TestDirectoryRootPropertyName = ''", ex.getMessage() );
 			exceptionCaught = true;
-		} catch( InitializationError ex ) {
+		} catch( FuzzTestJsonError ex ) {
+		    log.info( "x Exception: " + ex.getMessage() );
+		    fail();
+	    }catch( InitializationError ex ) {
 			fail();
 		}
 
@@ -211,7 +221,7 @@ public class FuzzTesterTest
 			FuzzTester ft = new FuzzTester( FuzzTesterTest.NoMethodExists.class );
 		} catch( Throwable ex ) {
 			exceptionCaught = true;
-			assertEquals( "No test method 'noMethodExists' with matching parameters signature, (check your JSON test file)", ex.getMessage() );
+			assertTrue( ex.getMessage().startsWith( "No test method 'noMethodExists' with matching parameters signature, (check your JSON test file)" )  );
 		}
 
 		assertTrue( exceptionCaught );

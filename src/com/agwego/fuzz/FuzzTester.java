@@ -28,6 +28,7 @@ import com.agwego.common.FileHelper;
 import com.agwego.common.GsonHelper;
 import com.agwego.common.StringHelper;
 import com.agwego.fuzz.annotations.Parameters;
+import com.agwego.fuzz.exception.FuzzTestJsonError;
 import com.agwego.fuzz.exception.ParametersError;
 import com.google.gson.*;
 import org.apache.commons.logging.Log;
@@ -56,6 +57,7 @@ public class FuzzTester extends Suite
 	public static final String TEST_CASES = "testCases";
 	public static final String TEST_UNIT = "unitTest";
 	public static final String TEST_SKIP = "skip";
+	public static final String TEST_FILE = "FuzzFile";
 
 	/**
 	 * Only called reflectively. Do not use programmatically.
@@ -63,8 +65,9 @@ public class FuzzTester extends Suite
 	 * @param klass the class of this test
 	 * @throws com.agwego.fuzz.exception.ParametersError if any errors or otherwise
 	 * @throws InitializationError -
+	 * @throws FuzzTestJsonError - for any semantic errors in the JSON formatted test case
 	 */
-	public FuzzTester( Class<?> klass ) throws ParametersError, InitializationError
+	public FuzzTester( Class<?> klass ) throws ParametersError, InitializationError, FuzzTestJsonError
 	{
 		super( klass, Collections.<Runner>emptyList() );
 
@@ -102,16 +105,27 @@ public class FuzzTester extends Suite
 	 * @param suffix Look for files that end in
 	 * @param testClass the class we're are testing
 	 * @return the map of the TestCases
-	 * @throws InitializationError if there are errors reading the file 
+	 * @throws InitializationError if there are errors reading the file
+	 * @throws FuzzTestJsonError - for any semantic errors in the JSON formatted test case
 	 */
-	protected Map<String,List<FuzzTestCase>> getTestMethods( String dirName, String prefix, String suffix, Class testClass ) throws InitializationError
+	protected Map<String,List<FuzzTestCase>> getTestMethods( String dirName, String prefix, String suffix, Class testClass ) throws InitializationError, FuzzTestJsonError
 	{
 		Map<String,List<FuzzTestCase>> testMethods = new HashMap<String,List<FuzzTestCase>>();
 		List<JsonObject> tests = getTests( dirName, prefix, suffix );
 
 		for( JsonObject test : tests ) {
 			JsonArray only = GsonHelper.getAsArray( test, "only" );
-			JsonArray testUnits = test.getAsJsonArray( TEST_UNIT );
+			JsonArray testUnits;
+			try {
+				testUnits = test.getAsJsonArray( TEST_UNIT );
+			} catch( ClassCastException ex ) {
+				throw new FuzzTestJsonError( "The \"" + TEST_UNIT + "\" element is not an array, File = " + test.get( FuzzTester.TEST_FILE ) );
+			}
+			if( testUnits == null ) {
+				throw new FuzzTestJsonError( "The \"" + TEST_UNIT + "\" element is missing check your JSON file, File = " + test.get( FuzzTester.TEST_FILE ) );
+			} else if( testUnits.size() == 0 ) {
+				throw new FuzzTestJsonError( "The \"" + TEST_UNIT + "\" element contains no tests, File = " + test.get( FuzzTester.TEST_FILE )  );
+			}
 			for( JsonElement x : testUnits ) {
 				JsonObject unitTest = x.getAsJsonObject();
 				// TODO add assertion of method_name existence
@@ -125,7 +139,12 @@ public class FuzzTester extends Suite
 							TEST_SKIP,
 							skip || ! in( unitTest.get( METHOD_NAME ).getAsString(), only ) || GsonHelper.getAsBoolean( tcj, TEST_SKIP, false )
 					);
-					FuzzTestCase fuzzTestCase = FuzzTestCase.deserialize( tcj, idx, unitTest.get( METHOD_NAME).getAsString(), testClass );
+					FuzzTestCase fuzzTestCase;
+					try {
+						fuzzTestCase = FuzzTestCase.deserialize( tcj, idx, unitTest.get( METHOD_NAME).getAsString(), testClass );
+					} catch( FuzzTestJsonError ex ) {
+						throw new FuzzTestJsonError( ex.getMessage() + " see file: " + test.get( FuzzTester.TEST_FILE ), ex );	
+					}
 					fuzzTestCases.add( fuzzTestCase );
 					idx++;
 				}
@@ -150,10 +169,14 @@ public class FuzzTester extends Suite
 		JsonParser jParser = new JsonParser();
 
 		try {
-			for( File f: FileHelper.getFileList( dirName, prefix, suffix ) )
-				js.add( jParser.parse( FileHelper.readFile( f )).getAsJsonObject() ) ;
+			for( File f: FileHelper.getFileList( dirName, prefix, suffix ) ) {
+				log.debug( " FILE: " + f.getAbsolutePath() );
+				JsonObject jObj = jParser.parse( FileHelper.readFile( f )).getAsJsonObject();
+				jObj.addProperty( FuzzTester.TEST_FILE, f.getAbsolutePath() );
+				js.add( jObj ) ;
+			}
 		} catch( Exception ex ) {
-			log.info( ex );
+			log.error( ex );
 			throw new InitializationError( ex );
 		}
 
