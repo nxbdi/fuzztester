@@ -23,7 +23,7 @@ In no particular order
    * type handling
    * JSON file format
    * ignore
-   * mixing @Test with @Fuxx
+   * mixing @Test with @Fuzz
    * Multiple JSON files
   * update javadoc
   * ~~publish javadoc to Googlecode~~
