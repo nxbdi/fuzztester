@@ -58,7 +58,7 @@ public class FuzzTesterRulesTest
 	}
 
 	@Fuzz
-	public void fuzzRules() throws IOException
+	public void fuzzRules( String dummy ) throws IOException
 	{
 		File root = folder.getRoot();
 		assertTrue( root.canRead() );
