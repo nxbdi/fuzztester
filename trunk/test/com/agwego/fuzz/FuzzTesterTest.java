@@ -39,6 +39,7 @@ import org.junit.runners.model.InitializationError;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Tim Desjardins
@@ -79,14 +80,11 @@ public class FuzzTesterTest
 	    try {
 	        new FuzzTester( FuzzTesterTest.TestParameters.class );
 	    } catch( ParametersError ex ) {
-		    log.info( "x Exception: " + ex.getMessage() );
-		    fail();
-	    } catch( FuzzTestJsonError ex ) {
-		    log.info( "x Exception: " + ex.getMessage() );
 		    fail();
 	    } catch( InitializationError ex ) {
-		    assertEquals( ex.getCauses().size(), 1 );
-			assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", ex.getCauses().get( 0 ).getMessage() );
+		    fail();
+	    } catch( FuzzTestJsonError ex ) {
+		    assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", ex.getMessage() );
 		    exceptionCaught = true;
 	    }
 
@@ -106,16 +104,13 @@ public class FuzzTesterTest
 		try {
 		    new FuzzTester( FuzzTesterTest.TestParameters.class );
 		} catch( ParametersError ex ) {
-			log.info( "x Exception: " + ex.getMessage() );
+			fail();
+		} catch( InitializationError ex ) {
 			fail();
 		} catch( FuzzTestJsonError ex ) {
-		    log.info( "x Exception: " + ex.getMessage() );
-		    fail();
-	    }catch( InitializationError ex ) {
-			assertEquals( ex.getCauses().size(), 1 );
-			assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", ex.getCauses().get( 0 ).getMessage() );
+			assertEquals( "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/no_directory", ex.getMessage() );
 			exceptionCaught = true;
-		}
+	    }
 
 		assertTrue( exceptionCaught );
 	}
@@ -219,9 +214,9 @@ public class FuzzTesterTest
 		boolean exceptionCaught = false;
 		try {
 			FuzzTester ft = new FuzzTester( FuzzTesterTest.NoMethodExists.class );
-		} catch( Throwable ex ) {
+		} catch( FuzzTestJsonError ex ) {
 			exceptionCaught = true;
-			assertTrue( ex.getMessage().startsWith( "No test method 'noMethodExists' with matching parameters signature, (check your JSON test file)" )  );
+			assertTrue( ex.getMessage().startsWith( "No test method 'noMethodExists' with matching parameters signature" )  );
 		}
 
 		assertTrue( exceptionCaught );

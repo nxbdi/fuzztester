@@ -45,7 +45,7 @@ public class FuzzTestCaseTest
 		    FuzzTestCase.getMethodParams( com.agwego.fuzz.fuzz_tester_test.FuzzTestCaseTest.class, "mockTest", 2 );
         } catch( Throwable ex ) {
             exceptionCaught = true;
-            assertEquals( "Method 'mockTest' with incorrect argument signature", ex.getMessage() );
+            assertEquals( "Method 'mockTest' has a mismatched parameters signature (too few)", ex.getMessage() );
         }
         assertTrue( exceptionCaught );
 	}
@@ -58,7 +58,7 @@ public class FuzzTestCaseTest
             FuzzTestCase.getMethodParams( com.agwego.fuzz.fuzz_tester_test.FuzzTestCaseTest.class, "mockTest", 3 );
         } catch( Throwable ex ) {
             exceptionCaught = true;
-            assertEquals( "Method 'mockTest' with incorrect argument signature", ex.getMessage() );
+            assertEquals( "Method 'mockTest' has a mismatched parameters signature (too many)", ex.getMessage() );
         }
         assertTrue( exceptionCaught );
     }
@@ -72,7 +72,7 @@ public class FuzzTestCaseTest
 		    FuzzTestCase.getMethodParams( com.agwego.fuzz.fuzz_tester_test.FuzzTestCaseTest.class, "noMockTest", 2 );
         } catch( Throwable ex ) {
             exceptionCaught = true;
-            assertEquals( "No test method 'noMockTest' with matching parameters signature, (check your JSON test file)", ex.getMessage() );
+            assertEquals( "No test method 'noMockTest' with matching parameters signature", ex.getMessage() );
         }
         assertTrue( exceptionCaught );
 	}

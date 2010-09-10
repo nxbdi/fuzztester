@@ -3,7 +3,7 @@
         {
             "method" : "fuzzRules",
             "testCases" : [
-                { "args" : [] }
+                { "args" : [ "dummy" ] }
             ]
         }
     ]
