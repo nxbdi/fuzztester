@@ -1,0 +1,42 @@
+{
+    "unitTest" : [
+        {
+            "ignore" : true,
+            "comment" : "Getting Started Trunc Test (input, length, expected)",
+            "method" : "truncExample",
+            "testCases" : [
+                { "args" : [ "", 6, "" ] },
+                { "args" : [ "1", 6, "1" ] },
+                { "args" : [ "12", 6, "12" ] },
+                { "args" : [ "123456", 6, "123456" ] },
+                { "args" : [ "123456789", 6, "123456" ] },
+                { "args" : [ "123456789", -1, "123456789" ] },
+                { "args" : [ "123456789", 0, "" ] },
+                { "args" : [ null, 1, null ] }
+
+            ]
+        },
+        {
+            "comment" : "Getting Started except(input, expected)",
+            "method" : "exceptionExample",
+            "testCases" : [
+                {
+                    "args" : [ "1", null ],
+                    "exceptionThrown" : "java.lang.Exception"
+                },
+                {
+                    "args" : [ "1", null ],
+                    "exceptionThrown" : "java.lang.Exception",
+                    "exceptionMessage" : "This is a test exception: 1"
+                },
+                {
+                    "args" : [ "1", null ],
+                    "exceptionMessage" : "This is a test exception: 1"
+                },
+                {
+                    "args" : [ null, null ]
+                }
+            ]
+        }
+    ]
+}
