@@ -289,8 +289,6 @@
             </fileset>
 	    </delete>
         <delete dir="${build.dir}" includeEmptyDirs="true"/>
-        <delete dir="${doc.dir}/api" includeEmptyDirs="true"/>
-        <delete dir="${doc.dir}/coverage" includeEmptyDirs="true"/>
         <delete dir="${package.dir}" includeEmptyDirs="true"/>
 	</target>
 

@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="6487cbf1-f9f8-47df-8009-544c960ea5ec" name="Default" comment="" />
-    <ignored path="$USER_HOME_GRIFFON$/" />
-    <ignored path="fuzz.iws" />
     <ignored path="$USER_HOME_GRAILS$/" />
+    <ignored path="$USER_HOME_GRIFFON$/" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="fuzz.iws" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +17,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/timd$FuzzTesterTest.ic" NAME="FuzzTesterTest Coverage Results" MODIFIED="1282794852565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/timd$FuzzTesterTest.ic" NAME="FuzzTesterTest Coverage Results" MODIFIED="1284139301343" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.agwego.fuzz.*</FILTER>
       <FILTER>com.agwego.common.*</FILTER>
     </SUITE>
@@ -31,7 +31,7 @@
       <FILTER>com.agwego.common.*</FILTER>
       <FILTER>com.agwego.fuzz.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/timd$AllTests.ic" NAME="AllTests Coverage Results" MODIFIED="1284034465585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/timd$AllTests.ic" NAME="AllTests Coverage Results" MODIFIED="1284139691906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.agwego.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/timd$FuzzSuite.ic" NAME="FuzzSuite Coverage Results" MODIFIED="1271617155280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -93,7 +93,52 @@
       <file leaf-file-name="FuzzTester.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="78" selection-start="6355" selection-end="6355" vertical-scroll-proportion="-15.48">
+            <state line="143" column="0" selection-start="6138" selection-end="6138" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuzzTestCase.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestCase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="119" column="0" selection-start="4636" selection-end="4636" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuzzTesterRulesTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterRulesTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="0" selection-start="1887" selection-end="1887" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../../build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="290" column="60" selection-start="12077" selection-end="12077" vertical-scroll-proportion="0.5489914">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuzzTesterRulesTest.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterRulesTest.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="37" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JsonFormatTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/JsonFormatTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="377" column="84" selection-start="11527" selection-end="11527" vertical-scroll-proportion="-19.68">
               <folding />
             </state>
           </provider>
@@ -108,75 +153,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Exception.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://D:/DevTools/Java/jdk1.5.0_22/src.zip!/java/lang/Exception.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="13" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FuzzTestCase.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestCase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="0" selection-start="4368" selection-end="4368" vertical-scroll-proportion="0.33247423">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JsonFormatTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/JsonFormatTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="241" column="20" selection-start="8035" selection-end="8035" vertical-scroll-proportion="-13.2">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JSON_empty_args.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_empty_args.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="16" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FrameworkMethod.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../../lib/junit-dep-4.8.2.jar!/org/junit/runners/model/FrameworkMethod.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="1608" selection-end="1608" vertical-scroll-proportion="-20.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JSON_missing_args.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_missing_args.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JSON_missing_method.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_missing_method.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="29" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FuzzTesterTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="74" selection-start="8435" selection-end="8435" vertical-scroll-proportion="0.0">
+            <state line="215" column="0" selection-start="6635" selection-end="6635" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuzzSuite.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzSuite.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="11" selection-start="1413" selection-end="1413" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuzzTestCaseTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTestCaseTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="89" selection-start="2663" selection-end="2663" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -196,22 +194,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_missing_body_unitTest.json" />
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_body_as_empty_object.json" />
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_body_as_object.json" />
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/TestJsonFormat.java" />
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/TestJsonFormat.java" />
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzSuite.java" />
-        <option value="$PROJECT_DIR$/../../../build.xml" />
-        <option value="$PROJECT_DIR$/../../../src/log4j.properties" />
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_missing_method.json" />
         <option value="$PROJECT_DIR$/../../../src/com/agwego/fuzz/exception/FuzzTestJsonError.java" />
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterTest.java" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_missing_args.json" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_empty_args.json" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_object_args.json" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_too_few_args_for_method.json" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_too_many_args_for_method.json" />
         <option value="$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestCase.java" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_test_meta_data.json" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_missing_comma.json" />
         <option value="$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/JsonFormatTest.java" />
-        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_empty_args.json" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTestCaseTest.java" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterTest.java" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterRulesTest.java" />
+        <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterRulesTest.json" />
+        <option value="$PROJECT_DIR$/../../../build.xml" />
       </list>
     </option>
   </component>
@@ -254,6 +252,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -331,36 +330,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="fuzz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="array_obj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="timd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fuzztester" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agwego" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fuzz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="array_obj" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -543,7 +512,6 @@
         </subPane>
       </pane>
       <pane id="Favorites" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -564,7 +532,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager" selected="JUnit.JsonFormatTest">
+  <component name="RunManager" selected="JUnit.AllTests">
     <configuration default="false" name="FuzzTesterRulesTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1151,6 +1119,38 @@
       <ConfigurationWrapper RunnerId="Debug" />
       <method />
     </configuration>
+    <configuration default="false" name="JsonFormatTest.objectArgs" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.agwego.fuzz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="snapshooter" />
+      <module name="fuzz" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="com.agwego.fuzz" />
+      <option name="MAIN_CLASS_NAME" value="com.agwego.fuzz.JsonFormatTest" />
+      <option name="METHOD_NAME" value="objectArgs" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../../.." />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="4572" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <ConfigurationWrapper RunnerId="Debug" />
+      <method />
+    </configuration>
     <configuration default="true" type="PhpRunConfigurationType" factoryName="PHP">
       <method>
         <option name="AntTarget" enabled="false" />
@@ -1296,7 +1296,7 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="18">
+    <list size="19">
       <item index="0" class="java.lang.String" itemvalue="JUnit.FuzzTesterRulesTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.FuzzTesterTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.TestMethod" />
@@ -1315,6 +1315,7 @@
       <item index="15" class="java.lang.String" itemvalue="JUnit.JsonFormatTest" />
       <item index="16" class="java.lang.String" itemvalue="JUnit.JsonFormatTest.missingArgs" />
       <item index="17" class="java.lang.String" itemvalue="JUnit.JsonFormatTest.emptyArgs" />
+      <item index="18" class="java.lang.String" itemvalue="JUnit.JsonFormatTest.objectArgs" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1348,27 +1349,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="130" y="3" width="1538" height="1463" extended-state="0" />
-    <editor active="true" />
+    <frame x="138" y="15" width="1918" height="1487" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3149847" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3524465" sideWeight="0.9994203" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4009009" sideWeight="0.9977247" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32492355" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32057056" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28899392" sideWeight="0.64220184" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2622246" sideWeight="0.5938438" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32798165" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3149847" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994433" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1408,50 +1409,58 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../build.xml">
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_too_few_args_for_method.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="230" column="64" selection-start="9630" selection-end="9630" vertical-scroll-proportion="0.0">
+        <state line="8" column="35" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzSuite.java">
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_too_many_args_for_method.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="18" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_body_as_object.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="37" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_body_as_empty_object.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="5" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_missing_body_unitTest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="41" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_missing_method.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="29" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
+        <state line="8" column="49" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/DevTools/Java/jdk1.5.0_22/src.zip!/java/lang/Exception.java">
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_test_meta_data.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
+        <state line="7" column="72" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/exception/FuzzTestJsonError.java">
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_missing_comma.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="23" selection-start="1669" selection-end="1669" vertical-scroll-proportion="0.4524362">
+        <state line="5" column="36" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/JsonFormatTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="377" column="84" selection-start="11527" selection-end="11527" vertical-scroll-proportion="-19.68">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTestCaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="89" selection-start="2663" selection-end="2663" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../lib/junit-4.8.2.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="17" selection-start="586" selection-end="586" vertical-scroll-proportion="0.21337126">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../lib/junit-4.8.2.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="40" selection-start="404" selection-end="404" vertical-scroll-proportion="0.20891365">
           <folding />
         </state>
       </provider>
@@ -1463,51 +1472,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="74" selection-start="8435" selection-end="8435" vertical-scroll-proportion="0.0">
+        <state line="215" column="0" selection-start="6635" selection-end="6635" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_missing_args.json">
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzSuite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
+        <state line="34" column="11" selection-start="1413" selection-end="1413" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="78" selection-start="6355" selection-end="6355" vertical-scroll-proportion="-15.48">
+        <state line="143" column="0" selection-start="6138" selection-end="6138" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../lib/junit-dep-4.8.2.jar!/org/junit/runners/model/FrameworkMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1608" selection-end="1608" vertical-scroll-proportion="-20.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/array_obj/bad_json_files/JSON_empty_args.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="16" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/JsonFormatTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="20" selection-start="8035" selection-end="8035" vertical-scroll-proportion="-13.2">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestCase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="0" selection-start="4368" selection-end="4368" vertical-scroll-proportion="0.33247423">
+        <state line="119" column="0" selection-start="4636" selection-end="4636" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterRulesTest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="37" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterRulesTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="0" selection-start="1887" selection-end="1887" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="290" column="60" selection-start="12077" selection-end="12077" vertical-scroll-proportion="0.5489914">
           <folding />
         </state>
       </provider>
