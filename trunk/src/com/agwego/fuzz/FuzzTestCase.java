@@ -110,7 +110,12 @@ public class FuzzTestCase
 		fuzzTestCase.setSkip( GsonHelper.getAsBoolean( jobj, "skip", false ));
 		fuzzTestCase.setPass( GsonHelper.getAsBoolean( jobj, "pass", true ));
 
-		JsonArray jargs = jobj.getAsJsonArray( "args" );
+		JsonArray jargs;
+		try {
+			jargs = jobj.getAsJsonArray( "args" );
+		} catch( ClassCastException ex ) {
+			throw new FuzzTestJsonError( String.format( "Method '%s' argument list must be an array", methodName ), ex );
+		}
 		if( jargs == null || jargs.size() == 0 ) {
 			throw new FuzzTestJsonError( String.format( "Method '%s' has no argument list", methodName ) );
 		}
@@ -154,15 +159,17 @@ public class FuzzTestCase
 		for( Method method : methods ) {
 			if( method.getName().equals( methodName) ) {
 				params = method.getParameterTypes();
-				if( params.length != argsNum )
-					throw new RuntimeException( String.format( "Method '%s' with incorrect argument signature", methodName ));
+				if( params.length > argsNum )
+					throw new FuzzTestJsonError( String.format( "Method '%s' has a mismatched parameters signature (too few)", methodName ));
+				else if( params.length < argsNum )
+					throw new FuzzTestJsonError( String.format( "Method '%s' has a mismatched parameters signature (too many)", methodName ));
 				if( testMethod == null )
 					testMethod = method;
 			}
 		}
 
 		if( params == null )
-			throw new FuzzTestJsonError( String.format( "No test method '%s' with matching parameters signature, (check your JSON test file)", methodName ));
+			throw new FuzzTestJsonError( String.format( "No test method '%s' with matching parameters signature", methodName ));
 
 		return params;
 	}
