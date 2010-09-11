@@ -31,7 +31,7 @@ import org.junit.runners.model.FrameworkMethod;
  * 
  * @author Tim Desjardins
  * @version $Rev$
- * 
+ * <br/>
  * $Id$
  */
 public class FuzzTestMethod extends FrameworkMethod

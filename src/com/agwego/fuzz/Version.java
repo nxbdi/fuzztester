@@ -31,7 +31,7 @@ import java.util.Properties;
  *
  * @author Tim Desjardins
  * @version $Rev$
- *
+ * <br/>
  * $Id$
  */
 public class Version

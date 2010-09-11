@@ -46,7 +46,7 @@ import java.util.*;
  *
  * @author Tim Desjardins
  * @version $Rev$
- * 
+ * <br/>
  * $Id$
  */
 public class FuzzTester extends Suite
