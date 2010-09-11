@@ -96,12 +96,7 @@ An example of passing beans and arrays
             "description" : "Some more meta-data",   # meta-data ignored by FuzzTestRunner
             "method" : "truncExample2", 
             "testCases" : [
-                { 
-                  "args" : [                   
-                       true,
-                       "xyz"
-                  ]
-                }
+                { "args" : [ true, "xyz" ] }
             ]
         }
     ]
