@@ -1,5 +1,4 @@
-#summary Detailed File Format for test cases in the JSON format
-
+#sidebar TableOfContents
 = JSON Object format =
 
 Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) format see [http://json.org/ JSON.org] for details concerning escaping special characters, types, etc. 
