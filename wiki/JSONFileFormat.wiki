@@ -13,7 +13,7 @@ Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) fo
  * arrays of simple types or simple json objects
  * simple planar objects(beans) (i.e. no object graphs yet, any object that is composed of simple types from above)
 
-== Test Format ==
+== Test Format by Example ==
 
 Here's an example JSON test file,
 
@@ -34,7 +34,15 @@ Here's an example JSON test file,
                   "pass" : false, # optional, assert the result of the test, default true
                 }
             ]
-        },
+        }
+    ]
+}
+}}}
+
+== Testing Exceptions ==
+{{{
+{
+    "unitTest" : [ # required
         {
             "comment" : "Getting Started except(input, expected)",
             "method" : "exceptionExample",
@@ -62,6 +70,9 @@ Here's an example JSON test file,
     ]
 }
 }}}
+Notes on exceptions:
+ * you have to supply the fully qualified exception name for "exceptionThrown"
+ * "exceptionMessage" only matches the beginning of the thrown exception message with expected message, no wild cards or macros supported (at this time), depending on the requirement more sophisticated matching may be implemented like "exceptionMessageContains"
 
 == Complex method arguments ==
 An example of passing beans and arrays
