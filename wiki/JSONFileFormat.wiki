@@ -123,4 +123,5 @@ An example of passing beans and arrays
   * "testCases" : required, (only one) contains a collection of _testCase_.
   * _testCase_ object : required many
    * "args" : required, contains an array of parameters that will be passed to the test method
+   * "pass" : optional, default true, if you expect the inputs to fail mark the test as pass = fail
    * "skip" : optional, default false if set to true the test method will not be run
