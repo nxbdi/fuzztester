@@ -6,7 +6,7 @@ In no particular order
  * packaging
  * configurable GSON deserializers
  * Honour @BeforeClass @AfterClass
- * treat exception message checking as "begins with"
+ * ~~treat exception message checking as "begins with"~~
  * ~~add tests for @Rules~~
  * ~~add skip at the method level~~
  * ~~add only run primitive at the unitTests level~~
