@@ -179,10 +179,10 @@
 
 	<target name="package-dependencies">
         <property name="pkg.dir" value="${package.dir}/fuzz-tester-${fuzz.version}"/>
-        <mkdir dir="${pkg.dir}"/>
 		<property name="package.jar.name" value="fuzz-tester-dependencies-${fuzz.version}.jar"/>
-
 		<property name="package.jar" value="${pkg.dir}/${package.jar.name}"/>
+
+        <mkdir dir="${pkg.dir}"/>
         <delete file="${package.jar}"/>
 
 		<echo message="Packaging Dependencies: ${package.jar}"/>
@@ -196,11 +196,27 @@
             <fileset refid="package-dependency-collateral"/>
 		</zip>
 
+        <echo message="Updated examples lib"/>
+        <copy file="fuzz-tester-${fuzz.version}.jar" todir="${basedir}/examples/lib"/>
+        <copy file="${package.jar}" todir="${basedir}/examples/lib"/>
+
 		<delete file="${pkg.dir}/temp_final.jar"/>
 	</target>
 
     <target name="examples" description="Zip up the examples">
         <property name="pkg.dir" value="${package.dir}/fuzz-tester-${fuzz.version}"/>
+        <property name="package.jar.name" value="fuzz-tester-dependencies-${fuzz.version}.jar"/>
+
+        <copy file="${pkg.dir}/${package.jar.name}" todir="${basedir}/examples/lib"/>
+        <copy file="fuzz-tester-${fuzz.version}.jar" todir="${basedir}/examples/lib"/>
+        <copy todir="${basedir}/examples/lib">
+            <fileset dir="${basedir}/lib">
+                <include name="junit-*.jar" />
+                <exclude name="junit-*-src.jar"/>
+                <exclude name="junit-dep-*.jar"/>
+            </fileset>
+        </copy>
+
         <mkdir dir="${pkg.dir}"/>
         <zip
             destfile="${pkg.dir}/fuzz-tester-examples-${fuzz.version}.zip"
@@ -220,7 +236,7 @@
         </javac>
     </target>
 
-    <target name="tests" depends="buildtests" description="Run tests">
+    <target name="tests" depends="buildtests" description="Run batch tests">
         <fileset dir="${out.test.dir}" id="test.classes">
             <include name="**/*Test.class" />
         </fileset>
@@ -248,7 +264,7 @@
         </fail>
     </target>
 
-    <target name="all-tests" depends="buildtests" description="Run All Tests">
+    <target name="all-tests" depends="buildtests" description="Run All Tests Suite">
         <junit printsummary="on" fork="true" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
             <classpath location="${instrumented.dir}"/>
             <classpath refid="classpath-prod"/>
