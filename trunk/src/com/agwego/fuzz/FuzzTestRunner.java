@@ -49,7 +49,7 @@ import java.util.List;
  *
  * @author Tim Desjardins
  * @version $Rev$
- * 
+ * <br/>
  * $Id$
  */
 class FuzzTestRunner extends ParentRunner<FrameworkMethod>

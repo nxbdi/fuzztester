@@ -76,7 +76,7 @@ import java.util.List;
  *
  * @author Tim Desjardins
  * @version $Rev$
- * 
+ * <br/>
  * $Id$
  */
 public class FuzzTestCase
