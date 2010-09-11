@@ -1,5 +1,6 @@
 #summary One-sentence summary of this page.
 
 = Table of Contents =
+  * [FuzzTester Fuzz Tester Overview]
   * [GettingStarted Getting Started]
   * [JSONFileFormat JSON File Format]
