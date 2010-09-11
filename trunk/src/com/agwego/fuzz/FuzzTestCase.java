@@ -352,7 +352,7 @@ public class FuzzTestCase
 	 */
 	public boolean matchTestExceptionMessage( Throwable exception )
 	{
-		return StringHelper.unnulled( exceptionMessage ).compareToIgnoreCase( exception.getMessage() ) == 0;
+		return exception.getMessage().startsWith( StringHelper.unnulled( exceptionMessage ) );
 	}
 
 	/**
@@ -362,7 +362,7 @@ public class FuzzTestCase
 	 */
 	public boolean isTestExceptionMessage()
 	{
-		return !StringHelper.isEmpty( exceptionMessage );
+		return ! StringHelper.isEmpty( exceptionMessage );
 	}
 
 	/**
