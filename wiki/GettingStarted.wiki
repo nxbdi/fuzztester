@@ -1,7 +1,7 @@
 <wiki:toc max_depth="1"/>
 = Dependencies =
 
-FuzzTester is a [http://junit.org/ jUnit] add on, it provides a customer test runner and some support classes.
+FuzzTester is a [http://junit.org/ jUnit] test runner, it allows your test data to separated from your test cases.
 
 == Prerequisites ==
  * Java 1.5+
