@@ -39,9 +39,9 @@ import static org.junit.Assert.*;
 
 /**
  * @author Tim Desjardins
- * @version $Rev: $
+ * @version $Rev$
  *
- * $Id: $
+ * $Id$
  */
 public class JsonFormatTest
 {

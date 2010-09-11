@@ -28,9 +28,9 @@ package com.agwego.fuzz.exception;
  * FuzzTestRunner, format errors with json file
  *
  * @author Tim Desjardins
- * @version $Rev: $
+ * @version $Rev$
  * <br/>
- * $Id: $
+ * $Id$
  */
 public class FuzzTestJsonError extends Exception
 {

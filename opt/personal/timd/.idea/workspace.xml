@@ -90,10 +90,10 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FuzzTester.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FuzzTester.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="0" selection-start="6138" selection-end="6138" vertical-scroll-proportion="0.0">
+            <state line="107" column="0" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.2722372">
               <folding />
             </state>
           </provider>
@@ -117,10 +117,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="290" column="60" selection-start="12077" selection-end="12077" vertical-scroll-proportion="0.5489914">
+            <state line="290" column="60" selection-start="12077" selection-end="12077" vertical-scroll-proportion="-7.9375">
               <folding />
             </state>
           </provider>
@@ -203,13 +203,13 @@
         <option value="$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestCase.java" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_test_meta_data.json" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/bad_json_files/JSON_missing_comma.json" />
-        <option value="$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/JsonFormatTest.java" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTestCaseTest.java" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterTest.java" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterRulesTest.java" />
         <option value="$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzTesterRulesTest.json" />
         <option value="$PROJECT_DIR$/../../../build.xml" />
+        <option value="$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java" />
       </list>
     </option>
   </component>
@@ -1350,12 +1350,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="138" y="15" width="1918" height="1487" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4009009" sideWeight="0.9977247" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4009009" sideWeight="0.9977247" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1484,13 +1484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="0" selection-start="6138" selection-end="6138" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTestCase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="119" column="0" selection-start="4636" selection-end="4636" vertical-scroll-proportion="0.0">
@@ -1514,7 +1507,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="290" column="60" selection-start="12077" selection-end="12077" vertical-scroll-proportion="0.5489914">
+        <state line="290" column="60" selection-start="12077" selection-end="12077" vertical-scroll-proportion="-7.9375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="0" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.2722372">
           <folding />
         </state>
       </provider>

@@ -48,9 +48,9 @@ import java.util.List;
  * The FuzzTester: The fuzz tester (also supports regular JUnit @Test annotations)
  *
  * @author Tim Desjardins
- * @version $Rev: 8 $
+ * @version $Rev$
  * 
- * $Id: FuzzTester.java 8 2010-03-26 03:45:50Z agwego $
+ * $Id$
  */
 class FuzzTestRunner extends ParentRunner<FrameworkMethod>
 {

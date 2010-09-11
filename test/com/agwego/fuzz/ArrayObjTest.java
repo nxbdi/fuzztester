@@ -33,9 +33,9 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * @author Tim Desjardins
- * @version $Rev: $
+ * @version $Rev$
  *
- * $Id: $
+ * $Id$
  */
 public class ArrayObjTest
 {

@@ -38,8 +38,8 @@ import static org.junit.Assert.*;
 
 /**
  * @author Tim Desjardins
- * @version $Rev: 22 $
- * $Id: FileFilterPrePostTest.java 22 2010-04-01 04:56:35Z agwego $
+ * @version $Rev$
+ * $Id$
  */
 @RunWith( FuzzTester.class )
 @Parameters( TestDirectory = "test/com/agwego/common", Prefix = "FileHelperTest" )
