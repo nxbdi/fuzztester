@@ -72,7 +72,7 @@ Here's an example JSON test file,
 }}}
 Notes on exceptions:
  * you have to supply the fully qualified exception name for "exceptionThrown"
- * "exceptionMessage" only matches the beginning of the thrown exception message with expected message, no wild cards or macros supported (at this time), depending on the requirement more sophisticated matching may be implemented like "exceptionMessageContains"
+ * "exceptionMessage" only matches the beginning of the thrown exception message with the expected message, no wild cards or macros supported (at this time), depending on the requirement more sophisticated matching may be implemented like "exceptionMessageContains"
 
 == Complex method arguments ==
 An example of passing beans and arrays
