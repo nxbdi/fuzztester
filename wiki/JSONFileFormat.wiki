@@ -63,7 +63,7 @@ Here's an example JSON test file,
 }
 }}}
 
-=== Complex method arguments ===
+== Complex method arguments ==
 An example of passing beans and arrays
 
 {{{
@@ -85,7 +85,7 @@ An example of passing beans and arrays
 }
 }}}
 
-=== Tips ===
+== Tips ==
  * If you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/], the GSON parser doesn't offer the best error messages unfortunately
  * You can add meta-data to the JSON files, for instance key-value pairs that aren't recognized by FuzzTestRunner, for instance:
 {{{
