@@ -85,9 +85,9 @@ An example of passing beans and arrays
             "testCases" : [
                 { 
                   "args" : [ 
-                       { "memberData1" : "12", "someVariable" : 6, "anotherVariable" : 4.5 },
+1                       { "memberData1" : "12", "someVariable" : 6, "anotherVariable" : 4.5 },
                        true,
-                       "xyz"
+2                       [ 1, 2, 9 ]
                   ]
                 }
             ]
@@ -95,6 +95,8 @@ An example of passing beans and arrays
     ]
 }
 }}}
+ # denotes an object with three member variables "memberData1", "someVariable" and "anotherVariable"
+ # is an array of ints
 
 == Tips ==
  * If you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/], the GSON parser doesn't offer the best error messages unfortunately
