@@ -127,3 +127,4 @@ An example of passing beans and arrays
    * "args" : required, contains an array of parameters that will be passed to the test method
    * "pass" : optional, default true, if you expect the inputs to fail set pass to false
    * "skip" : optional, default false if set to true only the marked test will be skipped
+   * "name" : optional, name this test case the name value is used in test runner output
