@@ -206,6 +206,11 @@
     <target name="examples" description="Zip up the examples">
         <property name="pkg.dir" value="${package.dir}/fuzz-tester-${fuzz.version}"/>
         <property name="package.jar.name" value="fuzz-tester-dependencies-${fuzz.version}.jar"/>
+        <delete>
+            <fileset dir="${basedir}/examples/lib">
+                <include name="*.jar"/>
+            </fileset>
+        </delete>
 
         <copy file="${pkg.dir}/${package.jar.name}" todir="${basedir}/examples/lib"/>
         <copy file="fuzz-tester-${fuzz.version}.jar" todir="${basedir}/examples/lib"/>
@@ -306,6 +311,11 @@
 	    </delete>
         <delete dir="${build.dir}" includeEmptyDirs="true"/>
         <delete dir="${package.dir}" includeEmptyDirs="true"/>
+        <delete>
+            <fileset dir="${basedir}/examples/lib">
+                <include name="*.jar"/>
+            </fileset>
+        </delete>
 	</target>
 
     <target name="version" depends="jar">
