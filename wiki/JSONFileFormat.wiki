@@ -115,8 +115,8 @@ An example of passing beans and arrays
 }}} 
 
 == Element Descrtiptions ==
- * "UnitTest" : required, (only one) contains a collection of _test objects_
- * _test object_ : required (many)
+ * "UnitTest" : required, (only one) contains a collection of _test_ objects
+ * _test_ object : required (many)
   * "method" : required the method name to be tested
   * "testCases" : required, (only one) contains a collection of _testCase_.
-  * _testCase_ object :
+  * _testCase_ object : 
