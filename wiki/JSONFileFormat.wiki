@@ -91,7 +91,7 @@ An example of passing beans and arrays
 {{{
 {
     "id" : "$Id: $",   # meta-data adds a subversion Id
-    "unitTest" : [ # required
+    "unitTest" : [
         {
             "description" : "Some more meta-data",   # meta-data ignored by FuzzTestRunner
             "method" : "truncExample2", 
