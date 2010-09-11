@@ -119,4 +119,5 @@ An example of passing beans and arrays
  * _test_ object : required (many)
   * "method" : required the method name to be tested
   * "testCases" : required, (only one) contains a collection of _testCase_.
-  * _testCase_ object : 
+  * _testCase_ object : required many
+   * "args" : required, contains an array of parameters that will be passed to the test method
