@@ -1,5 +1,5 @@
 #sidebar TableOfContents
-<wiki:toc max_depth="1"/>
+<wiki:toc max_depth="2"/>
 == JSON Object format ==
 
 Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) format see [http://json.org/ JSON.org] for details concerning escaping special characters, types, etc. 
