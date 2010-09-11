@@ -41,7 +41,7 @@ import static org.junit.Assert.assertTrue;
  * $Id: FileFilterPrePostTest.java 22 2010-04-01 04:56:35Z agwego $
  */
 @RunWith( FuzzTester.class )
-@Parameters( TestDirectory = "com/agwego/fuzz/examples", Prefix = "StringHelperTest" )
+@Parameters( TestDirectory = "test/com/agwego/fuzz/examples", Prefix = "StringHelperTest" )
 public class StringHelperTest
 {
     /**

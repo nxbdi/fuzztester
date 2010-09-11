@@ -27,6 +27,8 @@ package com.agwego.fuzz.examples;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
@@ -42,6 +44,8 @@ import static org.junit.Assert.*;
 public class GettingStartedTest
 {
     /**
+     * A normal @fuzz test
+     *
      * @param input the test string
      * @param endIndex to truncate at (no primitives are allowed for parameters)
      * @param expected the result we're looking for
@@ -53,6 +57,8 @@ public class GettingStartedTest
 	}
 
 	/**
+	 * Illustrate testing exceptions
+	 *
 	 * @param input the test string
 	 * @param expected the result we're looking for
 	 * @throws Exception to keep java happy
@@ -61,5 +67,14 @@ public class GettingStartedTest
 	public void exceptionExample( final String input, final String expected ) throws Exception
 	{
 		assertEquals( GettingStarted.except( input ), expected );
+	}
+
+	/**
+	 * An example of mixing in a regular JUnit test
+	 */
+	@Test
+	public void includeJunitTests()
+	{
+		assertTrue( true );		
 	}
 }

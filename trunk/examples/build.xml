@@ -106,7 +106,7 @@
 
         <echo message="${test.classes.prop}"/>
 
-        <junit printsummary="on" fork="true" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
+        <junit printsummary="on" fork="true" haltonfailure="true" failureproperty="tests.failed" showoutput="true">
             <classpath refid="classpath-prod"/>
             <classpath refid="classpath-test"/>
             <classpath refid="classpath-libs"/>
