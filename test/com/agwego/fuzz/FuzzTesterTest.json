@@ -5,6 +5,7 @@
  * $Id$
  */
 {
+    "Id" : "$Id$",
     "unitTest" : [
         {
             "Comment" : "Test accept",
