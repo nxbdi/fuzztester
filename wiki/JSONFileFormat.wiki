@@ -116,7 +116,8 @@ An example of passing beans and arrays
 }
 }}} 
 
-== Element Descrtiptions ==
+== Element Descriptions ==
+Elements in quotes (") are literals, _italicized_ elements are anonymous JSON objects e.g. an unnamed object contained in braces {}
  * "UnitTest" : required, (only one) contains a collection of _test_ objects
  * "only" : optional, specifies a list of tests to run only
  * _test_ object : required (many)
