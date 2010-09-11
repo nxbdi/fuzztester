@@ -124,9 +124,9 @@ Elements in quotes (") are literals, _italicized_ elements are anonymous JSON ob
    * "method" : required the method name to be tested
    * "skip" : optional, default false if set to true the test method will not be run
    * "comment: optional, provide a comment for this test method
-   * "testCases" : required, (only one) contains a collection of _testCase_
-    * _testCase_ object : required (many)
-     * "args" : required, contains an array of parameters that will be passed to the test method
+   * *"testCases"* : required, (only one) contains a collection of _testCase_
+    * *_testCase_* object : required (many)
+     * *"args"* : required, contains an array of parameters that will be passed to the test method
      * "pass" : optional, default true, if you expect the inputs to fail set pass to false
      * "skip" : optional, default false if set to true only the marked test will be skipped
      * "name" : optional, name this test case the name value is used in test runner output
