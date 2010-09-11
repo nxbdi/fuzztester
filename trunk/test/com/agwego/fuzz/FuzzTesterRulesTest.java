@@ -38,9 +38,9 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * @author Tim Desjardins
- * @version $Rev: 8 $
+ * @version $Rev$
  *
- * $Id: FileFilterPrePostTest.java 8 2010-03-26 03:45:50Z agwego $
+ * $Id$
  */
 @RunWith( FuzzTester.class )
 @Parameters( TestDirectory = "test/com/agwego/fuzz" )

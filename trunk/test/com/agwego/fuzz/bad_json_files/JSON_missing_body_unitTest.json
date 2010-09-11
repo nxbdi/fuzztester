@@ -1,6 +1,6 @@
 {
     "comment" : "Test Google's GSON code",
-    "id" : "$Id:$",
+    "id" : "$Id$",
     "unitTest" : [
     ]
 }

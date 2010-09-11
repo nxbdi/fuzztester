@@ -42,8 +42,8 @@ import static org.junit.Assert.*;
 
 /**
  * @author Tim Desjardins
- * @version $Rev: $
- * $Id: $
+ * @version $Rev$
+ * $Id$
  */
 @RunWith( FuzzTester.class )
 @Parameters( TestDirectory = "test/com/agwego/common", Prefix = "GsonHelperTest" )

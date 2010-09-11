@@ -105,7 +105,6 @@ public class FuzzTester extends Suite
 	 * @param suffix Look for files that end in
 	 * @param testClass the class we're are testing
 	 * @return the map of the TestCases
-	 * @ throws InitializationError if there are errors reading the file
 	 * @throws FuzzTestJsonError - for any semantic errors in the JSON formatted test case
 	 */
 	protected Map<String,List<FuzzTestCase>> getTestMethods( String dirName, String prefix, String suffix, Class testClass ) throws FuzzTestJsonError
