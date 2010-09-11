@@ -83,3 +83,6 @@ An example of passing beans and arrays
     ]
 }
 }}}
+
+=== Tips ===
+If you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/]
