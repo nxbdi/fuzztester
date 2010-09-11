@@ -7,8 +7,8 @@ Current features are basic but the idea is to get it out and tested, basic featu
 
 Future enhancements will include support for template driven inputs, macros for testing relative values (like todayPlusDays( 2 ), nowMinusMinuntes( 60 ) ), and generator based inputs, custom setup and tear down methods per fuzztest case.
 
-= Details =
-
+= Easy to use =
+See [GettingStarted Getting Started]
  # write your test
  # annotate your tests
  # create your test data in JSON format
