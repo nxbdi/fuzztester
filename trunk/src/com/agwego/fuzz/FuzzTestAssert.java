@@ -61,5 +61,4 @@ public class FuzzTestAssert
 		else
 			Assert.assertEquals( message, expected.toString(), actual.toString() );
 	}
-
 }
