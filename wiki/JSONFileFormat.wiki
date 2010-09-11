@@ -121,7 +121,7 @@ Elements in quotes (") are literals, _italicized_ elements are anonymous JSON ob
  * *"UnitTest"* : required, (only one) contains a collection of _test_ objects
  * "only" : optional, specifies a list of tests to run only
   * *_test_* object : required (many)
-   * "method" : required the method name to be tested
+   * *"method"* : required the method name to be tested
    * "skip" : optional, default false if set to true the test method will not be run
    * "comment: optional, provide a comment for this test method
    * *"testCases"* : required, (only one) contains a collection of _testCase_
