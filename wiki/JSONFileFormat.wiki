@@ -9,6 +9,7 @@ Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) fo
  * float, double -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/Double.html java.lang.Double]
  * boolean -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/Boolean.html java.lang.Boolean]
  * string -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/String.html  java.lang.String]
+ * null
  * arrays of simple types or simple json objects
  * simple planar objects(beans) (i.e. no object graphs yet, any object that is composed of simple types from above)
 
