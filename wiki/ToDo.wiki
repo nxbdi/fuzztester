@@ -25,7 +25,7 @@ In no particular order
    * ignore
    * mixing @Test with @Fuzz
    * Multiple JSON files
-  * update javadoc
+  * ~~update javadoc~~
   * ~~publish javadoc to Googlecode~~
 
 Future enhancements
