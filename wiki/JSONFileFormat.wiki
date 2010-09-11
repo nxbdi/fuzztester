@@ -86,4 +86,22 @@ An example of passing beans and arrays
 }}}
 
 === Tips ===
-If you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/]
+ * If you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/]
+ * You can add meta-data to the JSON files, for instance key-value pairs that aren't recognized by FuzzTestRunner, for instance:{{{
+{
+    "unitTest" : [ # required
+        {
+            "method" : "truncExample2", 
+            "testCases" : [
+                { 
+                  "args" : [ 
+                       { "memberData1" : "12", "someVariable" : 6, "anotherVariable" : 4.5 },
+                       true,
+                       "xyz"
+                  ]
+                }
+            ]
+        }
+    ]
+}
+}}} 
