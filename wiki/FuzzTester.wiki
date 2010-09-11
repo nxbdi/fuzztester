@@ -1,10 +1,11 @@
 #summary fuzztester home page, fuzztester is a JUnit4 Test Runner that uses structured data (JSON) stored in files to run test cases.
 
+<wiki:toc max_depth="1"/>
 = Introduction =
 
-fuzztester is a JUnit4 based test class Runner. fuzztester's test cases are stored in structured JSON files that allow for easy editing and running of test cases without having to write additional code to run or manage test data. Fuzztester supports rapid testing and development and eases the burden of testing boundary or edge cases.
+FuzzTester is a JUnit4 test class Runner. FuzzTester's test cases are stored in structured JSON files that allow for easy editing and running of test cases without having to write additional code to run or manage test data. Fuzztester supports rapid testing and development and eases the burden of testing boundary or edge cases.
 
-Current features are basic but the idea is to get it out and tested, basic features include mixing JUnit and Fuzztesters in the same test class, testing for exceptions without any special code.
+Current features are basic but the idea is to get it out and tested, basic features include mixing JUnit and FuzzTests in the same test class, testing for exceptions and exception messages without any special code.
 
 Future enhancements will include support for template driven inputs, macros for testing relative values (like todayPlusDays( 2 ), nowMinusMinuntes( 60 ) ), and generator based inputs, custom setup and tear down methods per fuzztest case.
 
