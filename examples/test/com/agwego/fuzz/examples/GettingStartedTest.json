@@ -1,7 +1,7 @@
 {
+    "Id" : "$Id: $",
     "unitTest" : [
         {
-            "ignore" : true,
             "comment" : "Getting Started Trunc Test (input, length, expected)",
             "method" : "truncExample",
             "testCases" : [
@@ -30,8 +30,8 @@
                     "exceptionMessage" : "This is a test exception: 1"
                 },
                 {
-                    "args" : [ "1", null ],
-                    "exceptionMessage" : "This is a test exception: 1"
+                    "args" : [ "2", null ],
+                    "exceptionMessage" : "This is a test exception"
                 },
                 {
                     "args" : [ null, null ]
