@@ -129,7 +129,12 @@ public class FuzzTester extends Suite
 				JsonObject unitTest = x.getAsJsonObject();
 				// TODO add assertion of method_name existence
 				boolean skip = GsonHelper.getAsBoolean( unitTest, TEST_SKIP, false );
-				JsonArray testCases = unitTest.getAsJsonArray( TEST_CASES );
+				JsonArray testCases;
+				try {
+					testCases = unitTest.getAsJsonArray( TEST_CASES );
+				} catch( ClassCastException ex ) {
+					throw new FuzzTestJsonError( "The \"" + TEST_CASES + "\" element is not an array, see file = " + test.get( FuzzTester.TEST_FILE ) );	
+				}
 				int idx = 1;
 				List<FuzzTestCase> fuzzTestCases = new ArrayList<FuzzTestCase>();
 				for( JsonElement y : testCases ) {
