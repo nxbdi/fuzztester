@@ -70,7 +70,7 @@ Here's an example JSON test file,
     ]
 }
 }}}
-Notes on exceptions:
+ === Notes on exceptions ===
  * you have to supply the fully qualified exception name for "exceptionThrown"
  * "exceptionMessage" only matches the beginning of the thrown exception message with the expected message, no wild cards or macros supported (at this time), depending on the requirement more sophisticated matching may be implemented like "exceptionMessageContains"
 
@@ -98,7 +98,7 @@ An example of passing beans and arrays
  # denotes a "planar object" with three member variables "memberData1", "someVariable" and "anotherVariable"
  # is an array of ints
  === Notes on "planar objects" ===
-  * 
+  * planar objects must have a default constructor defined (i.e. a constructor that takes no arguments)
 
 == Tips ==
  * If you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/], the GSON parser doesn't offer the best error messages unfortunately
