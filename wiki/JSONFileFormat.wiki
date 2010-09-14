@@ -2,7 +2,7 @@
 <wiki:toc max_depth="2"/>
 == JSON Object format ==
 
-Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) format see [http://json.org/ JSON.org] for details concerning escaping special characters, types, etc. 
+Fuzz Testers test cases are codified in the Javascript Object Notation (JSON) format see [http://json.org/ JSON.org] for details concerning escaping special characters, types, etc. Since Google GSON is the underlying JSON library refer to the [http://sites.google.com/site/gson/gson-user-guide GSON documentation] for detailed type handling.
 
 == Simple Types ==
  * int, long, short, byte -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/Integer.html java.lang.Integer] (if possible)
