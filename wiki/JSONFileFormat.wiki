@@ -38,6 +38,9 @@ Here's an example JSON test file,
     ]
 }
 }}}
+ === Notes on args ===
+ * Type errors will look like the following: `The JsonDeserializer IntegerTypeAdapter failed to deserialized json object false given the type class java.lang.Integer`
+ * Using built-in types in your method will generate errors like the following: `java.lang.ClassCastException`
 
 == Testing Exceptions ==
 {{{
