@@ -98,7 +98,7 @@ An example of passing beans and arrays
  # denotes a "planar object" with three member variables "memberData1", "someVariable" and "anotherVariable"
  # is an array of ints
  === Notes on "planar objects" ===
- * planar objects must have a default constructor defined (i.e. a constructor that takes no arguments)
+ * planar objects must have a default constructor defined (i.e. a constructor that takes no arguments) the error looks like this `No-args constructor for class x.y.z does not exist. Register an InstanceCreator with Gson for this type to fix this problem.`
  * By definition planar objects have no collections of other objects
 
 == Tips ==
