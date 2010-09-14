@@ -198,7 +198,9 @@
 
         <echo message="Updated examples lib"/>
         <copy file="fuzz-tester-${fuzz.version}.jar" todir="${basedir}/examples/lib"/>
+        <checksum file="fuzz-tester-${fuzz.version}.jar" todir="${pkg.dir}"/>
         <copy file="${package.jar}" todir="${basedir}/examples/lib"/>
+        <checksum file="${package.jar}" todir="${pkg.dir}"/> 
 
 		<delete file="${pkg.dir}/temp_final.jar"/>
 	</target>
