@@ -100,10 +100,10 @@ An example of passing beans and arrays
 }}}
  # denotes a "planar object" with three member variables "memberData1", "someVariable" and "anotherVariable"
  # is an array of ints
- === Notes on "planar objects" ===
+ === Notes on objects ===
  * planar objects must have a default constructor defined (i.e. a constructor that takes no arguments) the error looks like this `No-args constructor for class x.y.z does not exist. Register an InstanceCreator with Gson for this type to fix this problem.`
  * By definition planar objects have no collections of other objects
- * Type errors will look like the following: `The JsonDeserializer IntegerTypeAdapter failed to deserialized json object false given the type class java.lang.Integer`
+ * The JSON keys must match the member data names otherwise the value will not be set
 
 == Tips ==
  * If you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/], the GSON parser doesn't offer the best error messages unfortunately
