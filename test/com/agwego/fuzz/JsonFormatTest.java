@@ -384,4 +384,122 @@ public class JsonFormatTest
 			{
 			}
 
+	@Test
+	public void onlyEmpty()
+	{
+		boolean exceptionCaught = false;
+		try {
+		    new FuzzTester( JsonFormatTest.TestOnlyEmpty.class );
+		} catch( ParametersError ex ) {
+			fail();
+		} catch( InitializationError ex ) {
+			fail();
+		} catch( FuzzTestJsonError ex ) {
+			fail();
+		}
+
+		assertFalse( "An exception was thrown,", exceptionCaught );
+	}
+
+			@RunWith( FuzzTester.class )
+			@Parameters( TestDirectory = "test/com/agwego/fuzz/bad_json_files", Prefix = "JSON_only_empty" )
+			public class TestOnlyEmpty
+			{
+				@Fuzz
+				public void mockInteger( final String input, final Integer expected  )
+				{
+					int in = NumberHelper.parseInt( input, 0 );
+					assertEquals( in, expected.intValue() );
+				}
+			}
+
+	@Test
+	public void onlyAsObject()
+	{
+		boolean exceptionCaught = false;
+		try {
+		    new FuzzTester( JsonFormatTest.TestOnlyAsObject.class );
+		} catch( ParametersError ex ) {
+			fail();
+		} catch( InitializationError ex ) {
+			fail();
+		} catch( FuzzTestJsonError ex ) {
+			log.info(  "ex = " + ex.getMessage() );
+			fail();
+		}
+
+		assertFalse( "An exception was thrown,", exceptionCaught );
+	}
+
+			@RunWith( FuzzTester.class )
+			@Parameters( TestDirectory = "test/com/agwego/fuzz/bad_json_files", Prefix = "JSON_only_empty" )
+			public class TestOnlyAsObject
+			{
+				@Fuzz
+				public void mockInteger( final String input, final Integer expected  )
+				{
+					int in = NumberHelper.parseInt( input, 0 );
+					assertEquals( in, expected.intValue() );
+				}
+			}
+
+	@Test
+	public void onlyAsString()
+	{
+		boolean exceptionCaught = false;
+		try {
+		    new FuzzTester( JsonFormatTest.TestOnlyAsString.class );
+		} catch( ParametersError ex ) {
+			fail();
+		} catch( InitializationError ex ) {
+			fail();
+		} catch( FuzzTestJsonError ex ) {
+			log.info(  "ex = " + ex.getMessage() );
+			fail();
+		}
+
+		assertFalse( "An exception was thrown,", exceptionCaught );
+	}
+
+			@RunWith( FuzzTester.class )
+			@Parameters( TestDirectory = "test/com/agwego/fuzz/bad_json_files", Prefix = "JSON_only_as_string" )
+			public class TestOnlyAsString
+			{
+				@Fuzz
+				public void mockInteger( final String input, final Integer expected  )
+				{
+					int in = NumberHelper.parseInt( input, 0 );
+					assertEquals( in, expected.intValue() );
+				}
+			}
+
+	@Test
+	public void testCasesAsObject()
+	{
+		boolean exceptionCaught = false;
+		try {
+		    new FuzzTester( JsonFormatTest.TestTestCasesAsObject.class );
+		} catch( ParametersError ex ) {
+			fail();
+		} catch( InitializationError ex ) {
+			fail();
+		} catch( FuzzTestJsonError ex ) {
+			assertTrue( ex.getMessage(), ex.getMessage().startsWith( "The \"testCases\" element is not an array, see" ));
+			exceptionCaught = true;
+		}
+
+		assertTrue( "No FuzzTestJsonError exception was thrown,", exceptionCaught );
+	}
+
+			@RunWith( FuzzTester.class )
+			@Parameters( TestDirectory = "test/com/agwego/fuzz/bad_json_files", Prefix = "JSON_test_cases_as_object.json" )
+			public class TestTestCasesAsObject
+			{
+				@Fuzz
+				public void mockInteger( final String input, final Integer expected  )
+				{
+					int in = NumberHelper.parseInt( input, 0 );
+					assertEquals( in, expected.intValue() );
+				}
+			}
 }
