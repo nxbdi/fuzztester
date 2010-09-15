@@ -27,7 +27,7 @@ Note that included in the release is a fuzz-tester-dependencies-version.jar that
 3 public class GettingStartedTest {
 }}}
   # uses the JUnit [http://kentbeck.github.com/junit/javadoc/latest/org/junit/runner/RunWith.html @RunWith] annotation to say use the fuzztester runner
-  # use the Fuzz Tester [http://fuzztester.googlecode.com/svn/trunk/doc/api/com/agwego/fuzz/annotations/Parameters.html @Parameters] annotation that provides the test file(s) location and name(s)
+  # use the Fuzz Tester [http://fuzztester.googlecode.com/svn/trunk/doc/api/com/agwego/fuzz/annotations/Parameters.html @Parameters] annotation that provides the test file(s) location and name(s). For this example all filenames  `test/com/agwego/fuzz/examples/GettingStarted*.json` will be read and used to run the tests. 
   <br/>
  # Mark your test fixtures with the [http://fuzztester.googlecode.com/svn/trunk/doc/api/index.html @Fuzz] annotation.
 {{{
