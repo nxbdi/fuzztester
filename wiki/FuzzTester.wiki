@@ -18,7 +18,7 @@ See [GettingStarted Getting Started]
 
  * Unit tests must have unique method names and argument signatures (otherwise an exception will be thrown)
  * Method parameters must subclass object (no primitives, you can use primitives in the JSON files which will be cast to their Object representation )
- == The following are limitations imposed by GSON ==
+ ==== The following are limitations imposed by GSON ====
   * You cannot initialize objects via JSON that include collections of objects or self-referential objects, acyclic object trees are supported.
   * Every object that is to instantiated from a JSON file needs a default constructor defined.
 
