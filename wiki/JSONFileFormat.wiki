@@ -11,7 +11,7 @@ Fuzz Testers test cases are codified with Javascript Object Notation (JSON) form
  * string -> [http://download-llnw.oracle.com/javase/6/docs/api/java/lang/String.html  java.lang.String]
  * null
  * arrays of simple types or simple json objects
- * simple planar objects(beans) (i.e. no object graphs yet, any object that is composed of simple types from above)
+ * simple objects(beans) (i.e. only acyclic object graphs, no collections of objects are supported at this time, no self referential objects)
 
 == Test Format by Example ==
 
