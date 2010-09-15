@@ -39,7 +39,7 @@ Here's an example JSON test file,
 }
 }}}
  === Notes on args ===
- * Type errors will look like the following: `The JsonDeserializer IntegerTypeAdapter failed to deserialized json object false given the type class java.lang.Integer`
+ * Type errors will look like the following: `The JsonDeserializer IntegerTypeAdapter failed to deserialized json object XYZ given the type class java.lang.Integer`
  * Using built-in types in your method will generate errors like the following: `java.lang.ClassCastException`
 
 == Testing Exceptions ==
@@ -98,11 +98,11 @@ An example of passing beans and arrays
     ]
 }
 }}}
- # denotes a "planar object" with three member variables "memberData1", "someVariable" and "anotherVariable"
+ # denotes a simple object or bean with three member variables "memberData1", "someVariable" and "anotherVariable"
  # is an array of ints
  === Notes on objects ===
- * planar objects must have a default constructor defined (i.e. a constructor that takes no arguments) the error looks like this `No-args constructor for class x.y.z does not exist. Register an InstanceCreator with Gson for this type to fix this problem.`
- * By definition planar objects have no collections of other objects
+ * objects must have a default constructor defined (i.e. a constructor that takes no arguments) the error looks like this `No-args constructor for class x.y.z does not exist. Register an InstanceCreator with Gson for this type to fix this problem.`
+ * By definition objects have no collections of other objects, but can reference other objects,m self references are not allowed
  * The JSON keys must match the member data names otherwise the value will not be set
 
 == Tips ==
