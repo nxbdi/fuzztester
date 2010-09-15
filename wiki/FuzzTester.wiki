@@ -23,7 +23,7 @@ See [GettingStarted Getting Started]
   * Every object that is to instantiated from a JSON file needs a default constructor defined.
 
 = Benefits =
- * Add test cases without recompiling (just run) allows you to rapidly add tests without coding (until test fails of course)
+ * Add test cases without recompiling (just run) allows you to rapidly add tests without coding (until you break you code of course)
  * less test code since test data is external to the tests you end up writing smaller simpler tests
  * Mix @fuzz and @test in the same test class
  * One or many JSON formatted test files per unit test
