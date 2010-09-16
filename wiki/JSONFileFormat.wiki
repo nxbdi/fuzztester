@@ -91,7 +91,8 @@ An example of passing beans and arrays
 1                       { "memberData1" : "12", "someVariable" : 6, "anotherVariable" : 4.5 },
                        true,
 2                       [ 1, 2, 9 ]
-                  ]
+                  ],
+3                 "name" : "My Trunc Example #1"
                 }
             ]
         }
@@ -100,6 +101,7 @@ An example of passing beans and arrays
 }}}
  # denotes a simple object or bean with three member variables "memberData1", "someVariable" and "anotherVariable"
  # is an array of ints
+ # You can name your tests which will be used when printing out test result by the test runner (all tests are also numbered)
  === Notes on objects ===
  * objects must have a default constructor defined (i.e. a constructor that takes no arguments) the error looks like this `No-args constructor for class x.y.z does not exist. Register an InstanceCreator with Gson for this type to fix this problem.`
  * By definition objects have no collections of other objects, but can reference other objects,m self references are not allowed
