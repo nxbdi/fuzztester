@@ -136,4 +136,4 @@ Elements in quotes (") are literals, _italicized_ elements are anonymous JSON ob
      * *"args"* : required, contains an array of parameters that will be passed to the test method
      * "pass" : optional, default true, if you expect the inputs to fail set pass to false
      * "skip" : optional, default false if set to true only the marked test will be skipped
-     * "name" : optional, name this test case the name value is used in test runner output
+     * "name" : optional, name this test case the name value is used in test runner output, this name will be echoed by the test runner
