@@ -43,7 +43,7 @@ import static org.junit.Assert.*;
  */
 @RunWith( FuzzTester.class )
 @Parameters( TestDirectory = "test/com/agwego/fuzz/examples", Prefix = "Multi" )
-public class MultiTestFileExample
+public class MultiFileTest
 {
     /**
      * A normal @fuzz test
