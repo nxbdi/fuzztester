@@ -30,7 +30,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotated tests with @Fuzz will be be run by the fuzz test runner
+ * Annotated tests with @Fuzz will be executed by FuzzTester.class runner.
  *
  * @author Tim Desjardins
  * @version $Rev$

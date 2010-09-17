@@ -30,13 +30,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Specify the @Parameters to be used by @FuzzTestRunner <br/>
+ * Specify the @Parameters to be used by @RunWith( FuzzTester.class ) <br/>
  * The parameters are:
  * <ul>
- * <li> TestDirectory </li>
- * <li> Prefix </li>
- * <li> Suffix </li>
- * <li> TestDirectoryRootPropertyName </li>
+ * <li> TestDirectory (required) - the directory containing your test files (can be absolute or relative)</li>
+ * <li> Prefix - the file prefix to associate with the unit test </li>
+ * <li> Suffix - the file suffix to associate with the unit test, default ".json"</li>
+ * <li> TestDirectoryRootPropertyName - a property name to use instead of TestDirectory (not implemented yet)</li>
+ * @see com.agwego.common.FileFilterPrePost
  *
  * @author Tim Desjardins
  * @version $Rev$
