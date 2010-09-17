@@ -37,7 +37,7 @@
 
     <property name="out.prod.dir" value="${build.dir}/prod"/>
     <property name="out.test.dir" value="${build.dir}/test"/>
-
+    
     <mkdir dir="${build.dir}"/>
 
     <path id="classpath-libs">
@@ -64,7 +64,6 @@
 
         <echo message="build                 --> Build the production application"/>
         <echo message="tests                 --> run batch tests"/>
-        <echo message="all-tests              --> run all tests (consolidated)"/>
 
         <echo message="clean                 --> cleanup"/>
         <echo message="spotless              --> revert to pristine"/>
@@ -111,10 +110,8 @@
             <classpath refid="classpath-test"/>
             <classpath refid="classpath-libs"/>
 
-            <formatter type="plain" usefile="false" /><!--if="junit.formatter.use"-->
-
             <batchtest>
-                <formatter type="plain" usefile="false" /><!--if="junit.formatter.use"-->
+                <formatter type="plain" usefile="false" if="junit.formatter.use"/>
                 <fileset refid="test.classes"/>
             </batchtest>
         </junit>
@@ -125,24 +122,6 @@
             ****  One or more tests failed!  Check the output ...  ****
             ***********************************************************
         </fail>
-    </target>
-
-    <target name="all-tests" depends="buildtests" description="Run All Tests">
-        <junit printsummary="on" fork="true" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
-            <classpath refid="classpath-prod"/>
-            <classpath refid="classpath-test"/>
-            <classpath refid="classpath-libs"/>
-
-            <formatter type="plain" usefile="false" if="junit.formatter.use"/>
-            <test name="com.agwego.AllTests" />
-        </junit>
-
-        <fail if="tests.failed">
-            tests.failed=${tests.failed}
-            ***********************************************************
-            ****  One or more tests failed!  Check the output ...  ****
-            ***********************************************************
-        </fail>        
     </target>
 
     <target name="clean" description="Clean output directories">
