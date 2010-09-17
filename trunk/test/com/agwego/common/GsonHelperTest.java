@@ -39,6 +39,7 @@ import org.junit.runner.RunWith;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Tim Desjardins
@@ -71,6 +72,12 @@ public class GsonHelperTest
 	public void getAsString( final String key, final String expected )
 	{
 		assertEquals( GsonHelper.getAsString( testJsonObject, key ), expected );
+	}
+
+	@Fuzz
+	public void getAsStringOtherwise( final String key, final String otherwise, final String expected )
+	{
+		assertEquals( GsonHelper.getAsString( testJsonObject, key, otherwise ), expected );
 	}
 
 	@Fuzz

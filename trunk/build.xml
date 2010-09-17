@@ -229,12 +229,13 @@
             destfile="${pkg.dir}/fuzz-tester-examples-${fuzz.version}.zip"
             basedir="${basedir}/examples"
             excludes="**/build/** **/*.class"
-            >
-        </zip>
+            />
+        <checksum file="${pkg.dir}/fuzz-tester-examples-${fuzz.version}.zip" todir="${pkg.dir}"/> 
     </target>
 
-    <target name="buildtests" depends="build" description="Compile test tree java files">
+    <target name="buildtests" depends="build" description="Compile test tree java files">    
         <mkdir dir="${out.test.dir}"/>
+        <copy file="${src.dir}/log4j.properties" tofile="${out.test.dir}/log4j.properties" overwrite="true"/>
         <javac destdir="${out.test.dir}" source="1.5" target="1.5" debug="true" deprecation="false" optimize="false" failonerror="true">
             <src path="${test.dir}"/>
             <classpath refid="classpath-test"/>
@@ -248,12 +249,11 @@
             <include name="**/*Test.class" />
         </fileset>
         <property name="test.classes.prop" refid="test.classes"/>
-
         <echo message="${test.classes.prop}"/>
 
         <junit printsummary="on" fork="true" haltonfailure="true" failureproperty="tests.failed" showoutput="true">
-            <classpath refid="classpath-prod"/>
             <classpath refid="classpath-test"/>
+            <classpath refid="classpath-prod"/>            
             <classpath refid="classpath-libs"/>
 
             <formatter type="plain" usefile="false" if="junit.formatter.use"/>
@@ -274,9 +274,9 @@
     <target name="all-tests" depends="buildtests" description="Run All Tests Suite">
         <junit printsummary="on" fork="true" haltonfailure="false" failureproperty="tests.failed" showoutput="true">
             <classpath location="${instrumented.dir}"/>
-            <classpath refid="classpath-prod"/>
-            <classpath refid="classpath-test"/>
             <classpath refid="classpath-coverage"/>
+            <classpath refid="classpath-test"/>
+            <classpath refid="classpath-prod"/>                        
             <classpath refid="classpath-libs"/>
 
             <formatter type="plain" usefile="false" if="junit.formatter.use"/>

@@ -10,6 +10,15 @@
              ]
         },
         {
+            "method" : "getAsStringOtherwise",
+            "testCases" : [
+                { "args" : [ "one", null, "1"  ] },
+                { "args" : [ "ONE", "otherwise", "otherwise"  ] },
+                { "args" : [ "ONE", null, null  ] },
+                { "args" : [ "two", "otherwise", "1"  ], "pass" : false }
+             ]
+        },
+        {
             "method" : "getAsBoolean",
             "testCases" : [
                 { "args" : [ "b_true", false, true  ] },

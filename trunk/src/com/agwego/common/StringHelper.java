@@ -130,14 +130,13 @@ public class StringHelper
 	/**
 	 * is the String empty
 	 *
-	 * @param s byte array
+	 * @param s a string
 	 * @return is it empty (null = empty)
 	 */
 	public static boolean isEmpty( String s )
 	{
 		return ( s == null ) || ( s.length() == 0 );
 	}
-
 
 	/**
 	 * Nullify the String if the String is empty return null otherwise return the String s

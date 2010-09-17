@@ -47,7 +47,20 @@ public class GsonHelper
 	 */
     public static String getAsString( final JsonObject jObject, final String key )
     {
-        return jObject.has( key ) ? jObject.get( key ).getAsString() : null ;
+        return getAsString( jObject, key, null);
+    }
+
+	/**
+	 * Short hand, encapsulate the check if the object has the key and return the appropriate String otherwise null
+	 *
+	 * @param jObject the JsonObject in question
+	 * @param key the key to lookup
+	 * @param otherwise value to return if no key is found
+	 * @return the value for key as a String
+	 */
+    public static String getAsString( final JsonObject jObject, final String key, final String otherwise )
+    {
+        return jObject.has( key ) ? jObject.get( key ).getAsString() : otherwise ;
     }
 
 	/**

@@ -89,6 +89,7 @@ public class FuzzTestCase
 	private int number;
 	private boolean pass = true;
 	private boolean skip = false;
+	private String testName = "";
 
 	/**
 	 * Construct a FuzzTestCase
@@ -109,6 +110,7 @@ public class FuzzTestCase
 		fuzzTestCase.setExceptionMessage( GsonHelper.getAsString( jobj, "exceptionMessage" ));
 		fuzzTestCase.setSkip( GsonHelper.getAsBoolean( jobj, "skip", false ));
 		fuzzTestCase.setPass( GsonHelper.getAsBoolean( jobj, "pass", true ));
+		fuzzTestCase.setTestName( GsonHelper.getAsString( jobj, "name", "" ));
 
 		JsonArray jargs;
 		try {
@@ -142,6 +144,7 @@ public class FuzzTestCase
 			.setPrettyPrinting()
 			.create();
 
+		// TODO perhaps, provide better error messaging here.
 		if( argClass == StringBuilder.class ) {
 			return consumer.fromJson( jarg, String.class ) == null ? null: new StringBuilder( consumer.fromJson( jarg, String.class ) );
 		} else if( argClass == Integer.class ) {
@@ -391,6 +394,11 @@ public class FuzzTestCase
 		this.skip = skip;
 	}
 
+	public void setTestName( String testName )
+	{
+		this.testName = testName;
+	}
+
 	/**
 	 * The string version, used by the JUnit test runner
 	 *
@@ -398,6 +406,6 @@ public class FuzzTestCase
 	 */
 	public String toString()
 	{
-		return String.format( "%s, #%d, Pass: %b %s", methodName, number, pass, ( ! StringHelper.isEmpty( exceptionThrown ) ? exceptionThrown : "" ) );
+		return String.format( "%s, #%d, Pass: %b %s %s", methodName, number, pass, ( ! StringHelper.isEmpty( testName ) ? "Name:" + testName: "" ),( ! StringHelper.isEmpty( exceptionThrown ) ? exceptionThrown : "" ) );
 	}
 }
