@@ -27,7 +27,6 @@ package com.agwego.fuzz.examples;
 import com.agwego.fuzz.FuzzTester;
 import com.agwego.fuzz.annotations.Fuzz;
 import com.agwego.fuzz.annotations.Parameters;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -35,9 +34,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 /**
+ * Examples
+ * 
  * @author Tim Desjardins
- * @version $Rev: 22 $
- * $Id: FileFilterPrePostTest.java 22 2010-04-01 04:56:35Z agwego $
+ * @version $Rev:$
+ * <br>
+ * $Id: $
  */
 @RunWith( FuzzTester.class )
 @Parameters( TestDirectory = "test/com/agwego/fuzz/examples", Prefix = "GettingStarted" )
@@ -67,6 +69,55 @@ public class GettingStartedTest
 	public void exceptionExample( final String input, final String expected ) throws Exception
 	{
 		assertEquals( GettingStarted.except( input ), expected );
+	}
+
+	/**
+	 * Simple objects
+	 * 
+	 * @param pl - a simple object, note that GSON requires a no-args constructor
+	 * @param x - a multiplier
+	 * @param intObjExpected - the expected int value
+	 * @param boolObjExpected - the expected boolean value
+	 */
+	@Fuzz
+	public void simpleObject( final SimpleObject pl, final Integer x, final Integer intObjExpected, final Boolean boolObjExpected )
+	{
+		GettingStarted gs = new GettingStarted();
+		SimpleObject upl = gs.update( pl, x );
+		assertEquals( intObjExpected, upl.getIntObj() );
+		assertEquals( boolObjExpected, upl.getBoolObj() );
+	}
+
+	/**
+	 * Simple final object
+	 *
+	 * @param pl - a simple object, note that GSON requires a no-args constructor
+	 * @param x - a multiplier
+	 * @param intObjExpected - the expected int value
+	 * @param boolObjExpected - the expected boolean value
+	 */
+	@Fuzz
+	public void simpleObjectConstructor( final SimpleObjectConstructor pl, final Integer x, final Integer intObjExpected, final Boolean boolObjExpected )
+	{
+		GettingStarted gs = new GettingStarted();
+		SimpleObjectConstructor upl = gs.updateConstructor( pl, x );
+		assertEquals( intObjExpected, upl.getIntObj() );
+		assertEquals( boolObjExpected, upl.getBoolObj() );
+	}
+
+	/**
+	 * Simple test of parent/child objects
+	 *
+	 * @param p - parent object
+	 * @param x - multiplier
+	 * @param expected - the expected result
+	 */
+	@Fuzz
+	public void parentChild( final Parent p, final Double x, final Double expected )
+	{
+		GettingStarted gs = new GettingStarted();
+		
+		assertEquals( expected, gs.calculate( p, x ) );
 	}
 
 	/**

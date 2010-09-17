@@ -1,0 +1,14 @@
+{
+  "Id" : "$Id$",
+  "unitTest" : [
+      {
+          "comment" : "Test isEmpty example, the cases where they shouldn't pass",
+          "method" : "multiTest",
+          "testCases" : [
+              { "args" : [ "otherwise" ], "pass" : false },
+              { "args" : [ " " ], "pass" : false },
+              { "args" : [ "x" ], "pass" : false }
+          ]
+      }
+  ]
+}
