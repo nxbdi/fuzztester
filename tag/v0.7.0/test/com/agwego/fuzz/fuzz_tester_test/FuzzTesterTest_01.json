@@ -1,0 +1,15 @@
+{
+    "Id" : "$Id$",
+    "unitTest" : [
+        {
+            "Comment" : "Test mock",
+            "method" : "mockTest",
+            "testCases" : [
+                {
+                    "name" : "Test prefix/postfix",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

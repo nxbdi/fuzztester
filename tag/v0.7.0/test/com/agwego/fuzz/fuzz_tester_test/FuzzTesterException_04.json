@@ -1,0 +1,16 @@
+{
+    "Id" : "$Id$",
+    "unitTest" : [
+        {
+            "Comment" : "Catch the Wrong Exception",
+            "method" : "mockException",
+            "testCases" : [
+                {
+                    "exceptionMessage" : "There is no spoon",
+                    "name" : "Another Test",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

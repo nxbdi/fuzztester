@@ -1,0 +1,11 @@
+{
+    "Id" : "$Id$",
+    "unitTest" : [
+        {
+            "method" : "fuzzRules",
+            "testCases" : [
+                { "args" : [ "dummy" ] }
+            ]
+        }
+    ]
+}

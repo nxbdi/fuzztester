@@ -1,0 +1,15 @@
+{
+    "Id" : "$Id$",
+    "unitTest" : [
+        {
+            "Comment" : "Catch the Wrong Exception",
+            "method" : "mockTest",
+            "testCases" : [
+                {
+                    "name" : "Test assumptions fail",
+                    "args" : [ "This is a long test string", "win", "not" ]
+                }
+            ]
+        }
+    ]
+}

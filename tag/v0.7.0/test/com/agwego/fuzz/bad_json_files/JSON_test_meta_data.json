@@ -1,0 +1,17 @@
+{
+    "comment" : "Test Google's GSON code",
+    "id" : "$Id$",
+    "someMadeupKey" : "with some value",
+    "unitTest" : [
+       {
+            "method" : "mockInteger",
+            "TestMadeUpKey" : "You can add your own meta data anywhere",
+            "testCases" : [
+                {
+                    "args" : [ "99", 99 ],
+                    "TestCaseMetaData" : "You can add documentation here if you wanted"
+                }
+            ]
+         }
+    ]
+}

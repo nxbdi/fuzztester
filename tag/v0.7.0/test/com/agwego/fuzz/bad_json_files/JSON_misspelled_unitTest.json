@@ -1,0 +1,14 @@
+{
+    "comment" : "Test Google's GSON code",
+    "id" : "$Id$",
+    "unitTests" : [
+       {
+            "method" : "mockInteger",
+            "testCases" : [
+                {
+                    "args" : [ "99", 99 ]
+                }
+            ]
+         }
+    ]
+}
