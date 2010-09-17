@@ -1,0 +1,16 @@
+{
+    "Id" : "$Id$",
+    "unitTest" : [
+        {
+            "Comment" : "Test mock",
+            "method" : "mockException",
+            "testCases" : [
+                {
+                    "exceptionMessage" : "mockException test",
+                    "name" : "Another Test",
+                    "args" : [ "arghhh", "arghhh" ]
+                }
+            ]
+        }
+    ]
+}

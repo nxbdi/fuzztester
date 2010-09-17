@@ -1,0 +1,29 @@
+{
+    "Id" : "$Id$",
+    "unitTest" : [
+        {
+            "method" : "readFile",
+            "testCases" : [
+                { "args" : [ "test/com/agwego/common/file_helper_test/test.file1", "" ] },
+                { "args" : [ "test/com/agwego/common/file_helper_test/test.file2", "123" ] },
+                { "args" : [ null, null ], "exceptionThrown" : "java.lang.NullPointerException" },
+                { "args" : ["file.does.not.exist", null ], "exceptionThrown" : "java.io.FileNotFoundException" }
+             ]
+        },
+        {
+            "method" : "getFileList",
+            "testCases" : [
+                { "args" : [ "", "test/com/agwego/common/file_helper_test/file",  "json", 0, null],  "exceptionThrown" : "java.lang.Exception", "exceptionMessage" : "The dirName isn't a directory or there was an error reading the directory: " },
+                { "args" : [ "/NoSuch/DIR", "file",  "json", 0, null],  "exceptionThrown" : "java.lang.Exception", "exceptionMessage" : "The dirName isn't a directory or there was an error reading the directory: /NoSuch/DIR" },
+                { "args" : [ "test/com/agwego/common/file_helper_test/test.file2", "file",  "json", 0, null],  "exceptionThrown" : "java.lang.Exception", "exceptionMessage" : "The dirName isn't a directory or there was an error reading the directory: test/com/agwego/common/file_helper_test/test.file2" },
+                                
+                { "args" : [ "test/com/agwego/common/file_helper_test", "",  ".json", 0, null], "exceptionThrown" : "java.lang.RuntimeException" },
+                { "args" : [ "test/com/agwego/common/file_helper_test", null,  ".json", 0, null], "exceptionThrown" : "java.lang.RuntimeException" },
+                { "args" : [ "test/com/agwego/common/file_helper_test", "test",  "", 0, null], "exceptionThrown" : "java.lang.RuntimeException" },                
+                { "args" : [ "test/com/agwego/common/file_helper_test", "test",  "file1", 1, [ "test.file1" ]] },
+                { "args" : [ "test/com/agwego/common/file_helper_test", "file",  "json", 3, [ "file1.json", "file2.json", "file3.json" ]] },
+                { "args" : [ "test/com/agwego/common/file_helper_test", "noFile",  "json", 0, null] }
+            ]
+        }
+    ]
+}
