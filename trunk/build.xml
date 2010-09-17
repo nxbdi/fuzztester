@@ -297,6 +297,7 @@
                 <include name="**/*.class"/>
             </fileset>
         </delete>
+        <delete file="coverage-error.log"/>
         <mkdir dir="${out.prod.dir}"/>
 	    <touch file="${out.prod.dir}/build_tag.properties"/>
     </target>

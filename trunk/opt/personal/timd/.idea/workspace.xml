@@ -89,115 +89,98 @@
   </component>
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="MultiTestFileExample.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="55" column="52" selection-start="1965" selection-end="1965" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="GettingStarted.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../examples/src/com/agwego/fuzz/examples/GettingStarted.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="58" column="47" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MultiTestFileExample_01.json" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_01.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="1" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AllTests.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/AllTests.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="13" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FuzzTester.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="51" column="13" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="log4j.properties" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../src/log4j.properties">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="73" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../../../build.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="280" column="0" selection-start="12080" selection-end="12080" vertical-scroll-proportion="0.50442475">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FuzzSuite.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzSuite.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="31" column="7" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CommonSuite.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/CommonSuite.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="10" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MultiTestFileExample_02.json" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_02.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="31" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../../../build.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="255" column="44" selection-start="11007" selection-end="11021" vertical-scroll-proportion="0.12274959">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="MultiTestFileExample.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="55" column="52" selection-start="1965" selection-end="1965" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MultiTestFileExample_01.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_01.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="1" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllTests.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/AllTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="13" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuzzTester.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../src/com/agwego/fuzz/FuzzTester.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="13" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="log4j.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../src/log4j.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="73" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="289" column="54" selection-start="12498" selection-end="12498" vertical-scroll-proportion="-2.8125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../../examples/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="0" selection-start="1777" selection-end="1777" vertical-scroll-proportion="0.0952381">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuzzSuite.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzSuite.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="7" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommonSuite.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/CommonSuite.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="10" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MultiTestFileExample_02.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_02.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="31" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -211,7 +194,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../../../examples/src/com/agwego/fuzz/examples/SimpleObjectConstructor.java" />
         <option value="$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/GettingStartedTest.json" />
         <option value="$PROJECT_DIR$/../../../examples/src/com/agwego/fuzz/examples/Parent.java" />
         <option value="$PROJECT_DIR$/../../../examples/src/com/agwego/fuzz/examples/SimpleObject.java" />
@@ -227,6 +209,7 @@
         <option value="$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_02.json" />
         <option value="$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_01.json" />
         <option value="$PROJECT_DIR$/../../../build.xml" />
+        <option value="$PROJECT_DIR$/../../../examples/build.xml" />
       </list>
     </option>
   </component>
@@ -1351,7 +1334,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="180" y="13" width="1918" height="1487" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1366,7 +1349,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21869962" sideWeight="0.6066066" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21869962" sideWeight="0.6066066" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732734" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1410,13 +1393,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../examples/src/com/agwego/fuzz/examples/SimpleObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="102" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../examples/src/com/agwego/fuzz/examples/Parent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="99" selection-start="1325" selection-end="1325" vertical-scroll-proportion="0.0" />
@@ -1448,34 +1424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="52" selection-start="1965" selection-end="1965" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_02.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="31" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_01.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="1" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzSuite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="7" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/TestNotifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="13" selection-start="1533" selection-end="1533" vertical-scroll-proportion="0.21003501">
@@ -1483,9 +1431,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/CommonSuite.java">
+    <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="10" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
+        <state line="55" column="52" selection-start="1965" selection-end="1965" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_01.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="1" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1513,7 +1468,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="0" selection-start="12080" selection-end="12080" vertical-scroll-proportion="0.50442475">
+        <state line="289" column="54" selection-start="12498" selection-end="12498" vertical-scroll-proportion="-2.8125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/fuzz/FuzzSuite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="7" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../test/com/agwego/common/CommonSuite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="10" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../examples/test/com/agwego/fuzz/examples/MultiTestFileExample_02.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="31" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../examples/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1777" selection-end="1777" vertical-scroll-proportion="0.0952381">
           <folding />
         </state>
       </provider>
