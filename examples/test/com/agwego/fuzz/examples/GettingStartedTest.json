@@ -37,6 +37,65 @@
                     "args" : [ null, null ]
                 }
             ]
+        },
+        {
+            "comment" : "Getting Started, example with simple objects",
+            "method" : "simpleObject",
+            "testCases" : [
+                {
+                    "args" : [
+                        {
+                            "strObj" : "strExample",
+                            "intObj" : 15,
+                            "boolObj" : true
+                        },
+                        2,
+                        30,
+                        false                      
+                    ],
+                    "comment" : " simple object, x value, expected num, expected boolean"
+                }
+            ]
+        },
+        {
+            "comment" : "Getting Started, example with simple objects",
+            "method" : "simpleObjectConstructor",
+            "testCases" : [
+                {
+                    "args" : [
+                        {
+                            "strObj" : "strExample",
+                            "intObj" : 15,
+                            "boolObj" : true
+                        },
+                        2,
+                        30,
+                        true
+                    ],
+                    "comment" : " simple object, x value, expected num, expected boolean"
+                }
+            ]
+        },
+        {
+            "comment" : "Getting Started, example with mested objects",
+            "method" : "parentChild",
+            "testCases" : [
+                {
+                    "args" : [
+                        {
+                            "value" : 2.5,
+                            "child" : {
+                                "strObj" : "The child",
+                                "valueObj" : 1.2
+                            }
+                        },
+                        2,
+                        6.2
+                    ],
+                    "comment" : "nested object, x value, expected value"
+                }
+            ]
         }
+
     ]
 }
