@@ -39,8 +39,8 @@ Here's an example JSON test file,
 }
 }}}
  === Notes on args ===
- * Type errors will look like the following: `The JsonDeserializer IntegerTypeAdapter failed to deserialized json object XYZ given the type class java.lang.Integer`
- * Using built-in types in your method will generate errors like the following: `java.lang.ClassCastException`
+ * type errors will look like the following: `The JsonDeserializer IntegerTypeAdapter failed to deserialized json object XYZ given the type class java.lang.Integer`
+ * using built-in types in your method will generate errors like the following: `java.lang.ClassCastException`
 
 == Testing Exceptions ==
 {{{
@@ -101,15 +101,15 @@ An example of passing beans and arrays
 }}}
  # denotes a simple object or bean with three member variables "memberData1", "someVariable" and "anotherVariable"
  # is an array of ints
- # You can name your tests which will be used when printing out test result by the test runner (all tests are also numbered)
+ # you can name your tests, the name which will be used when printing out test results by the test runner (all tests are also numbered)
  === Notes on objects ===
  * objects must have a default constructor defined (i.e. a constructor that takes no arguments) the error looks like this `No-args constructor for class x.y.z does not exist. Register an InstanceCreator with Gson for this type to fix this problem.`
- * By definition objects have no collections of other objects, but can reference other objects,m self references are not allowed
+ * by definition objects have no collections of other objects, but can reference other objects,m self references are not allowed
  * The JSON keys must match the member data names otherwise the value will not be set
 
 == Tips ==
- * If you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/], the GSON parser doesn't offer the best error messages unfortunately
- * You can add meta-data to the JSON files, for instance key-value pairs that aren't recognized by FuzzTestRunner, for instance:
+ * if you're having parsing issues with your JSON, try using a JSON lint resource like [http://www.jsonlint.com/], the GSON parser doesn't offer the best error messages unfortunately
+ * you can add meta-data to the JSON files, for instance key-value pairs that aren't recognized by FuzzTestRunner, for instance:
 {{{
 {
     "id" : "$Id: $",   # meta-data adds a subversion Id
