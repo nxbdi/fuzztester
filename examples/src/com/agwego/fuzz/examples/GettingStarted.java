@@ -109,4 +109,21 @@ public class GettingStarted
 	{
 		return new SimpleObjectConstructor( pl.getStrObj(), pl.getIntObj() * x, pl.getBoolObj() );
 	}
+
+	/**
+	 * A simple fibonacci example
+	 * 
+	 * @param n the fibonacci number to calculate
+	 * @return the fibonacci number
+	 */
+	public static int fibonacci( int n )
+	{
+		int prev1 = 0, prev2 = 1;
+		for( int i = 0; i < n; i++ ) {
+			final int savePrev1 = prev1;
+			prev1 = prev2;
+			prev2 = savePrev1 + prev2;
+		}
+		return prev1;
+	}
 }
