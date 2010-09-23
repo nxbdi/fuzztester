@@ -1,0 +1,18 @@
+{
+  "Id" : "$Id$",
+  "unitTest" : [
+      {
+          "comment" : "Test fibonacci sequence, compare this to FibonacciParameterizedTest.java",
+          "method" : "fib",
+          "testCases" : [
+              { "args" : [ 0, 0 ] },
+              { "args" : [ 1, 1 ] },
+              { "args" : [ 2, 1 ] },
+              { "args" : [ 3, 2 ] },
+              { "args" : [ 4, 3 ] },
+              { "args" : [ 5, 5 ] },
+              { "args" : [ 6, 8 ] }
+          ]
+      }
+  ]
+}
